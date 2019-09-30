@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Auti MS</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>icon.png">
+    <!-- Add to home screen for Android and modern mobile browsers -->
+    <link rel="manifest" href="<%= BASE_URL %>manifest.json">
+    <meta name="theme-color" content="#d83d75">
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-title" content="Auti MS">
+    <link rel="apple-touch-icon" href="<%= BASE_URL %>icon.png">
+    <!-- <link rel="mask-icon" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/safari-pinned-tab.svg" color="#d83d75"> -->
+    <!-- Add to home screen for Windows -->
+    <meta name="msapplication-TileImage" content="<%= BASE_URL %>icon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <style>
+      @media screen and (max-width: 425px) {
+        .noscript-mg{
+          margin: 25% 0;
+        }
+      }
+      .w-full {
+        width: 100%;
+      }
+      body {
+        margin: 0
+      }
+      img {
+        width: inherit
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <div class="w-full noscript-mg">
+          <img class="" src="./autims-bg-noscript.png" >
+      </div>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected-->
+    <script src="<%= BASE_URL %>js/core.min.js"></script> 
+    <script src="<%= BASE_URL %>js/app.min.js"></script> 
+    <script src="<%= BASE_URL %>js/script.min.js"></script> 
+    <!-- <script src="../src/assets/js/app.min.js"></script>
+    <script src="../src/assets/js/script.min.js"></script> -->
+  </body>
+</html> 
+ 

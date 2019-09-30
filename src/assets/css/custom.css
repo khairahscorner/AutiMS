@@ -1,0 +1,273 @@
+/* CUSTOM STYLESHEET */
+/* poppins-200 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../fonts/poppins-v6-latin-200.eot'); /* IE9 Compat Modes */
+  src: local('Poppins ExtraLight'), local('Poppins-ExtraLight'),
+       url('../fonts/poppins-v6-latin-200.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v6-latin-200.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v6-latin-200.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v6-latin-200.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v6-latin-200.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* poppins-200italic - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 200;
+  src: url('../fonts/poppins-v6-latin-200italic.eot'); /* IE9 Compat Modes */
+  src: local('Poppins ExtraLight Italic'), local('Poppins-ExtraLightItalic'),
+       url('../fonts/poppins-v6-latin-200italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v6-latin-200italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v6-latin-200italic.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v6-latin-200italic.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v6-latin-200italic.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* poppins-300 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/poppins-v6-latin-300.eot'); /* IE9 Compat Modes */
+  src: local('Poppins Light'), local('Poppins-Light'),
+       url('../fonts/poppins-v6-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v6-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v6-latin-300.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v6-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v6-latin-300.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* poppins-regular - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/poppins-v6-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Poppins Regular'), local('Poppins-Regular'),
+       url('../fonts/poppins-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v6-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* poppins-500 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/poppins-v6-latin-500.eot'); /* IE9 Compat Modes */
+  src: local('Poppins Medium'), local('Poppins-Medium'),
+       url('../fonts/poppins-v6-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v6-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v6-latin-500.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v6-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v6-latin-500.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* poppins-600 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/poppins-v6-latin-600.eot'); /* IE9 Compat Modes */
+  src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
+       url('../fonts/poppins-v6-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v6-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v6-latin-600.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v6-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v6-latin-600.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+
+/* Main Content */
+body {
+  font-family: Poppins, sans-serif;
+  background: #e6f0fd;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: Poppins, sans-serif !important;
+  letter-spacing: 0;
+}
+
+/* Navigation | header */
+.sidebar-icons-right .sidebar-header .logo-icon,
+.sidebar-icons-right .sidebar-navigation .menu-link .icon,
+.sidebar-icons-right .sidebar-navigation .menu-link .dot {
+  order: 0;
+}
+
+.sidebar-icons-boxed .menu-link .icon {
+  background-color: transparent;
+}
+
+.menu-link .title {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.pagination {
+  padding-top: 12px;
+}
+
+.header {
+  margin-bottom: 16px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.24);
+}
+
+
+/**************************** Khairah ***************************/
+/** Spacing **/
+.mb-10{
+    margin-bottom: 10px !important
+}
+.mb-0{
+    margin-bottom: 0 !important
+}
+.m-0 {
+  margin: 0 !important;
+}
+.mt-10 {
+    margin-top: 10px !important
+}
+.mt-20 {
+    margin-top: 20px !important
+}
+.ml-10 {
+  margin-left: 10px;
+}
+.pd-10 {
+  padding: 10px;
+}
+.pd-0 {
+    padding: 5px !important
+}
+.pd-main {
+  padding: 60px 0;
+}
+.fw-600 {
+  font-weight: 600;
+}
+.error {
+  color: rgb(190, 35, 35)
+}
+.bg-img {
+  background-image: url(../../assets/img/autims-bg.png); 
+  background-size: auto;
+  background-attachment: fixed;
+  background-repeat: repeat-y repeat-x;
+}
+.bg-1{
+    background-color: #406c74 !important;
+    border-color: #406c74 !important;
+    color: #ffffff !important;
+}
+.bg-2{
+    background-color: #b83766 !important;
+    border-color: #b83766 !important;
+    color: #ffffff !important;
+}
+.color-1 {
+  color: #d83d75 !important;
+}
+.color-2 {
+  color: #406c74 !important;
+}
+a:hover, a:visited, a:focus {
+  color: #b95288;
+}
+.callout-bg1 {
+    border-left-color: #b95288;
+    background-color: white;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.callout-bg2 {
+  border-left-color: #406c74;
+  background-color: white;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.callout-custom h5{
+  border-bottom: 1px solid #f1f2f3;
+  padding: 5px 10px 15px;
+  margin: 0 -20px;
+}
+.nav-active {
+  background-color:#335156;
+  border-left: 5px solid #ffffff;
+}
+.nav-active::before {
+  background-color: #ffffff;
+  
+}
+/* .nav-active .icon{
+  background-color: #bb5589;
+} */
+.height-82{
+    height: 82vh;
+}
+.bar {
+    padding: 20px 0 !important
+}
+.bar .logo {
+    max-height: 3em !important;
+    max-width: none;
+}
+
+.font-s{
+  font-size: 200%
+}
+@media (min-width: 768px) {
+  .topbar-center {
+    width: 35%
+  }
+}
+@media (min-width: 426px) and (max-width:767px) {
+  .topbar-center {
+    width: 50%
+  }
+}
+.no-radius{
+  border-radius: 0px !important;
+}
+.card {
+  border-radius: 6px;
+  border: 1px solid #e5e7f1;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  margin-left: 260px;
+  bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+@media (max-width: 991px) {
+  footer{
+    margin-left: 0;
+  }
+}
+.img-tb{
+  max-width: 40%;
+}
+.nav-tabs.nav-tabs-info .nav-link:hover, .nav-tabs.nav-tabs-info .nav-link.active,
+.nav-tabs.nav-tabs-info .nav-link.active:focus, .nav-tabs.nav-tabs-info .nav-link.active:hover {
+  border-color: #b83766;
+}
+.nav-tabs .nav-link {
+  padding: 0;
+}
+/* .menu-item a:hover {
+  background-color: #335156 !important;
+} */
