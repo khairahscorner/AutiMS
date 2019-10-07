@@ -1766,7 +1766,7 @@ select.form-control-lg:not([size]):not([multiple]) {
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: center;
-    justify-content: center;
+    /* justify-content: center; */
     margin-bottom: 0;
   }
   .form-inline .form-group {

@@ -179,6 +179,14 @@ h6,
     border-color: #b83766 !important;
     color: #ffffff !important;
 }
+.br-primary {
+  border-left: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+.br-color {
+  border-right-color: #406c74 !important;
+}
 .color-1 {
   color: #d83d75 !important;
 }
@@ -268,6 +276,7 @@ footer {
 .nav-tabs .nav-link {
   padding: 0;
 }
-/* .menu-item a:hover {
-  background-color: #335156 !important;
-} */
+.v--modal {
+  width: 60vw !important;
+  left: 20vw !important
+}

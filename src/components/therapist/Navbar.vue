@@ -27,15 +27,34 @@
                     </span>
                 </a>
             </router-link>
-            <router-link tag="li" to="/therapist/patients" class="menu-item">
+            <li class="menu-item">
                 <a class="menu-link" href="#">
                     <span class="icon fa fa-users"></span>
                     <span class="title">
                         Patients
                     </span>
+                    <span class="arrow"></span>
                 </a>
-            </router-link>
-            <router-link tag="li" to="/therapist/planners" class="menu-item">
+                <ul class="menu-submenu">
+                    <router-link tag="li" to="/therapist/patients" class="menu-item">
+                        <a class="menu-link" href="#">
+                            <span class="dot"></span>
+                            <span class="title">
+                                All Patients
+                            </span>
+                        </a>
+                    </router-link>
+                    <router-link tag="li" to="/therapist/patients/new" class="menu-item">
+                        <a class="menu-link" href="#">
+                            <span class="dot"></span>
+                            <span class="title">
+                                Add New Patient
+                            </span>
+                        </a>
+                    </router-link>
+                </ul>
+            </li>
+            <router-link tag="li" to="/therapist/activity-lists" class="menu-item">
                 <a class="menu-link" href="#">
                     <span class="icon fa fa-calendar"></span>
                     <span class="title">
@@ -65,14 +84,6 @@
                             <span class="dot"></span>
                             <span class="title">
                                 Monthly Reports
-                            </span>
-                        </a>
-                    </router-link>
-                    <router-link tag="li" to="/therapist/progress-reports" class="menu-item">
-                        <a class="menu-link" href="#">
-                            <span class="dot"></span>
-                            <span class="title">
-                                Progress Reports
                             </span>
                         </a>
                     </router-link>
