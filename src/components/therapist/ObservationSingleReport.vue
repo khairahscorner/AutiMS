@@ -13,15 +13,14 @@
        
         <div class="mt-20">
           <div class="row no-margin lead">
+            <div class="col-4 text-uppercase">Title</div>
+            <div class="col-8">Unusual Restlessness</div>
+          </div><div class="row no-margin lead">
             <div class="col-4 text-uppercase">Date</div>
             <div class="col-8">12th September, 2019</div>
           </div>
           <div class="row no-margin lead">
-            <div class="col-4 text-uppercase">Before-Session Assessment</div>
-            <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
-          </div>
-          <div class="row no-margin lead">
-            <div class="col-4 text-uppercase">Session Summary</div>
+            <div class="col-4 text-uppercase">Summary</div>
             <div class="col-8">
               werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc
               werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc
@@ -29,12 +28,8 @@
             </div>
           </div>
           <div class="row no-margin lead">
-            <div class="col-4 text-uppercase">End-of-Session Assessment</div>
+            <div class="col-4 text-uppercase">Highlighted Suggestions</div>
             <div class="col-8">qwerdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
-          </div>
-          <div class="row no-margin lead">
-            <div class="col-4 text-uppercase">Other Notes</div>
-            <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
           </div>
         </div>
       </div>

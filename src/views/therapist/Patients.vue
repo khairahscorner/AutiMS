@@ -44,7 +44,7 @@
 
 <script>
 import patientProfile from "../../components/therapist/patientProfile.vue"
-import editPatientProfile from "../../components/therapist/EditPatient.vue"
+import editPatientProfile from "../../components/therapist/EditPatientProfile.vue"
 
 export default {
     data() {

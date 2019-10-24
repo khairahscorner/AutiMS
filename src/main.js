@@ -10,6 +10,8 @@ import Multiselect from 'vue-multiselect'
 import VModal from 'vue-js-modal'
 import { CircleSpinner } from 'vue-spinners'
 import {ClientTable} from 'vue-tables-2';
+import Datepicker from 'vuejs-datepicker'; 
+
 
 // Static files
 import  './assets/css/ionicons.min.css';
@@ -30,6 +32,8 @@ Vue.use(VModal)
 
 Vue.component('circle-spin', CircleSpinner)
 Vue.component('multiselect', Multiselect)
+Vue.component('datepicker', Datepicker)
+
 
 // For API calls
 axios.defaults.baseURL = 'https://autims.herokuapp.com/api/v1';

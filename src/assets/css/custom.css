@@ -280,3 +280,7 @@ footer {
   width: 60vw !important;
   left: 20vw !important
 }
+.v--modal-box{
+  overflow-y: scroll !important;
+  height: 85vh !important;
+}

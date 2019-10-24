@@ -16,25 +16,80 @@
             <div class="col-4 text-uppercase">Month</div>
             <div class="col-8"> September</div>
           </div>
-          <div class="row no-margin lead">
-            <div class="col-4 text-uppercase">Before-Session Assessment</div>
-            <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
-          </div>
-          <div class="row no-margin lead">
-            <div class="col-4 text-uppercase">Session Summary</div>
-            <div class="col-8">
-              werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc
-              werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc
-              werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc
+          <div class="pt-10">
+            <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Receptive Language</h5>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Baseline</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Improvement</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Comments</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
             </div>
           </div>
-          <div class="row no-margin lead">
-            <div class="col-4 text-uppercase">End-of-Session Assessment</div>
-            <div class="col-8">qwerdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+          <div class="pt-10">
+            <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Alternative Communcation</h5>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Baseline</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Improvement</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Comments</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
           </div>
-          <div class="row no-margin lead">
-            <div class="col-4 text-uppercase">Other Notes</div>
-            <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+          <div class="pt-10">
+            <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Fine Motor</h5>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Baseline</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Improvement</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Comments</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+          </div>
+          <div class="pt-10">
+            <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Self Care</h5>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Baseline</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Improvement</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Comments</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+          </div>
+          <div class="pt-10">
+            <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Behaviour</h5>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Baseline</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Improvement</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
+            <div class="row no-margin lead">
+              <div class="col-4 text-uppercase">Comments</div>
+              <div class="col-8">werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</div>
+            </div>
           </div>
         </div>
       </div>
@@ -46,7 +101,22 @@
 export default {
   data() {
     return {
-      
+      month: "",
+      recep_baseline: "",
+            recep_comment: "",
+            recep_improv: "",
+            alt_baseline: "",
+            alt_improv: "",
+            alt_comment: "",
+            motor_baseline: "",
+            motor_improv: "",
+            motor_comment: "",
+            self_baseline: "",
+            self_improv: "",
+            self_comment: "",
+            behav_baseline: "",
+            behav_improv: "",
+            behav_comment: ""
     }
   },
   methods: {

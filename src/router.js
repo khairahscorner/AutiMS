@@ -14,6 +14,7 @@ const router = new Router({
     { path: "/verification", component: () => import("./views/auth/Verification.vue"), meta: {title: 'Verify'} },
     { path: "/login", redirect: "/" },
     { path: "*", redirect: "/" },
+    
     //Therapist Section
     {
       path: "",
@@ -26,6 +27,7 @@ const router = new Router({
         { path: "/therapist/patients/new", component: () => import("./views/therapist/AddPatient.vue"), meta: {title: 'New Patient'} },
         // { path: "/therapist/edit-patient/:id", component: () => import("./views/therapist/EditPatient.vue"), meta: {title: 'Edit Patient Profile'} },
         { path: "/therapist/activity-lists", component: () => import("./views/therapist/ActivityLists.vue"), meta: {title: 'Activity Lists'} },
+        { path: "/therapist/activity-lists/new", component: () => import("./views/therapist/CreateActivityList.vue"), meta: {title: 'New Activity List'} },
         { path: "/therapist/session-reports", component: () => import("./views/therapist/SessionReports.vue"), meta: {title: 'Session Reports'} },
         { path: "/therapist/session-reports/new", component: () => import("./views/therapist/CreateSessionReport.vue"), meta: {title: 'New Session Report'} },
         { path: "/therapist/monthly-reports", component: () => import("./views/therapist/MonthlyReports.vue"), meta: {title: 'Monthly Reports'} },

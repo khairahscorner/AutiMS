@@ -58,7 +58,7 @@
                 <a class="menu-link" href="#">
                     <span class="icon fa fa-calendar"></span>
                     <span class="title">
-                        Planners
+                        Activity Lists
                     </span>
                 </a>
             </router-link>
