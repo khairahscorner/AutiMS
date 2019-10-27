@@ -35,8 +35,39 @@ const router = new Router({
         { path: "/therapist/observation-reports", component: () => import("./views/therapist/ObservationReports.vue"), meta: {title: 'Observation Reports'} }
       ]
     },
-    // Users section
-    
+    // Parent section
+    {
+      path: "",
+      component: () => import("./views/parent/Home.vue"),
+      children: [
+        { path: "/parent/dashboard", component: () => import("./views/parent/Dashboard.vue"), meta: {title: 'Dashboard'} },
+        {path:"/parent", redirect: "/parent/dashboard" },
+        { path: "/parent/profile", component: () => import("./views/parent/Profile.vue"), meta: {title: 'My Profile'} },
+        { path: "/parent/profile/edit", component: () => import("./views/parent/EditProfile.vue"), meta: {title: 'Edit Profile'} },
+        { path: "/parent/activity-lists", component: () => import("./views/parent/ActivityLists.vue"), meta: {title: 'Activity Lists'} },
+        { path: "/parent/session-reports", component: () => import("./views/parent/SessionReports.vue"), meta: {title: 'Session Reports'} },
+        { path: "/parent/monthly-reports", component: () => import("./views/parent/MonthlyReports.vue"), meta: {title: 'Monthly Reports'} },
+        { path: "/parent/observation-reports", component: () => import("./views/parent/ObservationReports.vue"), meta: {title: 'Observation Reports'} },
+        { path: "/parent/observation-reports/new", component: () => import("./views/CreateObservationReport.vue"), meta: {title: 'New Observation Report'} },
+        { path: "/caregivers", component: () => import("./views/parent/Caregivers.vue"), meta: {title: 'All Caregivers'} },
+        { path: "/caregivers/new", component: () => import("./views/parent/AddCaregiver.vue"), meta: {title: 'Add New Caregiver'} },
+      ]
+    },
+    // Caregiver section
+    {
+      path: "",
+      component: () => import("./views/caregiver/Home.vue"),
+      children: [
+        { path: "/dashboard", component: () => import("./views/caregiver/Dashboard.vue"), meta: {title: 'Dashboard'} },
+        { path: "/profile", component: () => import("./views/caregiver/Profile.vue"), meta: {title: 'My Profile'} },
+        { path: "/profile/edit", component: () => import("./views/caregiver/EditProfile.vue"), meta: {title: 'Edit Profile'} },
+        { path: "/activity-lists", component: () => import("./views/caregiver/ActivityLists.vue"), meta: {title: 'Activity Lists'} },
+        { path: "/session-reports", component: () => import("./views/caregiver/SessionReports.vue"), meta: {title: 'Session Reports'} },
+        { path: "/monthly-reports", component: () => import("./views/caregiver/MonthlyReports.vue"), meta: {title: 'Monthly Reports'} },
+        { path: "/observation-reports", component: () => import("./views/caregiver/ObservationReports.vue"), meta: {title: 'Observation Reports'} },
+        { path: "/observation-reports/new", component: () => import("./views/CreateObservationReport.vue"), meta: {title: 'New Observation Report'} },
+      ]
+    }
   ]
 });
 

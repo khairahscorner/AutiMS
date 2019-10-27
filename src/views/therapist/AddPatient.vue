@@ -60,7 +60,7 @@
                                         <label for="relationship">Relationship</label>
                                         <input :value="relationship" type="text" class="form-control" id="relationship">
                             </div> 
-                    </form>
+                        </form>
                     </div>
                 </div>
                 

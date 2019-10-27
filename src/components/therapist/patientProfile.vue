@@ -16,19 +16,19 @@
                     <form>
                             <div class="form-group pt-10">
                                 <label for="name">Patient Name</label>
-                                <input type="text" :value="patient_name" class="form-control" id="name" readonly>
+                                <div>Khairah</div>
                             </div>
                                         <div class="form-group">
                                             <label for="age">Age</label>
-                                            <input :value="patient_age" type="text" class="form-control" id="age" readonly> 
+                                            <div>12</div>
                                         </div> 
                                         <div class="form-group">
                                             <label for="gender">Gender</label>
-                                            <input :value="gender" type="text" class="form-control" id="gender" readonly>                                             
+                                            <div>Female</div>
                                         </div>
                                 <div class="form-group">
                                         <label for="diagnosis">Diagnosis</label>
-                                        <input :value="diagnosis" type="text" class="form-control" id="diagnosis" readonly>
+                                        <div>Autism, Seizure disorder, Intellectual Disability</div>
                                     </div> 
                     </form>
                   </div>
@@ -36,20 +36,22 @@
                     <form>
                             <div class="form-group pt-10">
                                 <label for="name">Parent Name</label>
-                                <input :value="parent_name" type="text" class="form-control" id="parent_name" readonly>
+                                <div>Balikis Yusuff</div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input :value="parent_email" type="text" class="form-control" id="email" readonly>
+                                <div>yusuffkby@yahoo.co.uk</div>
                             </div> 
                                     <div class="form-group">
                                         <label for="phone_no">Phone Number</label>
-                                        <input :value="parent_phone" type="text" class="form-control" id="phone_no" readonly>
+                                        <div>08012345678</div>
                                     </div> 
                             <div class="form-group">
                                         <label for="relationship">Relationship</label>
-                                        <input :value="relationship" type="text" class="form-control" id="relationship" readonly>
-                                        <small class="error">**Not Verified</small>
+                                        <div>
+                                            Mother
+                                            <small class="pl-10 error">**Not Verified</small>
+                                        </div>
                             </div> 
                     </form>
                   </div>

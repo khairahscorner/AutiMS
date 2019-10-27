@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import SingleReport from "../therapist/SessionSingleReport.vue";
+import SingleReport from "../SessionSingleReport.vue";
 export default {
   methods: {
     show() {

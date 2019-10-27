@@ -161,7 +161,7 @@ h6,
   font-weight: 600;
 }
 .error {
-  color: rgb(190, 35, 35)
+  color: rgb(190, 35, 35) !important;
 }
 .bg-img {
   background-image: url(../../assets/img/autims-bg.png); 
@@ -210,6 +210,10 @@ a:hover, a:visited, a:focus {
   border-bottom: 1px solid #f1f2f3;
   padding: 5px 10px 15px;
   margin: 0 -20px;
+}
+.topbar-item {
+  color: #616a78 !important;
+    background-color: #e9ecf3 !important;
 }
 .nav-active {
   background-color:#335156;

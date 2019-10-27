@@ -2,17 +2,7 @@
     <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius px-0">
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">Activity List of Patient</h4>
-                        <router-link v-if="!has_activity_list" to="/therapist/activity-lists/new" tag="button"
-                        class="btn btn-sm btn-bold btn-primary text-center">
-                        Add New<i class="fa fa-plus-square"></i>
-                        </router-link>
-                        <button v-else
-                        class="btn btn-sm btn-bold btn-primary text-center"
-                        type="button"
-                        @click="editActivityList()"
-                        ><i class="fs-20 fa fa-edit"></i>
-                        </button>
+                        <h4 class="text-uppercase">Activity List by Therapist name</h4>
                     </div>
                 </header>
                 <div class="card-body">
@@ -60,11 +50,6 @@ export default {
     data() {
         return {
             has_activity_list: true
-        }
-    },
-    methods: {
-        editActivityList(id) {
-            this.$emit('editActivityList')
         }
     }
 }

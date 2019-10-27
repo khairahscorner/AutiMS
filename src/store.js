@@ -6,5 +6,17 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {},
   mutations: {},
-  actions: {}
+  actions: {
+    viewPatientActivityList(payload) {
+    },
+    viewPatientMonthlyReports(payload) {
+      // Fetch patient details using ID
+    },
+    viewPatientObservationReports(payload) {
+      // Fetch patient details using ID
+    },
+    viewPatientSessionReports(payload) {
+      // Fetch patient details using ID
+    },
+  }
 });

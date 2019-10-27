@@ -2,7 +2,7 @@
     <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius px-0">
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">All Observation Reports of Patient</h4>
+                        <h4 class="text-uppercase">All Monthly Reports by Therapist name</h4>
                     </div>
                 </header>
                 <div class="card-body">
@@ -10,11 +10,11 @@
                       <div class="col-xs-6 col-lg-4 col-xl-3 mb-20">
                         <div class="text-center">
                             <div class="fs-40 fw-400 color-2"><i class="fa fa-user"></i></div>
-                            <p class="mb-0 lead">22/09/19</p>
+                            <p class="mb-0 lead">September</p>
                             <a @click="show" class="modal-trigger btn btn-sm" href="#">
                             <span class="text-uppercase">View</span>
                             </a>
-                            <observation-single-report></observation-single-report>
+                            <month-single-report></month-single-report>
                         </div>
                       </div>
                   </div>
@@ -23,15 +23,15 @@
 </template>
 
 <script>
-import observationSingleReport from "../ObservationSingleReport.vue";
+import MonthSingleReport from "../MonthlySingleReport.vue";
 export default {
   methods: {
     show() {
-      this.$modal.show("observation-single-report");
+      this.$modal.show("month-single-report");
     }
   },
   components: {
-    observationSingleReport
+    MonthSingleReport
   }
 };
 </script>

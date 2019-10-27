@@ -10,9 +10,17 @@
             </div>
             <div class="card p-30 w-500px mb-0 no-radius text-center">
                 <img class="img-tb align-self-center" src="../../assets/logo.png" alt="...">
-                <h4 class="text-uppercase fw-600 mt16">Account Verified</h4>
+                <h4 class="text-uppercase fw-600 mt16">Relationship Verified</h4>
+                <span>Successfully confirmed. You can now log in to view the patient's records.</span>
+                <div class="mt8">
+                    <button class="btn btn-bold btn-primary text-center">Log in</button>
+                </div>
+            </div>
+            <div class="card p-30 w-500px mb-0 no-radius">
+                <img class="img-tb align-self-center" src="../../assets/logo.png" alt="...">
+                <h4 class="text-uppercase fw-600 mt16 text-center">Account Verified</h4>
                 <span>You have successfully verified your account. You can now set your password and log in.</span>
-                <form class="form-type-line">
+                <form>
                   <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password"  @blur="$v.password.$touch()" v-model="password">
@@ -45,7 +53,8 @@ import {
 export default {
     data() {
         return {
-
+          password: "",
+          confirm_password: ""
         }
     },
   validations: {

@@ -5,20 +5,21 @@
             <div class="card col-xl-4 col-md-5 br-1 mb-0 no-radius px-0 br-primary">
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">patients list</h4>
-                        <router-link to="/therapist/patients/new" tag="button"
-                        class="btn btn-sm btn-bold btn-primary text-center"
-                        >NEW <i class="fa fa-plus-square"></i>
-                        </router-link>
+                        <h4 class="text-uppercase">therapist list</h4>
                     </div>
                 </header>
                 <div class="card-body media-list media-list-hover media-list-divided">
-                    <button @click="viewPatientProfile">view</button>
+                    <button
+                        class="btn btn-sm btn-bold btn-primary text-center"
+                        type="button"
+                        @click="viewPatientSessionReports"
+                        >EDIT
+                        </button>
                     <v-client-table :columns="columns" :data="data" :options="options"> 
                         <a href="#" class="media media-single">
                             <span slot="id" slot-scope="props">{{props.index}}</span>
                             <span slot="name" slot-scope="props" class="title">{{props.row.firstname}} {{props.row.lastname}}</span>
-                            <span class="btn btn-sm btn-danger" @click="viewPatientProfile(props.row.id)">
+                            <span class="btn btn-sm btn-danger" @click="viewPatientSessionReports(props.row.id)">
                                 <i class="fa fa-eye"></i>
                             </span>
                         </a>                        
@@ -26,39 +27,37 @@
                 </div>
                 
             </div>
-            <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="!showPatient">
-                <div class="card-body">
+            <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="!showDetails">
+                <div class="card-body m-50">
                   <div class="text-center">
                     <div class="pb-30">
                       <img src="../../assets/img/patients.svg" alt>
                     </div>
-                    <p>This shows each patient's profile information. Click on a patient to view their information.</p>
+                    <p>This shows an overview of all session reports by each therapist. Click on a therapist to view.</p>
                   </div>
                 </div>
             </div>
-            
-            <component :is="mode" v-else @editProfile="editProfile" @saveProfile="saveProfile"></component>
+            <component :is="mode" v-else></component>
         </div>
     </div>
   </main>
 </template>
 
 <script>
-import patientProfile from "../../components/therapist/patientProfile.vue"
-import editPatientProfile from "../../components/therapist/EditPatientProfile.vue"
+import reportLayout from "../../components/user/SessionReportLayout.vue"
 
 export default {
     data() {
         return {
-            showPatient: false,
-            mode: "patient-profile",
+            showDetails: false,
+            mode: "report-layout",
             patientId: 0,
             columns: ["id", "name"],
             data: [],
             options: {
               headings: {
                 id: "S/N",
-                name: "Patient Name"
+                name: "Therapist Name"
               },
               sortable: ["name"],
               filterable: ["name"]
@@ -66,21 +65,14 @@ export default {
         }
     },
     methods: {
-        viewPatientProfile(value) {
+        viewPatientSessionReports(value) {
             this.patientId = value
-            this.showPatient = true
+            this.showDetails = true
             // Fetch patient details using ID
-        },
-        editProfile() {
-            this.mode = "edit-patient-profile"
-        },
-        saveProfile() {
-            this.mode = "patient-profile"
         }
     },
     components: {
-        patientProfile,
-        editPatientProfile
+        reportLayout
     }
 }
 </script>
