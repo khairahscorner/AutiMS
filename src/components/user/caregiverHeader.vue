@@ -14,7 +14,7 @@
                 <img class="avatar" src="../../assets/img/avatar.jpg" alt="...">
             </span>
             <div class="dropdown-menu dropdown-menu-right">
-              <router-link tag="a" to="/caregiver/profile" class="dropdown-item topbar-item">
+              <router-link tag="a" to="/profile" class="dropdown-item topbar-item">
                 <i class="fa fa-user"></i> Profile
               </router-link>
               <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Logout</a>

@@ -10,7 +10,7 @@
 <script>
 // @ is an alias to /src
 import Header from '../../components/user/parentHeader.vue'
-import Navbar from '../../components/user/Navbar.vue'
+import Navbar from '../../components/user/parentNavbar.vue'
 import Footer from '../../components/Footer.vue'
 
 export default {
