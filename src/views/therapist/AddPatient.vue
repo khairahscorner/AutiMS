@@ -68,3 +68,70 @@
     </div>
   </main>
 </template>
+
+<script>
+import axios from "axios";
+import {
+  required,
+  email,
+} from "vuelidate/lib/validators";
+
+export default {
+    data() {
+        return {
+            loading: false,
+            patient_name: "",
+            patient_age: '',
+            diagnosis: '',
+            gender: '',
+            summary: '',
+            parent_name: '',
+            parent_email: '',
+            parent_phone: '',
+            relationship: ''
+        }
+    },
+    methods: {
+        addNewPatient() {
+            let userData = {
+                name: this.name,
+                age: this.age,
+                gender: this.gender,
+                diagnosis: this.diagnosis,
+                summary: this.summary,
+                parent_name: this.parent_name,
+                parent_email: this.parent_email,
+                parent_phone: this.parent_phone,
+                relationship: this.relationship
+            }
+            axios.post('/therapist/add_patient', userData)
+            .then(res => {
+                this.loading = false
+                console.log(res)
+                this.$notify({
+                    group: 'response',
+                    type: 'success',
+                    title: `${res.data.message}`,
+                    // text: `${res.data.message}`,
+                    duration: 2500,
+                });
+                setTimeout(() => {
+                    this.$router.push('/therapist/patients')
+                }, 3000)
+            })
+            .catch(err => {
+                 this.loading = false
+                console.log(res)
+                this.$notify({
+                    group: 'response',
+                    type: 'error',
+                    title: `${res.data.message}`,
+                    // text: `${res.data.message}`,
+                    duration: 2500,
+                    ignoreDuplicates: true
+                });
+            })
+        }
+    }
+}
+</script>

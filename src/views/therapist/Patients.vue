@@ -13,12 +13,12 @@
                     </div>
                 </header>
                 <div class="card-body media-list media-list-hover media-list-divided">
-                    <button @click="viewPatientProfile">view</button>
+                    <!-- <button @click="viewPatientProfile">view</button> -->
                     <v-client-table :columns="columns" :data="data" :options="options"> 
                         <a href="#" class="media media-single">
                             <span slot="id" slot-scope="props">{{props.index}}</span>
                             <span slot="name" slot-scope="props" class="title">{{props.row.firstname}} {{props.row.lastname}}</span>
-                            <span class="btn btn-sm btn-danger" @click="viewPatientProfile(props.row.id)">
+                            <span class="btn btn-sm btn-danger" @click="viewPatientProfile(props.row.id);event.preventDefault();">
                                 <i class="fa fa-eye"></i>
                             </span>
                         </a>                        
@@ -44,15 +44,18 @@
 </template>
 
 <script>
+import axios from 'axios'
+import allMixins from '../../mixins.js'
 import patientProfile from "../../components/therapist/patientProfile.vue"
 import editPatientProfile from "../../components/therapist/EditPatientProfile.vue"
 
 export default {
     data() {
         return {
+            firstLoad: true, 
             showPatient: false,
             mode: "patient-profile",
-            patientId: 0,
+            patient_id: 0,
             columns: ["id", "name"],
             data: [],
             options: {
@@ -67,7 +70,7 @@ export default {
     },
     methods: {
         viewPatientProfile(value) {
-            this.patientId = value
+            this.patient_id = value
             this.showPatient = true
             // Fetch patient details using ID
         },
@@ -77,6 +80,10 @@ export default {
         saveProfile() {
             this.mode = "patient-profile"
         }
+    },
+    mounted() {
+        this.firstLoad = true
+        this.fetchAllPatients(this.firstLoad)
     },
     components: {
         patientProfile,

@@ -1,4 +1,5 @@
 import Vue from "vue";
+import VueJWT from 'vuejs-jwt'
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -8,7 +9,7 @@ import Notifications from 'vue-notification'
 import Vuelidate from 'vuelidate'
 import Multiselect from 'vue-multiselect'
 import VModal from 'vue-js-modal'
-import { CircleSpinner } from 'vue-spinners'
+import { CircleSpinner, BounceSpinner } from 'vue-spinners'
 import {ClientTable} from 'vue-tables-2';
 import Datepicker from 'vuejs-datepicker'; 
 
@@ -25,18 +26,21 @@ import  './assets/vendor/datepicker.js';
 
 import "./registerServiceWorker";
 
+Vue.use(VueJWT)
 Vue.use(ClientTable);
 Vue.use(Notifications)
 Vue.use(Vuelidate)
 Vue.use(VModal)
 
 Vue.component('circle-spin', CircleSpinner)
+Vue.component('bounce', BounceSpinner)
 Vue.component('multiselect', Multiselect)
 Vue.component('datepicker', Datepicker)
 
 
 // For API calls
-axios.defaults.baseURL = 'https://autims.herokuapp.com/api/v1';
+// axios.defaults.baseURL = 'https://autims.herokuapp.com/api/v1';
+axios.defaults.baseURL = 'http://localhost:3333/api';
 axios.interceptors.request.use(function(config) {
   const token = localStorage.getItem("userToken");
   config.headers.Authorization = token ? `Bearer ${token}` : "";

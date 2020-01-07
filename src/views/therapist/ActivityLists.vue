@@ -55,7 +55,7 @@ export default {
     data() {
         return {
             showDetails: false,
-            patientId: 0,
+            patient_d: 0,
             mode: "single-activity-list",
             columns: ["id", "name"],
             data: [],
@@ -71,7 +71,7 @@ export default {
     },
     methods: {
        viewPatientActivityList(value) {
-            this.patientId = value
+            this.patient_id = value
             this.showDetails = true
             // Fetch patient details using ID
         },
@@ -81,6 +81,9 @@ export default {
         // saveActivityList() {
         //     this.mode = "save-activity-list"
         // }
+    },
+    mounted() {
+        
     },
     components: {
         singleActivityList,

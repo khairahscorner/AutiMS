@@ -59,9 +59,11 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     props: [
-        'patientId'
+        'patient_id'
     ],
     data() {
         return {

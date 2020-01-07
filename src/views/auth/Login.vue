@@ -13,18 +13,29 @@
             <div class="card p-30 col-7 mb-0 no-radius">
                 <h4 class="text-uppercase fw-600">Log in to your account</h4>
                 <br>
-
                 <form>
                     <div class="form-group">
                       <label for="email">Email</label>
-                      <input type="text" class="form-control" id="email">
+                      <input type="text" class="form-control" id="email" @blur="$v.email.$touch()" v-model="email">
+                      <div v-if="$v.email.$dirty">
+                        <div class="error" v-if="!$v.email.required">*Your email is required.</div>
+                        <div class="error" v-if="!$v.email.email">
+                          *Please enter a valid email.
+                        </div>
+                      </div>
                     </div>  
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input type="password" class="form-control" id="password">
+                      <input type="password" class="form-control" id="password" @blur="$v.password.$touch()" v-model="password">
+                      <div v-if="$v.password.$dirty">
+                        <div class="error" v-if="!$v.password.required">*Your password is required.</div>
+                      </div>
                     </div>     
                     <div class="form-group">
-                      <button class="btn btn-bold btn-block btn-primary">Log in</button>
+                      <button class="btn btn-bold btn-primary" disabled v-if="loading">
+                        <circle-spin class="m-0"></circle-spin>
+                      </button>
+                      <button class="btn btn-bold btn-primary" v-else :disabled="$v.$invalid" @click="loginUser" type="button">Log In</button>
                     </div>
                 </form>
             </div>
@@ -33,11 +44,79 @@
 </template>
 
 <script>
+import axios from "axios";
+import allMixins from '../../mixins.js'
+import {
+  required,
+  email
+} from "vuelidate/lib/validators";
+
 export default {
   name: 'login',
+  mixins: [allMixins],
   data () {
     return {
-
+      loading: false,
+      email: "",
+      password: ""
+    }
+  },
+  validations: {
+        email: {
+            required,
+            email
+        },
+        password: {
+            required
+        }
+    }, 
+  methods: {
+    loginUser() {
+      let userData = {
+        email: this.email,
+        password: this.password
+      }
+      axios.post('/login', userData)
+            .then(res => {
+                this.loading = false
+                console.log(res)
+                document.cookie = window.btoa('userToken') + '=' + window.btoa(res.data.token.token) + "; path=/"
+                this.$notify({
+                    group: 'response',
+                    type: 'success',
+                    title: `${res.data.message}`,
+                    duration: 2500,
+                })
+                // I need correct signaturee key
+                let details = this.$jwt.decode(this.retrieveCookie(window.btoa('userToken')), "inGXVHWPU9BB5q2oix1r-zaA")
+                console.log(details)
+                if(details.data.user_type == 'therapist') {
+                  setTimeout(() => {
+                    this.$router.push('/therapist/dashboard')
+                  }, 3000)
+                }
+                else if (details.data.user_type == 'parent') {
+                  setTimeout(() => {
+                    this.$router.push('/parent/dashboard')
+                  }, 3000)
+                }
+                else {
+                  setTimeout(() => {
+                    this.$router.push('/dashboard')
+                  }, 3000)
+                }   
+            })
+            .catch(err => {
+                console.log(err)
+                this.$notify({
+                    group: 'response',
+                    type: 'error',
+                    title: 'Error',
+                    text: `${err.response}`,
+                    duration: 5000,
+                    ignoreDuplicates: true
+                });
+            })
     }
   }
 }

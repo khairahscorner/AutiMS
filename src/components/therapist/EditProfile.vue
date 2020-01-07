@@ -20,7 +20,7 @@
                     <label for="name">Full Name</label>
                     <input type="text" class="form-control" id="name" />
                     </div>
-                    <div class="mb24 col-md-6 form-group">
+                    <div class="mb24 form-group">
                     <label for="email">Email</label>
                     <input type="text" class="form-control" id="email" />
                     </div>

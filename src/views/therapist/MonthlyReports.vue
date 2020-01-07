@@ -10,12 +10,12 @@
                     </div>
                 </header>
                 <div class="card-body media-list media-list-hover media-list-divided">
-                    <button
+                    <!-- <button
                         class="btn btn-sm btn-bold btn-primary text-center"
                         type="button"
                         @click="viewPatientMonthlyReports"
                         >EDIT
-                        </button>
+                        </button> -->
                     <v-client-table :columns="columns" :data="data" :options="options"> 
                         <a href="#" class="media media-single">
                             <span slot="id" slot-scope="props">{{props.index}}</span>
@@ -45,6 +45,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import allMixins from '../../mixins.js'
 import monthlyReportLayout from "../../components/therapist/MonthlyReportLayout.vue"
 
 export default {
@@ -52,7 +54,7 @@ export default {
         return {
             showDetails: false,
             mode: "monthly-report-layout",
-            patientId: 0,
+            patient_id: 0,
             columns: ["id", "name"],
             data: [],
             options: {
@@ -67,10 +69,14 @@ export default {
     },
     methods: {
         viewPatientMonthlyReports(value) {
-            this.patientId = value
+            this.patient_id = value
             this.showDetails = true
             // Fetch patient details using ID
         }
+    },
+    mounted() {
+        this.firstLoad = true
+        this.fetchAllPatients(this.firstLoad)
     },
     components: {
         monthlyReportLayout

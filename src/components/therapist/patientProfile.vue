@@ -16,19 +16,19 @@
                     <form>
                             <div class="form-group pt-10">
                                 <label for="name">Patient Name</label>
-                                <div>Khairah</div>
+                                <div>{{patient_name}}</div>
                             </div>
                                         <div class="form-group">
                                             <label for="age">Age</label>
-                                            <div>12</div>
+                                            <div>{{patient_age}}</div>
                                         </div> 
                                         <div class="form-group">
                                             <label for="gender">Gender</label>
-                                            <div>Female</div>
+                                            <div>{{gender}}</div>
                                         </div>
                                 <div class="form-group">
                                         <label for="diagnosis">Diagnosis</label>
-                                        <div>Autism, Seizure disorder, Intellectual Disability</div>
+                                        <div>{{diagnosis}}</div>
                                     </div> 
                     </form>
                   </div>
@@ -36,20 +36,20 @@
                     <form>
                             <div class="form-group pt-10">
                                 <label for="name">Parent Name</label>
-                                <div>Balikis Yusuff</div>
+                                <div>{{parent_name}}</div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <div>yusuffkby@yahoo.co.uk</div>
+                                <div>{{parent_email}}</div>
                             </div> 
                                     <div class="form-group">
                                         <label for="phone_no">Phone Number</label>
-                                        <div>08012345678</div>
+                                        <div>{{parent_phone}}</div>
                                     </div> 
                             <div class="form-group">
                                         <label for="relationship">Relationship</label>
                                         <div>
-                                            Mother
+                                            {{relationship}}
                                             <small class="pl-10 error">**Not Verified</small>
                                         </div>
                             </div> 
@@ -60,20 +60,24 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     props: [
-        'patientId'
+        'patient_id'
     ],
     data() {
         return {
-            patient_name: "Khairah",
-            patient_age: "12",
-            gender: "male",
+            loading: true,
+            details: {},
+            patient_name: "",
+            patient_age: "",
+            gender: "",
             diagnosis: "",
             parent_name: "",
             parent_email: "",
             parent_phone: "",
-            relationship: "Mother",
+            relationship: "",
             verified: 'Not verified'
         }
     },
@@ -83,7 +87,26 @@ export default {
         }
     },
     mounted () {
-
+        this.loading = true
+        
+        axios.get(`/view_patient/${this.patient_id}`)
+        .then(res => {
+            this.loading = false
+            console.log(res.data)
+            this.details = res.data
+        })
+        .catch(err => {
+            console.log(err)
+            this.loading = false
+                this.$notify({
+                    group: 'response',
+                    type: 'error',
+                    title: `${res.data.message}`,
+                    // text: `${res.data.message}`,
+                    duration: 2500,
+                    ignoreDuplicates: true
+                });
+        })
     }
 }
 </script>

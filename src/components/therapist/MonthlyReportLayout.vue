@@ -34,6 +34,9 @@ export default {
       this.$modal.show("month-single-report");
     }
   },
+  mounted() {
+
+  },
   components: {
     MonthSingleReport
   }

@@ -220,9 +220,12 @@ a:hover, a:visited, a:focus {
   border-left: 5px solid #ffffff;
 }
 .nav-active::before {
-  background-color: #ffffff;
-  
+  background-color: #ffffff; 
 }
+/* .notification {
+  position: fixed;
+  top: 0;
+} */
 /* .nav-active .icon{
   background-color: #bb5589;
 } */
@@ -279,6 +282,32 @@ footer {
 }
 .nav-tabs .nav-link {
   padding: 0;
+}
+
+/* Change 3rd Party CSS settings*/
+.sk-fading-circle[data-v-1e7464eb] {
+  margin: 0 auto !important;
+  width: 30px !important;
+  height: 30px !important;
+  position: relative;
+}
+.sk-fading-circle .sk-circle[data-v-1e7464eb]:before {
+  background-color: rgb(196, 196, 196);
+}
+.spinner[data-v-76b46833] {
+  width: 30px !important;
+  height: 30px !important;
+  margin: 0 auto !important;
+}
+.double-bounce1[data-v-76b46833],
+.double-bounce2[data-v-76b46833] {
+  background-color: #406c74 !important;
+}
+.vdp-datepicker__calendar .cell.selected {
+  background: #d83d75 !important;
+}
+.scroll{
+  overflow-y: auto !important;
 }
 .v--modal {
   width: 60vw !important;

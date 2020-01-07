@@ -44,9 +44,11 @@
                     </div>
                     <div class="mb16 flexbox align-items-center justify-content-start">
                     <h6 class="mb-0">Area(s) of Specialisation:</h6>
-                    <div class="badge badge-lg bg-2">Speech and Language Therapy</div>
-                    <div class="badge badge-lg bg-1">Behavioural Therapy</div>
+                    <div>
+                      <div class="badge mb-10 mr-10 badge-lg bg-2">Speech and Language Therapy</div>
+                      <div class="badge mb-10 mr-10 badge-lg bg-1">Behavioural Therapy</div>
                     </div>
+                  </div>
                 </div>
                 <div></div>
                 </div>

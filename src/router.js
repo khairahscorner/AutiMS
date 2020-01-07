@@ -16,7 +16,7 @@ const router = new Router({
     { path: "*", redirect: "/" },
     
     //Therapist Section
-    {
+    { 
       path: "",
       component: () => import("./views/therapist/Home.vue"),
       children: [
