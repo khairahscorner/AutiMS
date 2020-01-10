@@ -1,5 +1,5 @@
 <template>
-  <modal name="single-report" class="modal-container" height="auto" :clickToClose="false">
+  <modal name="single-report" class="report modal-container" height="auto" :clickToClose="false">
     <div class="modal-content">
       <div class="boxed boxed--lg boxed--border">
         <header class="no-border">

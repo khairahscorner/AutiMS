@@ -2,7 +2,7 @@
   <main class="pd-main">
     <div class="main-content">
       <div class="row">
-        <div class="col-lg-6 col-xl-7">
+        <div class="col-md-7">
             <div class="card" v-if="!edit">
                 <header class="no-border">
                 <div class="header-bar flexbox pl-20">
@@ -55,7 +55,7 @@
             </div>
             <component :is="editComponent" v-else @saved="showUpdatedProfile"></component>
         </div>
-        <div class="col-lg-6 col-xl-5">
+        <div class="col-md-5">
           <div class="callout callout-bg1" role="alert">
             <div class="flexbox align-items-center mt-2">
               <h6 class="mb-0 font-s">9,357</h6>

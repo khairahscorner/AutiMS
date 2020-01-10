@@ -5,11 +5,11 @@
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
                         <h4 class="text-uppercase">Add New Patient</h4>
-                        <button
-                        class="btn btn-sm btn-bold btn-primary text-center"
-                        type="button"
-                         @click="addNewPatient"
-                        >SAVE
+                        <button v-if="loading_add" class="btn btn-sm btn-bold btn-primary text-center" disabled>
+                            <circle-spin class="m-0" ></circle-spin>
+                        </button>
+                        <button v-else class="btn btn-sm btn-bold btn-primary text-center"  @click="addNewPatient">
+                            SAVE
                         </button>
                     </div>
                 </header>
@@ -18,12 +18,12 @@
                         <form>
                             <div class="form-group pt-10">
                                 <label for="name">Patient Name</label>
-                                <input type="text" :value="patient_name" class="form-control" id="name">
+                                <input type="text" v-model="patient_name" class="form-control" id="name">
                             </div>
                             <div class="row">
                                 <div class="col-6 form-group">
                                             <label for="age">Age</label>
-                                            <input :value="patient_age" type="text" class="form-control" id="age"> 
+                                            <input v-model="patient_age" type="text" class="form-control" id="age"> 
                                         </div> 
                                         <div class="col-6 form-group">
                                             <label for="gender">Gender</label>
@@ -34,11 +34,11 @@
                             </div>
                                  <div class="form-group">
                                         <label for="diagnosis">Diagnosis</label>
-                                        <input :value="diagnosis" type="text" class="form-control" id="diagnosis">
+                                        <input v-model="diagnosis" type="text" class="form-control" id="diagnosis">
                                     </div>       
                                 <div class="form-group">
                                         <label for="summary">Brief Summary</label>
-                                        <input :value="summary" type="text" class="form-control" id="summary">
+                                        <input v-model="summary" type="text" class="form-control" id="summary">
                                     </div> 
                     </form>
                     </div>
@@ -46,19 +46,19 @@
                         <form>
                             <div class="form-group pt-10">
                                 <label for="name">Parent Name</label>
-                                <input :value="parent_name" type="text" class="form-control" id="name">
+                                <input v-model="parent_name" type="text" class="form-control" id="name">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input :value="parent_email" type="text" class="form-control" id="email">
+                                <input v-model="parent_email" type="text" class="form-control" id="email">
                             </div> 
                                     <div class="form-group">
                                         <label for="phone_no">Phone Number</label>
-                                        <input :value="parent_phone" type="text" class="form-control" id="phone_no">
+                                        <input v-model="parent_phone" type="text" class="form-control" id="phone_no">
                                     </div> 
                             <div class="form-group">
                                         <label for="relationship">Relationship</label>
-                                        <input :value="relationship" type="text" class="form-control" id="relationship">
+                                        <input v-model="relationship" type="text" class="form-control" id="relationship">
                             </div> 
                         </form>
                     </div>
@@ -93,9 +93,10 @@ export default {
     },
     methods: {
         addNewPatient() {
+            this.loading = true
             let userData = {
-                name: this.name,
-                age: this.age,
+                name: this.patient_name,
+                age: this.patient_age,
                 gender: this.gender,
                 diagnosis: this.diagnosis,
                 summary: this.summary,
@@ -120,12 +121,12 @@ export default {
                 }, 3000)
             })
             .catch(err => {
-                 this.loading = false
-                console.log(res)
+                this.loading = false
+                console.log(err.response)
                 this.$notify({
                     group: 'response',
                     type: 'error',
-                    title: `${res.data.message}`,
+                    title: `${err.response.message}`,
                     // text: `${res.data.message}`,
                     duration: 2500,
                     ignoreDuplicates: true

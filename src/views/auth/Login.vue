@@ -1,18 +1,20 @@
 <template>
   <div class="min-h-fullscreen bg-img p-20 center-vh" data-overlay="7">
         <div class="row no-margin">
-            <div class="card px-50 py-30 col-5 mb-0 no-radius" style="border-right: 1px solid #406c74;">
+            <div class="sm-hidden card px-50 py-30 col-md-5 mb-0 no-radius" style="border-right: 1px solid #406c74;">
                 <div class="row h-100">
                     <div class=" align-self-center">
-                    <img src="../../assets/logo.png" alt="...">
-                    <p class="text-center text-muted fs-13 pl8 mt64">Don't have an account? <router-link to="/signup" tag="a" class="text-primary fw-500" href="#">Sign up</router-link></p>          
-                </div>
+                      <img src="../../assets/logo.png" alt="...">
+                      <p class="text-center text-muted fs-13 pl8 mt64">Don't have an account? <router-link to="/signup" tag="a" class="text-primary fw-500" href="#">Sign up</router-link></p>          
+                    </div>
                 </div>
                 
             </div>
-            <div class="card p-30 col-7 mb-0 no-radius">
-                <h4 class="text-uppercase fw-600">Log in to your account</h4>
-                <br>
+            <div class="card p-30 col-sm-12 col-md-7 mb-0 no-radius">
+                <div class="md-hidden text-center">
+                  <img class="half-img" src="../../assets/logo.png" alt="...">
+                </div>
+                <h4 class="my-20 text-uppercase fw-600">Log in to your account</h4>
                 <form>
                     <div class="form-group">
                       <label for="email">Email</label>
@@ -38,6 +40,8 @@
                       <button class="btn btn-bold btn-primary" v-else :disabled="$v.$invalid" @click="loginUser" type="button">Log In</button>
                     </div>
                 </form>
+                <p class="md-hidden mt8 text-muted">Don't have an account? <router-link to="/signup" tag="a" class="text-primary fw-500" href="#">Sign up</router-link></p>          
+
             </div>
         </div>
     </div>
@@ -76,8 +80,9 @@ export default {
         email: this.email,
         password: this.password
       }
+      this.loading = true
       axios.post('/login', userData)
-            .then(res => {
+      .then(res => {
                 this.loading = false
                 console.log(res)
                 document.cookie = window.btoa('userToken') + '=' + window.btoa(res.data.token.token) + "; path=/"
@@ -88,7 +93,7 @@ export default {
                     duration: 2500,
                 })
                 // I need correct signaturee key
-                let details = this.$jwt.decode(this.retrieveCookie(window.btoa('userToken')), "inGXVHWPU9BB5q2oix1r-zaA")
+                let details = this.$jwt.decode(this.retrieveCookie(window.btoa('userToken')))
                 console.log(details)
                 if(details.data.user_type == 'therapist') {
                   setTimeout(() => {
@@ -105,18 +110,19 @@ export default {
                     this.$router.push('/dashboard')
                   }, 3000)
                 }   
-            })
-            .catch(err => {
+      })
+      .catch(err => {
+        this.loading = false
                 console.log(err)
                 this.$notify({
                     group: 'response',
                     type: 'error',
-                    title: 'Error',
+                    title: 'An Error Occured.',
                     text: `${err.response}`,
                     duration: 5000,
                     ignoreDuplicates: true
                 });
-            })
+      })
     }
   }
 }

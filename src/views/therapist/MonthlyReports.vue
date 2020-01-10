@@ -10,12 +10,12 @@
                     </div>
                 </header>
                 <div class="card-body media-list media-list-hover media-list-divided">
-                    <!-- <button
+                    <button
                         class="btn btn-sm btn-bold btn-primary text-center"
                         type="button"
                         @click="viewPatientMonthlyReports"
                         >EDIT
-                        </button> -->
+                        </button>
                     <v-client-table :columns="columns" :data="data" :options="options"> 
                         <a href="#" class="media media-single">
                             <span slot="id" slot-scope="props">{{props.index}}</span>

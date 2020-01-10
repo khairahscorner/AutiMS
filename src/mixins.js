@@ -1,27 +1,6 @@
 // const axios = require('axios');
-
 const allMixins = {
     methods: {
-        fetchAllPatients(firstLoad) {
-            axios.get('/therapist/view_patients/')
-            .then(res => {
-                console.log(res.data)
-                firstLoad = false
-                return data = res.data
-            })
-            .catch(err => {
-                console.log(err)
-                firstLoad = false
-                    this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: `${err.data.message}`,
-                        // text: `${res.data.message}`,
-                        duration: 2500,
-                        ignoreDuplicates: true
-                    });
-            })
-        },
         retrieveCookie(name) {
             let matches = document.cookie.match(new RegExp(
             "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"

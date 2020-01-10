@@ -206,10 +206,11 @@ a:hover, a:visited, a:focus {
   background-color: white;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
 }
-.callout-custom h5{
-  border-bottom: 1px solid #f1f2f3;
-  padding: 5px 10px 15px;
-  margin: 0 -20px;
+.callout-danger1 {
+  border-left-color: #dc3545;
+  background-color: white;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+
 }
 .topbar-item {
   color: #616a78 !important;
@@ -219,13 +220,25 @@ a:hover, a:visited, a:focus {
   background-color:#335156;
   border-left: 5px solid #ffffff;
 }
+.half-img{
+  width: 50%
+}
 .nav-active::before {
   background-color: #ffffff; 
 }
-/* .notification {
-  position: fixed;
-  top: 0;
-} */
+@media all and (max-width:767px) {
+  .sm-hidden {
+    display: none
+  }
+  .sm-visible{
+    display: block;
+  }
+}
+@media all and (min-width: 768px) { 
+  .md-hidden {
+    display: none
+  }
+}
 /* .nav-active .icon{
   background-color: #bb5589;
 } */
@@ -284,7 +297,21 @@ footer {
   padding: 0;
 }
 
-/* Change 3rd Party CSS settings*/
+/************* Change 3rd Party CSS settings *******************/
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+.btn-danger.focus,
+.btn-danger:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.5);
+}
 .sk-fading-circle[data-v-1e7464eb] {
   margin: 0 auto !important;
   width: 30px !important;
@@ -309,11 +336,11 @@ footer {
 .scroll{
   overflow-y: auto !important;
 }
-.v--modal {
+.report .v--modal {
   width: 60vw !important;
   left: 20vw !important
 }
-.v--modal-box{
+.report .v--modal-box{
   overflow-y: scroll !important;
   height: 85vh !important;
 }

@@ -6,7 +6,8 @@
                 <h4 class="text-uppercase">Dashboard</h4>
                 </div>
             </header>
-            <div class="row">
+            <circle-spin class="m-0" v-if="loading"></circle-spin>
+            <div class="row" v-else>
                 <div class="col-lg-3 col-md-4">
                     <a href="#">
                     <div class="card card-body">
@@ -63,8 +64,13 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
-    
+    data() {
+        return {
+            loading: true
+        }
+    }
 }
 </script>

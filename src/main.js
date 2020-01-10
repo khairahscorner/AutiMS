@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueJWT from 'vuejs-jwt'
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import {store} from "./store";
 
 import axios from 'axios'
 import Notifications from 'vue-notification'
@@ -37,12 +37,18 @@ Vue.component('bounce', BounceSpinner)
 Vue.component('multiselect', Multiselect)
 Vue.component('datepicker', Datepicker)
 
+function retrieveCookie(name) {
+  let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? window.atob(matches[1]) : undefined;
+}
 
 // For API calls
 // axios.defaults.baseURL = 'https://autims.herokuapp.com/api/v1';
 axios.defaults.baseURL = 'http://localhost:3333/api';
 axios.interceptors.request.use(function(config) {
-  const token = localStorage.getItem("userToken");
+  const token = retrieveCookie(window.btoa('userToken'))
   config.headers.Authorization = token ? `Bearer ${token}` : "";
   return config;
 });
@@ -54,9 +60,9 @@ axios.interceptors.request.use(function(config) {
 // export {instance};
 
 router.beforeEach((to, from, next) => {
-  let userToken = localStorage.getItem("userToken");
+  let userToken = retrieveCookie(window.btoa('userToken'))
   if (to.matched.some(record => record.meta.reqToken)) {
-    console.log("requires token");
+    // console.log("requires token");
     if (userToken === null) {
       // console.log("not logged in");
       next("/");
@@ -65,7 +71,7 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else {
-    console.log("requires no token");
+    // console.log("requires no token");
     next();
   }
 });

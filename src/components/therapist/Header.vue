@@ -11,13 +11,13 @@
         <ul class="topbar-btns">
           <li class="dropdown">
             <span class="topbar-btn" data-toggle="dropdown">
-                <img class="avatar" src="../../assets/img/avatar.jpg" alt="...">
+                <img v-if="img_url == null" class="avatar" src="../../assets/img/avatar.jpg" alt="...">
+                <img v-else class="avatar" :src="img_url" alt="...">
             </span>
             <div class="dropdown-menu dropdown-menu-right">
               <router-link tag="a" to="/therapist/profile" class="dropdown-item topbar-item">
-                <i class="fa fa-user"></i> Profile
+                <i class="fa fa-user"></i> View Profile
               </router-link>
-              <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Logout</a>
             </div>
           </li>
         </ul>
@@ -25,3 +25,29 @@
     </header>
     <!-- END Topbar -->
 </template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  data() {
+        return {
+            img_url: null
+        }
+  },
+  mounted() {
+        axios.get('/therapist')
+        .then(res => {
+            this.img_url = res.data.data.therapist.img_url
+        })
+        .catch(err => {
+            this.$notify({
+                group: 'response',
+                type: 'error',
+                title: `${res.data.message}`,
+                duration: 5000
+                })
+        })
+    }
+}
+</script>
