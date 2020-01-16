@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import MonthSingleReport from "../../MonthlySingleReport.vue";
+import MonthSingleReport from "./MonthlySingleReport.vue";
 export default {
   methods: {
     show() {

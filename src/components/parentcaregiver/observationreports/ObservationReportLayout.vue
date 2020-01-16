@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import observationSingleReport from "../../ObservationSingleReport.vue";
+import observationSingleReport from "./ObservationSingleReport.vue";
 export default {
   methods: {
     show() {

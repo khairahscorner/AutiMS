@@ -17,14 +17,13 @@
                 </header>
                 <div>
                     <no-view v-if="!has_activity_list" :doc_type="doc_type"></no-view>
-                    <div v-else class="card-body">
+                    <div v-else class="card-body scroll h-400px">
                                 <div class="pb-20">
                                     <h5 class="b-1 border-secondary bg-secondary p-10 mb-0 text-uppercase">Morning</h5>
                                     <div class="b-1 pt-10">
                                         <ul class="list-unstyled p-10 m-0">
-                                            <li class="flexbox px-10 mb-10 align-items-baseline" v-for="(activity,i) in details.morning_activities" :key="i"
-                                                :class="i%2==0?'bg-1':'bg-2'">
-                                                {{activity.activity_title}}
+                                            <li class="px-10 mb-10" v-for="(activity,i) in details.morning_activities" :key="i">
+                                                {{i+1}}. <strong>{{activity.activity_title}}</strong>
                                             </li>
                                         </ul>
                                     </div>
@@ -33,9 +32,8 @@
                                     <h5 class="b-1 border-secondary bg-secondary p-10 mb-0 text-uppercase">Afternoon</h5>
                                     <div class="b-1 pt-10">
                                         <ul class="list-unstyled p-10 m-0">
-                                            <li class="flexbox px-10 mb-10 align-items-baseline" v-for="(activity,i) in details.afternoon_activities" :key="i"
-                                                :class="i%2==0?'bg-1':'bg-2'">
-                                                {{activity.activity_title}}
+                                            <li class="px-10 mb-10" v-for="(activity,i) in details.afternoon_activities" :key="i">
+                                               {{i+1}}. <strong>{{activity.activity_title}}</strong>
                                             </li>
                                         </ul>
                                     </div>
@@ -44,9 +42,8 @@
                                     <h5 class="b-1 border-secondary bg-secondary p-10 mb-0 text-uppercase">Evening</h5>
                                     <div class="b-1 pt-10">
                                         <ul class="list-unstyled p-10 m-0">
-                                            <li class="flexbox px-10 mb-10 align-items-baseline" v-for="(activity,i) in details.evening_activities" :key="i"
-                                                :class="i%2==0?'bg-1':'bg-2'">
-                                                {{activity.activity_title}}
+                                            <li class=" px-10 mb-10" v-for="(activity,i) in details.evening_activities" :key="i">
+                                                {{i+1}}. <strong>{{activity.activity_title}}</strong>
                                             </li>
                                         </ul>
                                     </div>

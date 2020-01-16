@@ -19,7 +19,6 @@
                             <a @click="show" class="modal-trigger btn btn-sm" href="#">
                             <span class="text-uppercase">View</span>
                             </a>
-                            <single-report></single-report>
                         </div>
                       </div>
                   </div>
@@ -29,7 +28,6 @@
 
 <script>
 import NoView from '../../noView.vue'
-import SingleReport from "../../SessionSingleReport.vue";
 export default {
   data() {
     return {
@@ -38,12 +36,9 @@ export default {
     }
   },
   methods: {
-    show() {
-      this.$modal.show("single-report");
-    }
+    
   },
   components: {
-    SingleReport,
     NoView
   }
 };

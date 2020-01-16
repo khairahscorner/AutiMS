@@ -151,6 +151,16 @@ h6,
 .mt-modal{
   margin-top: 15% !important;
 }
+@media all and (min-width: 1024px) {
+  .mt-modal{
+    margin-top: 10% !important;
+  }
+}
+@media all and (max-width: 424px) {
+  .mt-modal{
+    margin-top: 20% !important;
+  }
+}
 .pd-10 {
   padding: 10px;
 }
@@ -359,7 +369,7 @@ footer {
   overflow-y: scroll !important;
   height: 80vh !important;
 }
-@media all and (max-width: 767px) {
+@media all and (min-width: 425px) and (max-width: 767px) {
   .report .v--modal {
     width: 90vw !important;
     left: 5vw !important
@@ -369,6 +379,25 @@ footer {
     width: 90vw !important;
     height: 10% !important;
     z-index: 999;
+
+  }
+}
+@media all and (max-width: 424px) {
+  .report .v--modal {
+    width: 95vw !important;
+    left: 2.5vw !important
+  }
+  .v--modal .header-bar {
+    position: fixed !important;
+    width: 95vw !important;
+    height: 10% !important;
+    z-index: 999;
+
+  }
+}
+@media all and (min-width: 1024px) {
+  .v--modal .header-bar {
+    height: 8% !important;
 
   }
 }

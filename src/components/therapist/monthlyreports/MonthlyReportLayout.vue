@@ -10,23 +10,17 @@
                     </div>
                 </header> 
                 <no-view v-if="!has_monthly_report" :doc_type="doc_type"></no-view>
-                <div class="card-body" v-else>
+                <div class="card-body scroll h-400px" v-else>
                   <div class="row no-margin">
                       <div class="col-md-6 col-xl-3 mb-20" v-for="(report, i) in all_reports" :key="i">
-                        <div class="text-center">
                             <div class="fs-40 fw-400 color-2"><i class="ion-ios-list-outline"></i></div>
                             <p class="mb-0 lead">{{report.month}}</p>
-                            <a @click="show(report)" class="modal-trigger mr-10 btn btn-xs" href="#">
+                            <router-link tag="a" :to="'/therapist/monthly-reports/'+ report.id" class=" mr-10 btn btn-xs" href="#">
                               <span class="text-uppercase">View</span>
-                            </a>
-                        </div>
+                            </router-link>
                       </div>
                   </div>
                 </div>
-
-                <modal name="month-single-report" class="report modal-container" height="auto" :clickToClose="false">
-                    <month-single-report :report="report" :patient_name="patient_name"></month-single-report>                    
-                </modal>
 
                 <!-- Modal for delete report -->
               <!-- <modal name="delete-report" :width="400" height="auto" class="modal-container" :clickToClose="false">
@@ -50,7 +44,6 @@
 <script>
 import axios from 'axios'
 import NoView from '../../noView.vue'
-import MonthSingleReport from "../../MonthlySingleReport";
 
 export default {
   props:['patient_id','patient_name', 'all_reports', 'has_monthly_report'],
@@ -60,20 +53,7 @@ export default {
       report: {},
     }
   },
-  methods: {
-    hideModal(a) {
-      a.hide('month-single-report')
-    },
-    show(payload) {
-       this.report = payload
-      this.$modal.show("month-single-report");
-    }
-  },
-  mounted() {
-    
-  },
   components: {
-    MonthSingleReport,
     NoView
   }
 };

@@ -1,11 +1,8 @@
 <template>
-<main class="pd-main pb-80">
-    <div class="main-content">
-        <circle-spin v-if="firstLoad" class="pt-30" ></circle-spin>
-                <div v-else class="no-border p-0 card mb-0 no-radius">
+    <div>
                     <header class="no-border">
                         <div class="header-bar flexbox pl-20">
-                            <h4 class="text-uppercase">New Monthly Report for {{patient_name}}</h4>
+                            <h4 class="text-uppercase">Edit {{month}} Report of {{patient_name}}</h4>
                             <button v-if="loading" class="btn btn-sm btn-bold btn-primary text-center" disabled>
                                 <circle-spin class="m-0" ></circle-spin>
                             </button>
@@ -13,43 +10,32 @@
                             :disabled="$v.$invalid || month==''"
                             class="btn btn-sm btn-bold btn-primary text-center"
                             type="button"
-                            @click="createMonthlyReport()"
-                            >CREATE
+                            @click="saveMonthlyReport()"
+                            >SAVE
                             </button>
                         </div>
                     </header>
-                    <div class="m-20 b-1 row no-margin">
-                        <div class="col-xl-3 col-md-4 br-1">
-                            <form>
-                                <div class="form-group pt-10">
-                                    <label>Month</label>
-                                    <multiselect v-model="month" :options="month_list" class="form-control"
-                                    :close-on-select="true" :show-labels="false" placeholder="Select month:">
-                                    </multiselect>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-xl-9 col-md-8">
-                            <form>
+                    <div class="no-border card mb-0 no-radius card-body">
+                         <form>
                                 <div class="pt-10">
                                     <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Receptive Language</h5>
                                     <div class="form-group pt-10">
                                         <label for="name">Baseline</label>
-                                        <textarea id="recep_baseline" cols="30" rows='2' @blur="$v.recep_baseline.$touch()" class="form-control" v-model="recep_baseline" style="resize: none"></textarea>
-                                        <div v-if="$v.recep_baseline.$dirty">
-                                            <div class="error" v-if="!$v.recep_baseline.required">*Baseline summary is required.</div>
+                                        <textarea id="recap_baseline" cols="30" rows='2' @blur="$v.recap_baseline.$touch()" class="form-control" v-model="recap_baseline" style="resize: none"></textarea>
+                                        <div v-if="$v.recap_baseline.$dirty">
+                                            <div class="error" v-if="!$v.recap_baseline.required">*Baseline summary is required.</div>
                                         </div>
                                     </div>
                                     <div class="form-group pt-10">
                                         <label for="name">Improvement</label>
-                                        <textarea id="recep_improv" cols="30" rows='2' @blur="$v.recep_improv.$touch()" class="form-control" v-model="recep_improv" style="resize: none"></textarea>
-                                        <div v-if="$v.recep_improv.$dirty">
-                                            <div class="error" v-if="!$v.recep_improv.required">*Improvement summary is required.</div>
+                                        <textarea id="recap_improv" cols="30" rows='2' @blur="$v.recap_improv.$touch()" class="form-control" v-model="recap_improv" style="resize: none"></textarea>
+                                        <div v-if="$v.recap_improv.$dirty">
+                                            <div class="error" v-if="!$v.recap_improv.required">*Improvement summary is required.</div>
                                         </div>
                                     </div>
                                     <div class="form-group pt-10">
                                         <label for="name">Comments</label>
-                                        <textarea id="recep_comment" cols="30" rows='2' class="form-control" v-model="recep_comment" style="resize: none"></textarea>
+                                        <textarea id="recap_comment" cols="30" rows='2' class="form-control" v-model="recap_comment" style="resize: none"></textarea>
                                     </div>
                                 </div>
                                 <div class="pt-10">
@@ -137,31 +123,25 @@
                                     </div>
                                 </div>    
                             </form>
-                        </div>
                     </div>
-                </div>
     </div>
-  </main>
-
 </template>
 
 <script>
 import axios from 'axios'
+import {store} from '../../../store'
 import {required} from "vuelidate/lib/validators";
 
 export default {
     data() {
         return {
-            firstLoad: true,
             loading: false,
-            month: "",
-            month_list: ['January','February','March','April','May','June','July','August','September','October',
-            'November','December'],
-            patient_id: null,
+            report_id: null,
             patient_name: '',
-            recep_baseline: "",
-            recep_comment: "",
-            recep_improv: "",
+            month: "",
+            recap_baseline: "",
+            recap_comment: "",
+            recap_improv: "",
             alt_baseline: "",
             alt_improv: "",
             alt_comment: "",
@@ -173,12 +153,12 @@ export default {
             self_comment: "",
             behav_baseline: "",
             behav_improv: "",
-            behav_comment: ""
+            behav_comment: "",
         }
     },
     validations: {
-        recep_baseline: { required },
-        recep_improv: { required },
+        recap_baseline: { required },
+        recap_improv: { required },
         alt_baseline: { required },
         alt_improv: {
         required
@@ -194,13 +174,13 @@ export default {
         }
     }, 
     methods: {
-        createMonthlyReport() {
+        saveMonthlyReport() {
             this.loading = true
             let userData = {
                 month: this.month,
-                recap_base: this.recep_baseline,
-                recap_comm: this.recep_comment,
-                recap_improv: this.recep_improv,
+                recap_base: this.recap_baseline,
+                recap_comm: this.recap_comment,
+                recap_improv: this.recap_improv,
                 alt_base: this.alt_baseline,
                 alt_improv: this.alt_improv,
                 alt_comm: this.alt_comment,
@@ -214,11 +194,9 @@ export default {
                 behav_improv: this.behav_improv,
                 behav_comm: this.behav_comment
             }
-            console.log(userData)
-            axios.post(`/monthly_report/${this.patient_id}`, userData)
+            axios.put(`/monthly_report/${this.report_id}`, userData)
             .then(res => {
                 this.loading = false
-                console.log(res)
                 this.$notify({
                     group: 'response',
                     type: 'success',
@@ -227,7 +205,7 @@ export default {
                     duration: 2500,
                 });
                 setTimeout(() => {
-                    this.$router.push('/therapist/monthly-reports')
+                    this.$emit('saved')
                 }, 3000)
             })
             .catch(err => {
@@ -236,37 +214,34 @@ export default {
                 this.$notify({
                     group: 'response',
                     type: 'error',
-                    title: `${err.response.message}`,
+                    title: 'Failed to save report. Try again',
                     // text: `${res.data.message}`,
                     duration: 2500,
                     ignoreDuplicates: true
                 });
             })
         }
-
+        
     },
-    mounted() {
-        this.patient_id = this.$route.params.patient_id
-        axios.get(`/view_patient/${this.patient_id}`)
-        .then(res => {
-            this.firstLoad = false
-            this.patient_name = res.data.data.name
-        })
-        .catch(err => {
-            console.log(err)
-            this.firstLoad = false
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'Error fetching patient. Try again',
-                    // text: `${res.data.message}`,
-                    duration: 2500,
-                    ignoreDuplicates: true
-                })
-                setTimeout(() => {
-                    this.$router.push('/therapist/monthly-reports')
-                }, 3000)
-        })
+    mounted() { 
+        this.month = store.state.monthly_report.month
+        this.report_id = store.state.monthly_report.id
+        this.patient_name = store.state.monthly_report.patient.name
+        this.recap_baseline = store.state.monthly_report.recap_base
+        this.recap_comment = store.state.monthly_report.recap_comm
+        this.recap_improv = store.state.monthly_report.recap_improv
+        this.alt_baseline = store.state.monthly_report.alt_base
+        this.alt_improv = store.state.monthly_report.alt_improv
+        this.alt_comment = store.state.monthly_report.alt_comm
+        this.motor_baseline = store.state.monthly_report.motor_base
+        this.motor_improv = store.state.monthly_report.motor_improv
+        this.motor_comment = store.state.monthly_report.motor_comm
+        this.self_baseline = store.state.monthly_report.self_base
+        this.self_improv = store.state.monthly_report.self_improv
+        this.self_comment = store.state.monthly_report.self_comm
+        this.behav_baseline = store.state.monthly_report.behav_base
+        this.behav_improv = store.state.monthly_report.behav_improv
+        this.behav_comment = store.state.monthly_report.behav_comm 
     }
 }
 </script>

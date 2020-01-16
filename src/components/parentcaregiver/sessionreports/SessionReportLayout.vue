@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import SingleReport from "../../SessionSingleReport.vue";
+import SingleReport from "./SessionSingleReport.vue";
 export default {
   methods: {
     show() {

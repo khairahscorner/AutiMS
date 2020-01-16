@@ -1,6 +1,7 @@
 <template>
     <main class="pd-main">
-        <div class="main-content">
+        <circle-spin class="p-30" v-if="firstLoad"></circle-spin>
+        <div class="main-content" v-else>
                     <header class="no-border">
                         <div class="header-bar flexbox pl-20">
                             <h4 class="text-uppercase">Edit Activity List of {{details.name}}</h4>
@@ -63,7 +64,7 @@
                                             <circle-spin v-if="delEven" class="m-0 pt-30"></circle-spin>
                                             <ul v-else class="list-unstyled py-10 m-0">
                                                 <li class="flexbox px-10 mb-10 align-items-baseline" v-for="(activity,i) in details.afternoon_activities" :key="i"
-                                                    :class="i%2==0?'bg-1':'bg-2'">
+                                                    :class="i%2==0?'bg-2':'bg-1'">
                                                     {{activity.activity_title}}
                                                     <a href="#" @click="deleteAfter(activity.id)"><i class="text-white fa fa-times-circle-o"></i></a>
                                                 </li>

@@ -24,82 +24,82 @@
        
         <div class="mt-modal">
           <div class="row no-margin lead">
-            <div class="col-4 text-uppercase">Month</div>
+            <div class="col-4 text-uppercase"><strong>Month</strong></div>
             <div class="col-8"> {{month}}</div>
           </div>
           <div class="pt-10">
             <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Receptive Language</h5>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Baseline</div>
-              <div class="col-8">{{recap_baseline}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Baseline</strong></div>
+              <div class="col-md-8">{{recap_baseline}}</div>
             </div>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Improvement</div>
-              <div class="col-8">{{recap_improv}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Improvement</strong></div>
+              <div class="col-md-8">{{recap_improv}}</div>
             </div>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Comments</div>
-              <div class="col-8">{{recap_comment}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Comments</strong></div>
+              <div class="col-md-8">{{recap_comment}}</div>
             </div>
           </div>
           <div class="pt-10">
             <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Alternative Communcation</h5>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Baseline</div>
-              <div class="col-8">{{alt_baseline}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Baseline</strong></div>
+              <div class="col-md-8">{{alt_baseline}}</div>
             </div>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Improvement</div>
-              <div class="col-8">{{alt_improv}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Improvement</strong></div>
+              <div class="col-md-8">{{alt_improv}}</div>
             </div>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Comments</div>
-              <div class="col-8">{{alt_comment}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Comments</strong></div>
+              <div class="col-md-8">{{alt_comment}}</div>
             </div>
           </div>
           <div class="pt-10">
             <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Fine Motor</h5>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Baseline</div>
-              <div class="col-8">{{motor_baseline}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Baseline</strong></div>
+              <div class="col-md-8">{{motor_baseline}}</div>
             </div>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Improvement</div>
-              <div class="col-8">{{motor_improv}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Improvement</strong></div>
+              <div class="col-md-8">{{motor_improv}}</div>
             </div>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Comments</div>
-              <div class="col-8">{{motor_comment}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Comments</strong></div>
+              <div class="col-md-8">{{motor_comment}}</div>
             </div>
           </div>
           <div class="pt-10">
             <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Self Care</h5>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Baseline</div>
-              <div class="col-8">{{self_baseline}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Baseline</strong></div>
+              <div class="col-md-8">{{self_baseline}}</div>
             </div>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Improvement</div>
-              <div class="col-8">{{self_improv}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Improvement</strong></div>
+              <div class="col-md-8">{{self_improv}}</div>
             </div>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Comments</div>
-              <div class="col-8">{{self_comment}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Comments</strong></div>
+              <div class="col-md-8">{{self_comment}}</div>
             </div>
           </div>
           <div class="pt-10">
             <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Behaviour</h5>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Baseline</div>
-              <div class="col-8">{{behav_baseline}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Baseline</strong></div>
+              <div class="col-md-8">{{behav_baseline}}</div>
             </div>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Improvement</div>
-              <div class="col-8">{{behav_improv}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Improvement</strong></div>
+              <div class="col-md-8">{{behav_improv}}</div>
             </div>
             <div class="row no-margin lead">
-              <div class="col-4 text-uppercase">Comments</div>
-              <div class="col-8">{{behav_comment}}</div>
+              <div class="col-md-4 text-uppercase"><strong>Comments</strong></div>
+              <div class="col-md-8">{{behav_comment}}</div>
             </div>
           </div>
         </div>

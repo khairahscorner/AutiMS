@@ -15,7 +15,6 @@
                             <a @click="show" class="modal-trigger btn btn-sm" href="#">
                             <span class="text-uppercase">View</span>
                             </a>
-                            <observation-single-report></observation-single-report>
                         </div>
                       </div>
                   </div>
@@ -25,7 +24,7 @@
 
 <script>
 import NoView from '../../noView.vue'
-import observationSingleReport from "../../ObservationSingleReport.vue";
+
 export default {
   data() {
     return {
@@ -34,12 +33,9 @@ export default {
     }
   },
   methods: {
-    show() {
-      this.$modal.show("observation-single-report");
-    }
+    
   },
   components: {
-    observationSingleReport,
     NoView
   }
 };

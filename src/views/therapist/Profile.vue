@@ -72,7 +72,6 @@ export default {
     return {
       loading: true,
       details: {},
-      metrics: {},
       edit: false,
       editComponent: 'app-edit-profile'
     };
@@ -86,28 +85,10 @@ export default {
     this.loading = true
     axios.get('/therapist')
     .then(res => {
+      this.loading = false
       console.log(res.data.data)
       this.details = res.data.data.therapist
       store.commit('SAVE_THERAPIST_DETAILS', res.data.data.therapist)
-      axios.get('/therapist/dashboard')
-      .then(res => {
-        console.log(res.data.data)
-        this.metrics = res.data.data
-        store.commit('SAVE_THERAPIST_DASHBOARD', res.data.data)
-        this.loading = false
-      })
-      .catch(err => {
-        this.loading = false
-        console.log(err.response)
-        this.$notify({
-          group: 'response',
-          type: 'error',
-          title: `An Error Occured`,
-                      // text: `${res.data.message}`,
-          duration: 2500,
-          ignoreDuplicates: true
-        });
-      })
     })
     .catch(err => {
       this.loading = false

@@ -26,13 +26,13 @@
                             <div slot="id" slot-scope="props">{{props.index}}</div>
                             <div slot="action" slot-scope="props">
                                 <nav class="flexbox fs-16">
-                                    <a href="#" class="btn btn-xs bg-1">
-                                        <span  @click="viewPatientProfile(props.row.id)">
+                                    <a href="#" class="btn btn-xs bg-1" @click="viewPatientProfile(props.row.id)">
+                                        <span>
                                             <i class="fa fa-eye"></i>
                                         </span>     
                                     </a>
-                                    <a href="#" class="btn btn-xs btn-danger">
-                                        <span  @click="deletePatient(props.row.id)">
+                                    <a href="#" class="btn btn-xs btn-danger"  @click="deletePatient(props.row.id)">
+                                        <span>
                                             <i class="fa fa-trash-o"></i>
                                         </span>     
                                     </a> 

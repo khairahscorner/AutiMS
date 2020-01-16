@@ -10,13 +10,13 @@
                     </div>
                 </header>
                 <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
-                <div v-else class="card-body media-list media-list-hover media-list-divided">
+                <div v-else class="scroll h-400px card-body media-list media-list-hover media-list-divided">
                     <v-client-table :columns="columns" :data="data" :options="options"> 
                         <div slot="id" slot-scope="props">{{props.index}}</div>
                             <div slot="action" slot-scope="props">
                                 <nav class="flexbox fs-16">
-                                    <a href="#" class="btn btn-xs bg-1">
-                                        <span  @click="viewPatientMonthlyReports(props.row)">
+                                    <a href="#" class="btn btn-xs bg-1" @click="viewPatientMonthlyReports(props.row)">
+                                        <span>
                                             <i class="fa fa-eye"></i>
                                         </span>     
                                     </a>
