@@ -6,12 +6,12 @@
                     <header class="no-border">
                         <div class="header-bar flexbox pl-20">
                             <h4 class="text-uppercase">New Monthly Report for {{patient_name}}</h4>
-                            <button v-if="loading" class="btn btn-sm btn-bold btn-primary text-center" disabled>
+                            <button v-if="loading" class="btn btn-xs btn-bold btn-primary text-center" disabled>
                                 <circle-spin class="m-0" ></circle-spin>
                             </button>
                             <button v-else
                             :disabled="$v.$invalid || month==''"
-                            class="btn btn-sm btn-bold btn-primary text-center"
+                            class="btn btn-xs btn-bold btn-primary text-center"
                             type="button"
                             @click="createMonthlyReport()"
                             >CREATE
@@ -214,7 +214,6 @@ export default {
                 behav_improv: this.behav_improv,
                 behav_comm: this.behav_comment
             }
-            console.log(userData)
             axios.post(`/monthly_report/${this.patient_id}`, userData)
             .then(res => {
                 this.loading = false
@@ -223,7 +222,6 @@ export default {
                     group: 'response',
                     type: 'success',
                     title: `${res.data.message}`,
-                    // text: `${res.data.message}`,
                     duration: 2500,
                 });
                 setTimeout(() => {
@@ -236,7 +234,7 @@ export default {
                 this.$notify({
                     group: 'response',
                     type: 'error',
-                    title: `${err.response.message}`,
+                    title:'An error occured. Try again',
                     // text: `${res.data.message}`,
                     duration: 2500,
                     ignoreDuplicates: true

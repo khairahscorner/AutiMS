@@ -4,7 +4,7 @@
                     <div class="header-bar flexbox pl-20">
                         <h4 class="text-uppercase">All Monthly Reports of {{patient_name}}</h4>
                         <router-link :to="'/therapist/monthly-reports/'+ patient_id + '/new'" tag="button"
-                        class="btn btn-sm btn-bold btn-primary text-center"
+                        class="btn btn-xs btn-bold btn-primary text-center"
                         >New<i class="fa fa-plus-square"></i>
                         </router-link>
                     </div>
@@ -21,23 +21,6 @@
                       </div>
                   </div>
                 </div>
-
-                <!-- Modal for delete report -->
-              <!-- <modal name="delete-report" :width="400" height="auto" class="modal-container" :clickToClose="false">
-                  <div class="modal-content">
-                      <div class="callout callout-danger1 py-10 px-0 mb-0" role="alert">
-                          <span class="close mr-10" @click="hideDeleteModal($modal)" aria-label="Close" data-dismiss="close"><i class="ion-close-round"></i></span>
-                          <h5 class="px-10">Delete Patient</h5>
-                          <div class="p-10">
-                              <p>Are you sure you want to this patient? You will no longer have access to patient's details or any of the records of the patient.</p>
-                              <button class="btn btn-bold btn-danger" disabled v-if="load_delete">
-                                  <circle-spin class="m-0"></circle-spin>
-                              </button>
-                              <button class="btn btn-bold btn-sm btn-danger" v-else type="button" @click="delPatient">Delete</button>
-                          </div>
-                      </div>
-                  </div> 
-              </modal> -->
   </div>
 </template>
 

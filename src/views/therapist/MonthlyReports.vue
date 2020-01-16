@@ -5,14 +5,13 @@
             <div class="card col-xl-4 col-md-5 br-1 mb-0 no-radius px-0 br-primary">
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">patients list</h4>
-                        
+                        <h4 class="text-uppercase">patients list</h4> 
                     </div>
                 </header>
                 <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
                 <div v-else class="scroll h-400px card-body media-list media-list-hover media-list-divided">
                     <v-client-table :columns="columns" :data="data" :options="options"> 
-                        <div slot="id" slot-scope="props">{{props.index}}</div>
+                            <div slot="id" slot-scope="props">{{props.index}}</div>
                             <div slot="action" slot-scope="props">
                                 <nav class="flexbox fs-16">
                                     <a href="#" class="btn btn-xs bg-1" @click="viewPatientMonthlyReports(props.row)">
@@ -21,7 +20,6 @@
                                         </span>     
                                     </a>
                                 </nav>
-                                  
                             </div>                      
                     </v-client-table> 
                 </div>
@@ -29,16 +27,14 @@
             </div>
             <circle-spin class="p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
             <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius" v-else>
-                <div  v-if="!showDetails">
-                    <div class="card-body m-50">
-                    <div class="text-center">
-                        <div class="pb-30">
-                        <img src="../../assets/img/patients.svg" alt>
+                    <div class="card-body m-50" v-if="!showDetails">
+                        <div class="text-center">
+                            <div class="pb-30">
+                            <img src="../../assets/img/patients.svg" alt>
+                            </div>
+                            <p>This shows an overview of all monthly reports for each patient. Click on a patient to view.</p>
                         </div>
-                        <p>This shows an overview of all monthly reports for each patient. Click on a patient to view.</p>
                     </div>
-                    </div>
-                </div>
                 <monthly-report-layout v-else :has_monthly_report="has_monthly_report" :all_reports="all_reports" :patient_name="patient_name" :patient_id="patient_id"></monthly-report-layout>
             </div>
                 
@@ -49,7 +45,6 @@
 
 <script>
 import axios from 'axios'
-import allMixins from '../../mixins.js'
 import monthlyReportLayout from "../../components/therapist/monthlyreports/MonthlyReportLayout.vue"
 import {mapActions, mapMutations} from 'vuex'
 
@@ -59,7 +54,6 @@ export default {
             firstLoad: true,
             loading: false,
             showDetails: false,
-            mode: "monthly-report-layout",
             patient_id: 0,
             patient_name: '',
             all_reports: [],
@@ -110,17 +104,16 @@ export default {
         this.fetchAllTherapistPatients()
         .then(res => {
             this.firstLoad = false
-            console.log(res)
-                return this.data = res.data.data
+            // console.log(res)
+            return this.data = res.data.data
         })
         .catch(err => {
-                console.log(err)
+                // console.log(err)
                 this.firstLoad = false
                 this.$notify({
                         group: 'response',
                         type: 'error',
-                        title: `${err}`,
-                        // text: `${res.data.message}`,
+                        title: 'Failed to load Patients. Try again',
                         duration: 2500,
                         ignoreDuplicates: true
                 });

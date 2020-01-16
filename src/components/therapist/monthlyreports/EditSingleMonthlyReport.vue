@@ -3,12 +3,12 @@
                     <header class="no-border">
                         <div class="header-bar flexbox pl-20">
                             <h4 class="text-uppercase">Edit {{month}} Report of {{patient_name}}</h4>
-                            <button v-if="loading" class="btn btn-sm btn-bold btn-primary text-center" disabled>
+                            <button v-if="loading" class="btn btn-xs btn-bold btn-primary text-center" disabled>
                                 <circle-spin class="m-0" ></circle-spin>
                             </button>
                             <button v-else
-                            :disabled="$v.$invalid || month==''"
-                            class="btn btn-sm btn-bold btn-primary text-center"
+                            :disabled="$v.$invalid"
+                            class="btn btn-xs btn-bold btn-primary text-center"
                             type="button"
                             @click="saveMonthlyReport()"
                             >SAVE

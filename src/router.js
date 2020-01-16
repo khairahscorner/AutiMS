@@ -55,9 +55,10 @@ const router = new Router({
         { path: "/therapist/activity-lists", component: () => import("./views/therapist/ActivityLists.vue"), meta: {title: 'Activity Lists', reqToken: true} },
         { path: "/therapist/activity-lists/:patient_id/new", component: () => import("./views/therapist/CreateActivityList.vue"), meta: {title: 'New Activity List', reqToken: true} },
         { path: "/therapist/activity-lists/:patient_id/edit", component: () => import("./views/therapist/EditActivityList.vue"), meta: {title: 'Edit Activity List', reqToken: true} },
+        
         { path: "/therapist/session-reports", component: () => import("./views/therapist/SessionReports.vue"), meta: {title: 'Session Reports', reqToken: true} },
         { path: "/therapist/session-reports/:patient_id/new", component: () => import("./views/therapist/CreateSessionReport.vue"), meta: {title: 'New Session Report', reqToken: true} },
-        // { path: "/therapist/session-reports/:report_id", component: () => import("./views/therapist/EditSessionReport.vue"), meta: {title: 'Edit Session Report', reqToken: true} },
+        { path: "/therapist/session-reports/:report_id", component: () => import("./views/therapist/SingleSessionReport.vue"), meta: {title: 'Session Report', reqToken: true} },
        
         { path: "/therapist/monthly-reports", component: () => import("./views/therapist/MonthlyReports.vue"), meta: {title: 'Monthly Reports', reqToken: true} },
         { path: "/therapist/monthly-reports/:patient_id/new", component: () => import("./views/therapist/CreateMonthlyReport.vue"), meta: {title: 'New Monthly Report', reqToken: true} },
