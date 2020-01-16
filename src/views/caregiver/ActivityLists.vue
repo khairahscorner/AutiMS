@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import allActivityLists from "../../components/user/ActivityLists.vue"
+import allActivityLists from "../../components/parentcaregiver/activitylists/ActivityLists.vue"
 
 export default {
     components: {

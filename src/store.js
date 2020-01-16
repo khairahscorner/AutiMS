@@ -7,14 +7,25 @@ Vue.use(Vuex);
 
 export const store =  new Vuex.Store({
   state: {
-    patient_details: {}
+    patient_details: {},
+    therapist_details: {},
+    therapist_dashboard: {}
   }, 
   mutations: {
     SAVE_PATIENT_DETAILS: (state, payload) => {
       state.patient_details = payload
     },
+    SAVE_THERAPIST_DETAILS: (state, payload) => {
+      state.therapist_details = payload
+    },
+    SAVE_THERAPIST_DASHBOARD: (state, payload) => {
+      state.therapist_dashboard = payload
+    },
   },
   actions: {
+    fetchAllTherapistPatients: ({state, getters}) => {
+      return axios.get('/therapist/view_patients/')    
+    },
     // fetchStock: ({state, getters, commit}, payload) => {
     //   let pro = payload
     //   axios.get('/stock.json')

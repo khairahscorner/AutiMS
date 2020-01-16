@@ -11,7 +11,7 @@
           </div>
         </header>
        
-        <div class="mt-20">
+        <div class="mt-modal">
           <div class="row no-margin lead">
             <div class="col-4 text-uppercase">Date</div>
             <div class="col-8">12th September, 2019</div>

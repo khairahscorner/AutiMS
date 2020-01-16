@@ -148,6 +148,9 @@ h6,
 .ml-10 {
   margin-left: 10px;
 }
+.mt-modal{
+  margin-top: 15% !important;
+}
 .pd-10 {
   padding: 10px;
 }
@@ -178,6 +181,11 @@ h6,
     background-color: #b83766 !important;
     border-color: #b83766 !important;
     color: #ffffff !important;
+}
+.bg-danger{
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: #ffffff !important;
 }
 .br-primary {
   border-left: none !important;
@@ -340,7 +348,43 @@ footer {
   width: 60vw !important;
   left: 20vw !important
 }
-.report .v--modal-box{
-  overflow-y: scroll !important;
-  height: 85vh !important;
+.v--modal .header-bar {
+  position: fixed;
+  height: 10% !important;
+  width: 60vw !important;
+  z-index: 999;
 }
+.report .v--modal-box{
+  top: 10vh !important;
+  overflow-y: scroll !important;
+  height: 80vh !important;
+}
+@media all and (max-width: 767px) {
+  .report .v--modal {
+    width: 90vw !important;
+    left: 5vw !important
+  }
+  .v--modal .header-bar {
+    position: fixed !important;
+    width: 90vw !important;
+    height: 10% !important;
+    z-index: 999;
+
+  }
+}
+.multiselect__tags {
+  height: auto !important;
+}
+.multiselect__tag {
+  width: 10vw !important;
+}
+@media all and (max-width: 767px) {
+  .multiselect__tag {
+    width: 20vw !important;
+  }
+}
+
+.multiselect__tag-icon:after {
+  color: #ffffff !important;
+}
+

@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import reportLayout from "../../components/therapist/SessionReportLayout.vue"
+import reportLayout from "../../components/therapist/sessionreports/SessionReportLayout.vue"
 
 export default {
     data() {

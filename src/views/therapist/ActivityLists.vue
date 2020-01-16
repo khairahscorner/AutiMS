@@ -6,63 +6,69 @@
                     <header class="no-border">
                         <div class="header-bar flexbox pl-20">
                             <h4 class="text-uppercase">patients list</h4>
-                            <router-link to="/therapist/activity-lists/new" tag="button"
-                            class="btn btn-sm btn-bold btn-primary text-center"
-                            >NEW <i class="fa fa-plus-square"></i>
-                            </router-link>
                         </div>
                     </header>
                     <div class="card-body media-list media-list-hover media-list-divided">
-                        <button
-                            class="btn btn-sm btn-bold btn-primary text-center"
-                            type="button"
-                            @click="viewPatientActivityList"
-                            >EDIT
-                            </button>
-                        <v-client-table :columns="columns" :data="data" :options="options"> 
-                            <a href="#" class="media media-single">
-                                <span slot="id" slot-scope="props">{{props.index}}</span>
-                                <span slot="name" slot-scope="props" class="title">{{props.row.firstname}} {{props.row.lastname}}</span>
-                                <span class="btn btn-sm btn-danger" @click="viewPatientActivityList(props.row.id)">
-                                    <i class="fa fa-eye"></i>
-                                </span>
-                            </a>                        
+                        <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
+                        <v-client-table v-else :columns="columns" :data="data" :options="options"> 
+                            <div slot="id" slot-scope="props">{{props.index}}</div>
+                            <div slot="action" slot-scope="props">
+                                <nav class="flexbox fs-16">
+                                    <a href="#" class="btn btn-xs bg-1">
+                                        <span  @click="viewPatientActivityList(props.row.id)">
+                                            <i class="fa fa-eye"></i>
+                                        </span>     
+                                    </a>
+                                </nav>
+                                  
+                            </div>                         
                         </v-client-table> 
                     </div>
                     
                 </div>
-                <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="!showDetails">
-                    <div class="card-body m-50">
-                    <div class="text-center">
-                        <div class="pb-30">
-                        <img src="../../assets/img/patients.svg" alt>
+                <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius">
+                    <circle-spin class="p-30" v-if="loading"></circle-spin>
+                    <div v-else >
+                        <div  v-if="!showDetails">
+                            <div class="card-body m-50">
+                            <div class="text-center">
+                                <div class="pb-30">
+                                <img src="../../assets/img/patients.svg" alt>
+                                </div>
+                                <p>This shows each patient's activity list. Click on a patient to view.</p>
+                            </div>
+                            </div>
                         </div>
-                        <p>This shows each patient's activity list. Click on a patient to view.</p>
-                    </div>
+                        <component :is="mode" v-else :patient_id="patient_id" 
+                        :has_activity_list="has_activity_list" :details="details"></component>
                     </div>
                 </div>
-                <component :is="mode" v-else @editActivityList="editActivityList" @saveActivityList="saveActivityList"></component>
             </div>
         </div>
     </main>
 </template>
 
 <script>
-import singleActivityList from "../../components/therapist/SingleActivityList.vue"
-import editActivityList from "../../components/therapist/EditActivityList.vue"
+import axios from 'axios'
+import singleActivityList from "../../components/therapist/activitylists/SingleActivityList.vue"
+import {mapActions, mapMutations} from 'vuex'
 
 export default {
     data() {
         return {
+            firstLoad: true,
+            loading: false,
             showDetails: false,
-            patient_d: 0,
+            patient_id: null,
+            details: {},
             mode: "single-activity-list",
-            columns: ["id", "name"],
+            columns: ["id", "name", 'action'],
             data: [],
             options: {
               headings: {
                 id: "S/N",
-                name: "Patient Name"
+                name: "Patient Name",
+                action: "Actions"
               },
               sortable: ["name"],
               filterable: ["name"]
@@ -70,24 +76,61 @@ export default {
         }
     },
     methods: {
+        ...mapActions([
+            'fetchAllTherapistPatients'
+        ]),
        viewPatientActivityList(value) {
-            this.patient_id = value
+           this.loading = true
+           this.mode = "single-activity-list"
+            this.patient_id = value 
+            axios.get(`/view_patient/${value}`)
+            .then(res => {
+                console.log(res.data)
+                this.loading = false
+                if(res.data.data.morning_activities.length > 0 || res.data.data.afternoon_activities.length > 0 || res.data.data.evening_activities.length > 0){
+                    this.has_activity_list = true
+                }
+                else { this.has_activity_list = false}
+                this.details = res.data.data
+                console.log(this.details)
+            })
+            .catch(err => {
+                console.log(err)
+                this.loading = false
+                    this.$notify({
+                        group: 'response',
+                        type: 'error',
+                        title: 'An Error Occured',
+                        duration: 2500,
+                        ignoreDuplicates: true
+                    });
+            })
             this.showDetails = true
             // Fetch patient details using ID
         },
-        editActivityList() {
-            this.mode = "edit-activity-list"
-        },
-        // saveActivityList() {
-        //     this.mode = "save-activity-list"
-        // }
     },
     mounted() {
-        
+        this.firstLoad = true
+        this.fetchAllTherapistPatients()
+        .then(res => {
+            this.firstLoad = false
+            return this.data = res.data.data
+        })
+        .catch(err => {
+                console.log(err)
+                this.firstLoad = false
+                this.$notify({
+                        group: 'response',
+                        type: 'error',
+                        title: 'An Error occured',
+                        // text: `${res.data.message}`,
+                        duration: 2500,
+                        ignoreDuplicates: true
+                });
+        })
     },
     components: {
-        singleActivityList,
-        editActivityList,
+        singleActivityList
     }
 }
 </script>

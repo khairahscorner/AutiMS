@@ -33,7 +33,7 @@
                 <div class="card-body m-50">
                   <div class="text-center">
                     <div class="pb-30">
-                      <img src="../../assets/img/patients.svg" alt>
+                      <img src="../../../assets/img/patients.svg" alt>
                     </div>
                     <p>This shows the activity list of the patient for each therapist. Click on a therapist to view.</p>
                   </div>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import singleActivityList from "../../components/user/SingleActivityList.vue"
+import singleActivityList from "./SingleActivityList.vue"
 
 export default {
     data() {

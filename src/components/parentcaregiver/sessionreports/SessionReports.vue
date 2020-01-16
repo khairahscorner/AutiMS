@@ -31,7 +31,7 @@
                 <div class="card-body m-50">
                   <div class="text-center">
                     <div class="pb-30">
-                      <img src="../../assets/img/patients.svg" alt>
+                      <img src="../../../assets/img/patients.svg" alt>
                     </div>
                     <p>This shows an overview of all session reports by each therapist. Click on a therapist to view.</p>
                   </div>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import reportLayout from "../../components/user/SessionReportLayout.vue"
+import reportLayout from "./SessionReportLayout.vue"
 
 export default {
     data() {
@@ -70,6 +70,10 @@ export default {
             this.showDetails = true
             // Fetch patient details using ID
         }
+    },
+    mounted() {
+        // fetch all therapists attached to parent/caregiver and then the patient's all monthly reports. 
+        // this can then be filtered based on therapist id.
     },
     components: {
         reportLayout

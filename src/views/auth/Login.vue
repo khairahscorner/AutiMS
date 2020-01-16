@@ -85,15 +85,15 @@ export default {
       .then(res => {
                 this.loading = false
                 console.log(res)
-                document.cookie = window.btoa('userToken') + '=' + window.btoa(res.data.token.token) + "; path=/"
+                localStorage.setItem(window.btoa('userToken'), res.data.token.token)
                 this.$notify({
                     group: 'response',
                     type: 'success',
                     title: `${res.data.message}`,
                     duration: 2500,
                 })
-                // I need correct signaturee key
-                let details = this.$jwt.decode(this.retrieveCookie(window.btoa('userToken')))
+                
+                let details = this.$jwt.decode(this.retrieveToken(window.btoa('userToken')))
                 console.log(details)
                 if(details.data.user_type == 'therapist') {
                   setTimeout(() => {

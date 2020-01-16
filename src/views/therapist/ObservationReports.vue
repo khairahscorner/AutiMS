@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import ObservationReportLayout from "../../components/therapist/ObservationReportLayout.vue"
+import ObservationReportLayout from "../../components/therapist/observationreports/ObservationReportLayout.vue"
 
 export default {
     data() {

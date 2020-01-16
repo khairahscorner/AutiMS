@@ -53,11 +53,14 @@
                                         <input type="text" class="form-control" id="address" v-model="address">
                                     </div> 
                             <div class="form-group">
-                                <label for="specialization">Area(s) of Specialisation <small>**Separate by comma</small></label>
-                                <input type="text" class="form-control" id="specialization"  @blur="$v.specialization.$touch()" v-model="specialization">
-                                <div v-if="$v.specialization.$dirty">
+                                <label for="specialization">Area(s) of Specialisation</label>
+                                <multiselect v-model="specialization" :options="skills_list" class="form-control" id="specialization"
+                                    :multiple="true" :close-on-select="true" :show-labels="false" placeholder="Choose:">
+                                </multiselect>
+                                <!-- <input type="text" class="form-control" id="specialization"  @blur="$v.specialization.$touch()" v-model="specialization"> -->
+                                <!-- <div v-if="$v.specialization.$dirty">
                                     <div class="error" v-if="!$v.specialization.required">*Your specialization is required.</div>
-                                </div>
+                                </div> -->
                             </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -88,7 +91,7 @@
                                 <button class="btn btn-bold btn-primary" disabled v-if="loading">
                                     <circle-spin class="m-0"></circle-spin>
                                 </button>
-                                <button class="btn btn-bold btn-primary" v-else :disabled="$v.$invalid" @click="register" type="button">Sign up</button>
+                                <button class="btn btn-bold btn-primary" v-else :disabled="$v.$invalid || gender=='' || specialization.length<1" @click="register" type="button">Sign up</button>
                             </div>
                         </form>
                   </div>
@@ -114,7 +117,8 @@ export default {
             gender: '',
             workplace: '',
             address: '',
-            specialization: '',
+            skills_list:['Speech and Language Therapy','Behaviour Modification Therapy', 'Social Skills Therapy'],
+            specialization: [],
             password: '',
             confirm_password: ''
         }
@@ -153,7 +157,7 @@ export default {
                 phone_no: this.phone_no,
                 workplace: this.workplace,
                 address: this.address,
-                specialization: this.specialization.split(","),
+                specialization: this.specialization,
                 password: this.password,
             }
             axios.post('/therapist/register', userData)

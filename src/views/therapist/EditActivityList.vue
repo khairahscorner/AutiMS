@@ -1,16 +1,16 @@
 <template>
     <main class="pd-main">
         <div class="main-content">
-                <header class="no-border">
-                    <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">New Activity List</h4>
-                        <router-link to="/therapist/activity-lists" tag="button"
+                    <header class="no-border">
+                        <div class="header-bar flexbox pl-20">
+                            <h4 class="text-uppercase">Edit Activity List of {{details.name}}</h4>
+                            <router-link to="/therapist/activity-lists" tag="button"
                                 class="btn btn-xs btn-bold btn-primary text-center">
-                                SAVE<i class="fa fa-check-circle"></i>
+                                Back<i class="fa fa-arrow-circle-o-left"></i>
                             </router-link>
-                    </div>
-                </header>
-                <div class="no-border card mb-0 no-radius card-body">
+                        </div>
+                    </header>
+                    <div class="no-border card mb-0 no-radius card-body">
                         <form>
                             <div class="py-10">
                                 <h5 class="b-1 border-secondary bg-secondary p-10 mb-0">Morning Activities</h5>
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
                         </form>
-                </div>
+                    </div>
         </div>
     </main>
 </template>

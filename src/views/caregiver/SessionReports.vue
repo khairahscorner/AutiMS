@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import allSessionReports from "../../components/user/SessionReports.vue"
+import allSessionReports from "../../components/parentcaregiver/sessionreports/SessionReports.vue"
 
 export default {
     components: {

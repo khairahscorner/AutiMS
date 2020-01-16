@@ -1,8 +1,9 @@
 <template>
   <main class="pd-main">
     <div class="main-content">
-      <div class="row">
-        <div class="col-md-7">
+      <circle-spin class="mt-50" v-if="loading"></circle-spin>
+      <div v-else class="row">
+        <div class="col-xl-12">
             <div class="card" v-if="!edit">
                 <header class="no-border">
                 <div class="header-bar flexbox pl-20">
@@ -16,64 +17,45 @@
                 </header>
                 <div class="card-body">
                 <div>
-                    <img class="avatar avatar-xxl" src="../../assets/img/avatar.jpg" />
+                    <img v-if="details.img_url == null" class="avatar avatar-xxl" src="../../assets/img/avatar.jpg" />
+                    <img v-else class="avatar avatar-xxl" :src="details.img_url" />
                     <hr class="mb-10 mt-10" />
-                    <div class="mb16 flexbox align-items-center justify-content-start">
-                    <h6 class="mb-0">Full Name:</h6>
-                    <div class>Maryam Amiri</div>
+                    <div class="mb16 flexbox align-items-start justify-content-start">
+                    <div class="mb-0"><strong>Full Name:</strong></div>
+                    <div class>{{details.name}}</div>
                     </div>
-                    <div class="mb16 flexbox align-items-center justify-content-start">
-                    <h6 class="mb-0">Email:</h6>
-                    <div class>maryamamiri@gmail.com</div>
+                    <div class="mb16 flexbox align-items-start justify-content-start">
+                    <div class="mb-0"><strong>Email:</strong></div>
+                    <div class>{{details.email}}</div>
                     </div>
-                    <div class="mb16 flexbox align-items-center justify-content-start">
-                    <h6 class="mb-0">Gender:</h6>
-                    <div class>Female</div>
+                    <div class="mb16 flexbox align-items-start justify-content-start">
+                    <div class="mb-0"><strong>Gender:</strong></div>
+                    <div class>{{details.gender}}</div>
                     </div>
-                    <div class="mb16 flexbox align-items-center justify-content-start">
-                    <h6 class="mb-0">Phone Number:</h6>
-                    <div class>080123456678</div>
+                    <div class="mb16 flexbox align-items-start justify-content-start">
+                    <div class="mb-0"><strong> Number:</strong></div>
+                    <div class>{{details.phone_no}}</div>
                     </div>
-                    <div class="mb16 flexbox align-items-center justify-content-start">
-                    <h6 class="mb-0">Place of Work:</h6>
-                    <div>Maryam and Associate Speech and Language Therapy Center</div>
+                    <div class="mb16 flexbox align-items-start justify-content-start">
+                    <div class="mb-0"><strong>Place of Work:</strong></div>
+                    <div>{{details.workplace}}</div>
                     </div>
-                    <div class="mb16 flexbox align-items-center justify-content-start">
-                    <h6 class="mb-0">Address:</h6>
-                    <div>9, Living Rock Street , Iyana Iyesi Ota, Lagos.</div>
+                    <div class="mb16 flexbox align-items-start justify-content-start">
+                    <div class="mb-0"><strong>Address:</strong></div>
+                    <div>{{details.address}}</div>
                     </div>
-                    <div class="mb16 flexbox align-items-center justify-content-start">
-                    <h6 class="mb-0">Area(s) of Specialisation:</h6>
+                    <div class="mb16 flexbox align-items-start justify-content-start">
+                    <div class="mb-0"><strong>Area(s) of Specialisation:</strong></div>
                     <div>
-                      <div class="badge mb-10 mr-10 badge-lg bg-2">Speech and Language Therapy</div>
-                      <div class="badge mb-10 mr-10 badge-lg bg-1">Behavioural Therapy</div>
+                      <span v-for="(skill, i) in details.therapist_specializations" :key="i">
+                        <div :class="(i%2)==1? 'bg-2': 'bg-1'" class="badge mb-10 mr-10 badge-lg">{{skill.specialization_title}}</div>
+                      </span>
                     </div>
                   </div>
                 </div>
-                <div></div>
                 </div>
             </div>
             <component :is="editComponent" v-else @saved="showUpdatedProfile"></component>
-        </div>
-        <div class="col-md-5">
-          <div class="callout callout-bg1" role="alert">
-            <div class="flexbox align-items-center mt-2">
-              <h6 class="mb-0 font-s">9,357</h6>
-              <h4 class="fw-600 text-uppercase">Registered Patients</h4>
-            </div>
-          </div>
-          <div class="callout callout-bg2" role="alert">
-            <div class="flexbox align-items-center mt-2">
-              <h6 class="mb-0 font-s">93</h6>
-              <h4 class="fw-600 text-uppercase">Activity Lists</h4>
-            </div>
-          </div>
-          <div class="callout callout-bg2" role="alert">
-            <div class="flexbox align-items-center mt-2">
-              <h6 class="mb-0 font-s">935</h6>
-              <h4 class="fw-600 text-uppercase">Total Reports</h4>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -81,11 +63,16 @@
 </template>
 
 <script>
+import axios from 'axios'
+import {store} from '../../store'
 import editProfile from '../../components/therapist/EditProfile'
 
 export default {
   data() {
     return {
+      loading: true,
+      details: {},
+      metrics: {},
       edit: false,
       editComponent: 'app-edit-profile'
     };
@@ -94,6 +81,46 @@ export default {
       showUpdatedProfile() {
           this.edit = false
       }
+  },
+  mounted() {
+    this.loading = true
+    axios.get('/therapist')
+    .then(res => {
+      console.log(res.data.data)
+      this.details = res.data.data.therapist
+      store.commit('SAVE_THERAPIST_DETAILS', res.data.data.therapist)
+      axios.get('/therapist/dashboard')
+      .then(res => {
+        console.log(res.data.data)
+        this.metrics = res.data.data
+        store.commit('SAVE_THERAPIST_DASHBOARD', res.data.data)
+        this.loading = false
+      })
+      .catch(err => {
+        this.loading = false
+        console.log(err.response)
+        this.$notify({
+          group: 'response',
+          type: 'error',
+          title: `An Error Occured`,
+                      // text: `${res.data.message}`,
+          duration: 2500,
+          ignoreDuplicates: true
+        });
+      })
+    })
+    .catch(err => {
+      this.loading = false
+      console.log(err.response)
+      this.$notify({
+          group: 'response',
+          type: 'error',
+          title: `An Error Occured`,
+                      // text: `${res.data.message}`,
+          duration: 2500,
+          ignoreDuplicates: true
+        });
+    })
   },
   components: {
       appEditProfile: editProfile

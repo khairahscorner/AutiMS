@@ -2,10 +2,11 @@
     <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius px-0">
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">All Session Reports by Therapist name</h4>
+                        <h4 class="text-uppercase">All Observation Reports of Patient</h4>
                     </div>
                 </header>
-                <div class="card-body">
+                <no-view v-if="!has_obs_report" :doc_type="doc_type"></no-view>
+                <div v-else class="card-body">
                   <div class="row no-margin">
                       <div class="col-xs-6 col-lg-4 col-xl-3 mb-20">
                         <div class="text-center">
@@ -14,7 +15,7 @@
                             <a @click="show" class="modal-trigger btn btn-sm" href="#">
                             <span class="text-uppercase">View</span>
                             </a>
-                            <single-report></single-report>
+                            <observation-single-report></observation-single-report>
                         </div>
                       </div>
                   </div>
@@ -23,15 +24,23 @@
 </template>
 
 <script>
-import SingleReport from "../SessionSingleReport.vue";
+import NoView from '../../noView.vue'
+import observationSingleReport from "../../ObservationSingleReport.vue";
 export default {
+  data() {
+    return {
+      has_obs_report: false,
+      doc_type: 'Observation Report'
+    }
+  },
   methods: {
     show() {
-      this.$modal.show("single-report");
+      this.$modal.show("observation-single-report");
     }
   },
   components: {
-    SingleReport
+    observationSingleReport,
+    NoView
   }
 };
 </script>

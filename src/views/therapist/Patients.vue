@@ -72,7 +72,7 @@
             <modal name="delete-patient" :width="400" height="auto" class="modal-container" :clickToClose="false">
                 <div class="modal-content">
                     <div class="callout callout-danger1 py-10 px-0 mb-0" role="alert">
-                        <span class="close mr-10" @click="hideDeleteModal($modal)" aria-label="Close" data-dismiss="close"><i class="fa fa-close"></i></span>
+                        <span class="close mr-10" @click="hideDeleteModal($modal)" aria-label="Close" data-dismiss="close"><i class="ion-close-round"></i></span>
                         <h5 class="px-10">Delete Patient</h5>
                         <div class="p-10">
                             <p>Are you sure you want to this patient? You will no longer have access to patient's details or any of the records of the patient.</p>
@@ -91,10 +91,10 @@
 <script>
 import axios from 'axios'
 import allMixins from '../../mixins.js'
-import patientProfile from "../../components/therapist/patientProfile.vue"
-import editPatientProfile from "../../components/therapist/EditPatientProfile.vue"
-// import {mapActions, mapMutations} from 'vuex'
-// import {store} from '../../store'
+import patientProfile from "../../components/therapist/patients/patientProfile.vue"
+import editPatientProfile from "../../components/therapist/patients/EditPatientProfile.vue"
+import {mapActions, mapMutations} from 'vuex'
+// import {store} from '../../store.js'
 export default {
     mixins: [allMixins],
     data() {
@@ -120,6 +120,9 @@ export default {
         }
     },
     methods: {
+        ...mapActions([
+            'fetchAllTherapistPatients'
+        ]),
         viewPatientProfile(value) {
             this.patient_id = value
             this.showPatient = true
@@ -173,13 +176,14 @@ export default {
     },
     mounted() {
         this.firstLoad = true
-        axios.get('/therapist/view_patients/')
+        this.fetchAllTherapistPatients()
+        // axios.get('/therapist/view_patients/')
         .then(res => {
             this.firstLoad = false
                 console.log(res.data.data)
                 return this.data = res.data.data
-            })
-            .catch(err => {
+        })
+        .catch(err => {
                 console.log(err)
                 this.firstLoad = false
                 this.$notify({
@@ -190,7 +194,7 @@ export default {
                         duration: 2500,
                         ignoreDuplicates: true
                 });
-            })
+        })
     },
     components: {
         patientProfile,

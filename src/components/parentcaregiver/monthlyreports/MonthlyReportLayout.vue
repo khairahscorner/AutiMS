@@ -2,11 +2,7 @@
     <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius px-0">
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">All Monthly Reports of Patient</h4>
-                        <router-link to="/therapist/monthly-reports/new" tag="button"
-                        class="btn btn-sm btn-bold btn-primary text-center"
-                        >New Report<i class="fa fa-plus-square"></i>
-                        </router-link>
+                        <h4 class="text-uppercase">All Monthly Reports by Therapist name</h4>
                     </div>
                 </header>
                 <div class="card-body">
@@ -27,15 +23,12 @@
 </template>
 
 <script>
-import MonthSingleReport from "../MonthlySingleReport.vue";
+import MonthSingleReport from "../../MonthlySingleReport.vue";
 export default {
   methods: {
     show() {
       this.$modal.show("month-single-report");
     }
-  },
-  mounted() {
-
   },
   components: {
     MonthSingleReport

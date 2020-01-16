@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import allMonthlyReports from "../../components/user/MonthlyReports.vue"
+import allMonthlyReports from "../../components/parentcaregiver/monthlyreports/MonthlyReports.vue"
 
 export default {
     components: {

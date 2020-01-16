@@ -67,7 +67,7 @@
 
 <script>
 import axios from 'axios'
-import {store} from '../../store.js'
+import {store} from '../../../store.js'
 export default {
     props: [
         'patient_id'
@@ -123,7 +123,7 @@ export default {
                 this.$notify({
                     group: 'response',
                     type: 'error',
-                    title: `${err}`,
+                    title: `${err.response.message}`,
                     // text: `${res.data.message}`,
                     duration: 2500,
                     ignoreDuplicates: true

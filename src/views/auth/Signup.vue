@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-fullscreen bg-img p-20 center-vh" data-overlay="7">
         <div class="row no-margin">
-            <div class="card px-50 py-30 col-md-5 mb-0 no-radius" style="border-right: 1px solid #406c74;">
+            <div class="sm-hidden card px-50 py-30 col-md-5 mb-0 no-radius" style="border-right: 1px solid #406c74;">
                 <div class="row h-100">
                     <div class=" align-self-center">
                         <img src="../../assets/logo.png" alt="...">
@@ -12,6 +12,9 @@
                 
             </div>
             <div class="card p-30 col-md-7 mb-0 no-radius">
+                <div class="mb-20 md-hidden text-center">
+                  <img class="half-img" src="../../assets/logo.png" alt="...">
+                </div>
                 <h4 class="text-uppercase fw-600">New User? Sign Up</h4>
                 <span class="mb8">**Register for a Therapist or Parent Account.</span>
                 <ul class="mb-10 nav nav-tabs nav-justified nav-tabs-info">
@@ -27,6 +30,7 @@
                 <div class="tab-content">
                   <component :is="mode"></component> 
                 </div>
+                <p class="md-hidden mt8 text-muted">Already got an account? <router-link to="/" tag="a" class="text-primary fw-500" href="#">Log in</router-link></p>
 
             </div>
         </div>

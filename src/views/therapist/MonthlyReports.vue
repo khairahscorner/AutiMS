@@ -9,36 +9,39 @@
                         
                     </div>
                 </header>
-                <div class="card-body media-list media-list-hover media-list-divided">
-                    <button
-                        class="btn btn-sm btn-bold btn-primary text-center"
-                        type="button"
-                        @click="viewPatientMonthlyReports"
-                        >EDIT
-                        </button>
+                <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
+                <div v-else class="card-body media-list media-list-hover media-list-divided">
                     <v-client-table :columns="columns" :data="data" :options="options"> 
-                        <a href="#" class="media media-single">
-                            <span slot="id" slot-scope="props">{{props.index}}</span>
-                            <span slot="name" slot-scope="props" class="title">{{props.row.firstname}} {{props.row.lastname}}</span>
-                            <span class="btn btn-sm btn-danger" @click="viewPatientMonthlyReports(props.row.id)">
-                                <i class="fa fa-eye"></i>
-                            </span>
-                        </a>                        
+                        <div slot="id" slot-scope="props">{{props.index}}</div>
+                            <div slot="action" slot-scope="props">
+                                <nav class="flexbox fs-16">
+                                    <a href="#" class="btn btn-xs bg-1">
+                                        <span  @click="viewPatientMonthlyReports(props.row)">
+                                            <i class="fa fa-eye"></i>
+                                        </span>     
+                                    </a>
+                                </nav>
+                                  
+                            </div>                      
                     </v-client-table> 
                 </div>
                 
             </div>
-            <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="!showDetails">
-                <div class="card-body m-50">
-                  <div class="text-center">
-                    <div class="pb-30">
-                      <img src="../../assets/img/patients.svg" alt>
+            <circle-spin class="p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
+            <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius" v-else>
+                <div  v-if="!showDetails">
+                    <div class="card-body m-50">
+                    <div class="text-center">
+                        <div class="pb-30">
+                        <img src="../../assets/img/patients.svg" alt>
+                        </div>
+                        <p>This shows an overview of all monthly reports for each patient. Click on a patient to view.</p>
                     </div>
-                    <p>This shows an overview of all monthly reports for each patient. Click on a patient to view.</p>
-                  </div>
+                    </div>
                 </div>
+                <monthly-report-layout v-else :has_monthly_report="has_monthly_report" :all_reports="all_reports" :patient_name="patient_name" :patient_id="patient_id"></monthly-report-layout>
             </div>
-            <component :is="mode" v-else></component>
+                
         </div>
     </div>
   </main>
@@ -47,20 +50,27 @@
 <script>
 import axios from 'axios'
 import allMixins from '../../mixins.js'
-import monthlyReportLayout from "../../components/therapist/MonthlyReportLayout.vue"
+import monthlyReportLayout from "../../components/therapist/monthlyreports/MonthlyReportLayout.vue"
+import {mapActions, mapMutations} from 'vuex'
 
 export default {
     data() {
         return {
+            firstLoad: true,
+            loading: false,
             showDetails: false,
             mode: "monthly-report-layout",
             patient_id: 0,
-            columns: ["id", "name"],
+            patient_name: '',
+            all_reports: [],
+            has_monthly_report: null,
+            columns: ["id", "name", 'action'],
             data: [],
             options: {
               headings: {
                 id: "S/N",
-                name: "Patient Name"
+                name: "Patient Name",
+                action: "Actions"
               },
               sortable: ["name"],
               filterable: ["name"]
@@ -68,16 +78,54 @@ export default {
         }
     },
     methods: {
-        viewPatientMonthlyReports(value) {
-            this.patient_id = value
-            this.showDetails = true
+        ...mapActions([
+            'fetchAllTherapistPatients'
+        ]),
+        viewPatientMonthlyReports(payload) {
+            this.loading = true
+            // console.log(payload)
+            this.patient_id = payload.id
+            this.patient_name = payload.name
+            axios.get(`/monthly_report/${payload.id}`)
+            .then(res => {
+                // console.log(res)
+                if(res.data.data.length>0){
+                    this.has_monthly_report = true
+                }
+                else {
+                    this.has_monthly_report = false
+                }
+                this.all_reports = res.data.data
+                this.loading = false
+                    // console.log(this.all_reports)
+                this.showDetails = true
+                
+            })
+            
             // Fetch patient details using ID
         }
     },
     mounted() {
         this.firstLoad = true
-        this.fetchAllPatients(this.firstLoad)
-    },
+        this.fetchAllTherapistPatients()
+        .then(res => {
+            this.firstLoad = false
+            console.log(res)
+                return this.data = res.data.data
+        })
+        .catch(err => {
+                console.log(err)
+                this.firstLoad = false
+                this.$notify({
+                        group: 'response',
+                        type: 'error',
+                        title: `${err}`,
+                        // text: `${res.data.message}`,
+                        duration: 2500,
+                        ignoreDuplicates: true
+                });
+        })
+    }, 
     components: {
         monthlyReportLayout
     }
