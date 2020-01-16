@@ -28,12 +28,10 @@
             <circle-spin class="p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
             <div v-else class="no-border card col-xl-8 col-md-7 mb-0 no-radius">
                 <div class="card-body m-50" v-if="!showDetails">
-                  <div class="text-center">
                     <div class="pb-30">
                       <img src="../../assets/img/patients.svg" alt>
                     </div>
                     <p>This shows an overview of all session reports for each patient. Click on a patient to view.</p>
-                  </div>
                 </div>
                 <session-report-layout v-else :has_session_report="has_session_report" :all_reports="all_reports" :patient_name="patient_name" :patient_id="patient_id"></session-report-layout>
             </div>
@@ -44,7 +42,7 @@
 
 <script>
 import axios from 'axios'
-import {mapActions, mapMutations} from 'vuex'
+import {mapActions} from 'vuex'
 import sessionReportLayout from "../../components/therapist/sessionreports/SessionReportLayout.vue"
 
 export default {

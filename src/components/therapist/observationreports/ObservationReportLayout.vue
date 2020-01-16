@@ -1,42 +1,59 @@
 <template>
-    <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius px-0">
+    <div>
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">All Observation Reports of Patient</h4>
+                      <h4 class="text-uppercase">All Observation Reports of {{patient_name}}</h4>
                     </div>
                 </header>
-                <no-view v-if="!has_obs_report" :doc_type="doc_type"></no-view>
-                <div v-else class="card-body">
+                <div class="card-body m-50" v-if="!has_observation_report">
+                  <div class="text-center">
+                    <div class="pb-10">
+                      <img src="../../../assets/img/patients.svg" alt>
+                    </div>
+                    <p>No Observation Reports yet.</p>
+                  </div>
+                </div>
+                <div v-else class="card-body  scroll h-400px">
                   <div class="row no-margin">
-                      <div class="col-xs-6 col-lg-4 col-xl-3 mb-20">
-                        <div class="text-center">
-                            <div class="fs-40 fw-400 color-2"><i class="fa fa-user"></i></div>
-                            <p class="mb-0 lead">22/09/19</p>
-                            <a @click="show" class="modal-trigger btn btn-sm" href="#">
+                    <div class="col-md-6 col-xl-3 mb-20" v-for="(report, i) in all_reports" :key="i">
+                            <div class="fs-40 fw-400 color-2"><i class="ion-ios-list-outline"></i></div>
+                            <p class="mb-0">{{datey(new Date(report.date))}}</p>
+                            <a @click="show(report)" class="modal-trigger btn btn-xs" href="#">
                             <span class="text-uppercase">View</span>
                             </a>
-                        </div>
                       </div>
                   </div>
                 </div>
+                <modal name="observation-single-report" class="report modal-container" height="auto" :clickToClose="false">
+                  <single-observation-report :report="report" :patient_name="patient_name"></single-observation-report>
+                </modal>
             </div>
 </template>
 
 <script>
-import NoView from '../../noView.vue'
+import SingleObservationReport from './SingleObservationReport.vue'
 
 export default {
+  props: ['all_reports', 'patient_name', 'patient_id', 'has_observation_report'],
   data() {
     return {
-      has_obs_report: false,
-      doc_type: 'Observation Report'
+      report: {}
     }
   },
   methods: {
-    
+    show(payload) {
+      this.report = payload
+      this.$modal.show("observation-single-report");
+    },
+    hideModal(a) {
+      a.hide('observation-single-report')
+    },
+    datey(en) {
+      return en.toLocaleDateString('en-GB')
+    },
   },
   components: {
-    NoView
+    SingleObservationReport
   }
 };
 </script>

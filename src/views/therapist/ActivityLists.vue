@@ -51,7 +51,7 @@
 <script>
 import axios from 'axios'
 import singleActivityList from "../../components/therapist/activitylists/SingleActivityList.vue"
-import {mapActions, mapMutations} from 'vuex'
+import {mapActions} from 'vuex'
 
 export default {
     data() {
