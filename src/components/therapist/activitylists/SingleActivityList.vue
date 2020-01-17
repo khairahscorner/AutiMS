@@ -1,4 +1,4 @@
-<template>
+<template> 
     <div >
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                     
-            </div>
+    </div>
 </template>
 
 <script>
@@ -63,7 +63,7 @@ export default {
     data() {
         return {
             doc_type: 'Activity List',
-            therapist_id: this.details.therapist_id,
+            // therapist_id: this.details.therapist_id,
         }
     },
     methods: {

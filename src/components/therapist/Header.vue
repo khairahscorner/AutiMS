@@ -28,6 +28,7 @@
 
 <script>
 import axios from 'axios'
+import {store} from '../../store'
 
 export default {
   data() {
@@ -36,18 +37,20 @@ export default {
         }
   },
   mounted() {
-        axios.get('/therapist')
+    axios.get('/therapist')
         .then(res => {
+            this.loading = false
             this.img_url = res.data.data.therapist.img_url
         })
         .catch(err => {
+            this.loading = false
             this.$notify({
                 group: 'response',
                 type: 'error',
-                title: `${res.data.message}`,
+                title: 'An Error Occured.',
                 duration: 5000
                 })
         })
-    }
+  }
 }
 </script>

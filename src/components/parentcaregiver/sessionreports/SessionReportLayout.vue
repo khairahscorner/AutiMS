@@ -1,37 +1,53 @@
 <template>
-    <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius px-0">
+    <div>
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">All Session Reports by Therapist name</h4>
+                        <h4 class="text-uppercase">All Session Reports by {{therapist_name}}</h4>
                     </div>
                 </header>
-                <div class="card-body">
+                <no-view v-if="!has_session_report" :doc_type="doc_type"></no-view>
+                <div v-else class="scroll h-400px card-body">
                   <div class="row no-margin">
-                      <div class="col-xs-6 col-lg-4 col-xl-3 mb-20">
-                        <div class="text-center">
-                            <div class="fs-40 fw-400 color-2"><i class="fa fa-user"></i></div>
-                            <p class="mb-0 lead">22/09/19</p>
-                            <a @click="show" class="modal-trigger btn btn-sm" href="#">
-                            <span class="text-uppercase">View</span>
+                      <div class="col-md-6 col-xl-3 mb-20" v-for="(report, i) in all_reports" :key="i">
+                            <div class="fs-40 fw-400 color-2"><i class="ion-ios-list-outline"></i></div>
+                            <p class="mb-0 lead">{{datey(new Date(report.date))}}</p>
+                            <a @click="show(report)" class="modal-trigger btn btn-xs" href="#">
+                              <span class="text-uppercase">View</span>
                             </a>
-                            <single-report></single-report>
-                        </div>
                       </div>
                   </div>
                 </div>
+                <modal name="single-session-report" class="report modal-container" height="auto" :clickToClose="false">
+                  <single-session-report :report="report" :therapist_name="therapist_name"></single-session-report>
+                </modal>
             </div>
 </template>
 
 <script>
-import SingleReport from "./SessionSingleReport.vue";
+import axios from 'axios'
+import NoView from '../../noReport.vue'
+import SingleSessionReport from "./SessionSingleReport.vue";
+
 export default {
+  props:['therapist_name', 'all_reports', 'has_session_report'],
+  data() {
+    return {
+      doc_type: 'Session Report',
+      report: {},
+    }
+  },
   methods: {
-    show() {
-      this.$modal.show("single-report");
+    show(payload) {
+      this.$modal.show("single-session-report");
+      this.report = payload
+    },
+    datey(en) {
+      return en.toLocaleDateString('en-GB')
     }
   },
   components: {
-    SingleReport
+    SingleSessionReport,
+    NoView
   }
 };
 </script>

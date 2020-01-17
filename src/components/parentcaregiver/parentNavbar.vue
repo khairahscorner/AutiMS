@@ -1,12 +1,13 @@
 <template>
     <aside class="sidebar sidebar-icons-right sidebar-icons-boxed sidebar-expand-lg">
       
-      <nav class="sidebar-navigation">
+      <nav class="scroll sidebar-navigation">
 
         <div class="sidebar-profile">
-            <img class="avatar avatar-xl" src="../../assets/img/avatar.jpg" alt="...">
+            <img v-if="user_details.img_url == null" class="avatar avatar-xl" src="../../assets/img/avatar.jpg" alt="...">
+            <img v-else class="avatar avatar-xl" :src="user_details.img_url" alt="...">
             <div class="profile-info">
-                <h5>Welcome, Maryam Amiri</h5>
+                <h5>Welcome, {{user_details.name}}</h5>
             </div>
         </div>
 
@@ -91,3 +92,33 @@
     </aside>
     <!-- END Sidebar -->
 </template>
+
+<script>
+import axios from 'axios'
+
+export default {
+    data() {
+        return {
+            loading: true,
+            user_details: {}
+        }
+    },
+    mounted() {
+        this.loading = true
+        axios.get('/parent')
+        .then(res => {
+            this.loading = false
+            this.user_details = res.data.data.parent
+        })
+        .catch(err => {
+            this.loading = false
+            this.$notify({
+                group: 'response',
+                type: 'error',
+                title: 'An error occurred. Try again',
+                duration: 5000
+                })
+        })
+    }
+}
+</script>

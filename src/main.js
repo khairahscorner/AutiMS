@@ -63,7 +63,6 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.reqToken)) {
     // console.log("requires token");
     if (userToken === null) {
-      console.log("not logged in");
       next("/")
     } 
     else {

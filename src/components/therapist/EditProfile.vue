@@ -12,7 +12,7 @@
                 <div class=" mt16">
                     <input class="text-center file-browser" placeholder="Upload Picture" type="file" ref="selected_img" @change="imageSelected"/>
                 </div>
-                <hr class="mb-10 mt-10" />
+                <hr class="mb-10 mt-10"/>
                 <form>
                     <div class="mb24 form-group">
                     <label for="name">Full Name</label>
@@ -50,11 +50,11 @@
                     </multiselect>
                     <!-- <input disabled v-model="skills" type="text" class="form-control" id="skills" /> -->
                     </div>
-                    <button v-if="loading_save" class="btn btn-sm btn-bold mr-10 btn-primary text-center" disabled>
+                    <button v-if="loading_save" class="btn btn-xs btn-bold mr-10 btn-primary text-center" disabled>
                             <circle-spin class="m-0" ></circle-spin>
                     </button>
-                    <button v-else class="btn btn-sm btn-bold btn-primary mr-10 text-center" type="button" @click="saveProfile">Save</button>
-                    <button class="btn btn-sm btn-bold bg-1 text-center" type="button" @click="refresh">Cancel</button>
+                    <button v-else class="btn btn-xs btn-bold btn-primary mr-10 text-center" type="button" @click="saveProfile">Save</button>
+                    <button class="btn btn-xs btn-bold bg-1 text-center" type="button" @click="refresh">Cancel</button>
                 </form>
                 
               </div>
@@ -93,8 +93,8 @@ export default {
         console.log(this.selected_img)
       },
       saveDetails() {
-        
-        let userData = {
+        console.log(this.id)
+          let userData = {
             name: this.name,
             gender: this.gender,
             phone_no: this.phone_no,
@@ -110,21 +110,18 @@ export default {
                       group: 'response',
                       type: 'success',
                       title: `${res.data.message}`,
-                      // text: `${res.data.message}`,
                       duration: 2500,
                   })
-                  // setTimeout(() => {
-                  //     this.$emit('saved')
-                  // }, 3000)
+                  setTimeout(() => {
+                    location.reload()
+                  }, 3000)
           })
           .catch(err => {
             this.loading_save = false
-            console.log(err)
             this.$notify({
                       group: 'response',
                       type: 'error',
                       title: `An Error Occured`,
-                      // text: `${res.data.message}`,
                       duration: 2500,
                       ignoreDuplicates: true
                   });
@@ -133,6 +130,7 @@ export default {
       saveProfile() {
         this.loading_save = true 
         if(this.selected_img == ''){
+          // save updated details without image
           this.saveDetails()
         }
         else {
@@ -161,7 +159,7 @@ export default {
       }
     },
   mounted() {
-    this.id = store.state.therapist_details.id
+    this.id = store.state.user_id
     this.name = store.state.therapist_details.name
         this.phone_no = store.state.therapist_details.phone_no
         this.gender = store.state.patient_details.gender

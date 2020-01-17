@@ -1,7 +1,7 @@
 <template>
     <aside class="sidebar sidebar-icons-right sidebar-icons-boxed sidebar-expand-lg">
       
-      <nav class="sidebar-navigation">
+      <nav class="scroll sidebar-navigation">
 
         <div class="sidebar-profile">
             <img class="avatar avatar-xl" src="../../assets/img/avatar.jpg" alt="...">

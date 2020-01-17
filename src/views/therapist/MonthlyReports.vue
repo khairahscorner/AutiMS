@@ -27,13 +27,11 @@
             </div>
             <circle-spin class="p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
             <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius" v-else>
-                    <div class="card-body m-50" v-if="!showDetails">
-                        <div class="text-center">
+                    <div class="text-center card-body m-50" v-if="!showDetails">
                             <div class="pb-30">
                             <img src="../../assets/img/patients.svg" alt>
                             </div>
                             <p>This shows an overview of all monthly reports for each patient. Click on a patient to view.</p>
-                        </div>
                     </div>
                 <monthly-report-layout v-else :has_monthly_report="has_monthly_report" :all_reports="all_reports" :patient_name="patient_name" :patient_id="patient_id"></monthly-report-layout>
             </div>

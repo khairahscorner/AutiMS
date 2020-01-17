@@ -38,24 +38,6 @@
                     </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="card card-body">
-                    <h5 class="text-uppercase">Session Reports</h5>
-                    <div class="flexbox mt-2">
-                        <span class="ion-ios-people text-primary font-s"></span>
-                        <h6 class="mb-0 font-s">9,357</h6>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <div class="card card-body">
-                    <h5 class="text-uppercase">Monthly Reports</h5>
-                    <div class="flexbox mt-2">
-                        <span class="ion-ios-people text-primary font-s"></span>
-                        <h6 class="mb-0 font-s">9,357</h6>
-                    </div>
-                    </div>
-                </div>
             </div>           
         </div>
     </main>

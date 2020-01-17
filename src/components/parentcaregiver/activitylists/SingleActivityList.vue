@@ -1,56 +1,63 @@
 <template>
-    <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius px-0">
+    <div >
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">Activity List by Therapist name</h4>
+                        <h4 class="text-uppercase">Activity List by Therapist {{therapist_name}}</h4>
                     </div>
                 </header>
-                <div class="card-body">
-                  <div class="row no-margin" v-if="!has_activity_list">
-                      <p>No Activity List for this patient</p>
-                  </div>
-                  <div class="row no-margin" v-else>
-                        <div class="pt-10">
-                            <h5 class="b-1 border-secondary bg-secondary p-10 mb-0 text-uppercase">Morning</h5>
-                            <div class="b-1 pt-10">
-                                <ul>
-                                    <li>werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</li>
-                                    <li>werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</li>
-                                    <li>werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pt-10">
-                            <h5 class="b-1 border-secondary bg-secondary p-10 mb-0 text-uppercase">Afternoon</h5>
-                            <div class="b-1 pt-10">
-                                <ul>
-                                    <li>werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</li>
-                                    <li>werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</li>
-                                    <li>werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pt-10">
-                            <h5 class="b-1 border-secondary bg-secondary p-10 mb-0 text-uppercase">Evening</h5>
-                            <div class="b-1 pt-10">
-                                <ul>
-                                    <li>werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</li>
-                                    <li>werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</li>
-                                    <li>werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc werdftghj fghgjmn fcbgvb n erfhc vergnbasadv gbxc</li>
-                                </ul>
-                            </div>
-                        </div>
-                  </div>
+                <div>
+                    <no-view v-if="!has_activity_list" :doc_type="doc_type"></no-view>
+                    <div v-else class="card-body scroll h-400px">
+                                <div class="pb-20">
+                                    <h5 class="b-1 border-secondary bg-secondary p-10 mb-0 text-uppercase">Morning</h5>
+                                    <div class="b-1 pt-10">
+                                        <ul class="list-unstyled p-10 m-0">
+                                            <li class="px-10 mb-10" v-for="(activity,i) in details.morning_activities" :key="i">
+                                                {{i+1}}. <strong>{{activity.activity_title}}</strong>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="pb-20">
+                                    <h5 class="b-1 border-secondary bg-secondary p-10 mb-0 text-uppercase">Afternoon</h5>
+                                    <div class="b-1 pt-10">
+                                        <ul class="list-unstyled p-10 m-0">
+                                            <li class="px-10 mb-10" v-for="(activity,i) in details.afternoon_activities" :key="i">
+                                               {{i+1}}. <strong>{{activity.activity_title}}</strong>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="pb-20">
+                                    <h5 class="b-1 border-secondary bg-secondary p-10 mb-0 text-uppercase">Evening</h5>
+                                    <div class="b-1 pt-10">
+                                        <ul class="list-unstyled p-10 m-0">
+                                            <li class=" px-10 mb-10" v-for="(activity,i) in details.evening_activities" :key="i">
+                                                {{i+1}}. <strong>{{activity.activity_title}}</strong>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                    </div>
                 </div>
-            </div>
+                    
+    </div>
 </template>
 
 <script>
+import axios from "axios";
+import NoView from '../../noReport.vue'
+import { store} from '../../../store'
+
 export default {
+    props: ['has_activity_list','details', 'therapist_name'],
     data() {
         return {
-            has_activity_list: true
+            doc_type: 'Activity List'
         }
+    },
+    components: {
+        NoView
     }
 }
 </script>

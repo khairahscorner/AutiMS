@@ -29,15 +29,11 @@
                 <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius">
                     <circle-spin class="p-30" v-if="loading"></circle-spin>
                     <div v-else >
-                        <div  v-if="!showDetails">
-                            <div class="card-body m-50">
-                            <div class="text-center">
+                        <div class="text-center card-body m-50" v-if="!showDetails">
                                 <div class="pb-30">
                                 <img src="../../assets/img/patients.svg" alt>
                                 </div>
                                 <p>This shows each patient's activity list. Click on a patient to view.</p>
-                            </div>
-                            </div>
                         </div>
                         <component :is="mode" v-else :patient_id="patient_id" 
                         :has_activity_list="has_activity_list" :details="details"></component>
@@ -79,7 +75,7 @@ export default {
         ...mapActions([
             'fetchAllTherapistPatients'
         ]),
-       viewPatientActivityList(value) {
+        viewPatientActivityList(value) {
            this.loading = true
            this.mode = "single-activity-list"
             this.patient_id = value 

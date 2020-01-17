@@ -6,55 +6,59 @@
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
                         <h4 class="text-uppercase">therapist list</h4>
-                        
                     </div>
                 </header>
-                <div class="card-body media-list media-list-hover media-list-divided">
-                        <!-- button shouldnt be here -->
-                    <button
-                        class="btn btn-sm btn-bold btn-primary text-center"
-                        type="button"
-                        @click="viewPatientActivityList"
-                        >VIEW 
-                        </button>
-                    <v-client-table :columns="columns" :data="data" :options="options"> 
-                        <a href="#" class="media media-single">
-                            <span slot="id" slot-scope="props">{{props.index}}</span>
-                            <span slot="name" slot-scope="props" class="title">{{props.row.firstname}} {{props.row.lastname}}</span>
-                            <span class="btn btn-sm btn-danger" @click="viewPatientActivityList(props.row.id)">
-                                <i class="fa fa-eye"></i>
-                            </span>
-                        </a>                        
+                <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
+               <div v-else class="scroll h-400px card-body media-list media-list-hover media-list-divided">
+                    <v-client-table :columns="columns" :data="data" :options="options">
+                        <div slot="id" slot-scope="props">{{props.index}}</div>
+                        <div slot="name" slot-scope="props">{{props.row.therapist.name}}</div>
+                            <div slot="action" slot-scope="props">
+                                <nav class="flexbox fs-16">
+                                    <a href="#" class="btn btn-xs bg-1"  @click="viewChildActivityList(props.row)">
+                                        <span>
+                                            <i class="fa fa-eye"></i>
+                                        </span>     
+                                    </a>
+                                </nav>
+                            </div>                    
                     </v-client-table> 
                 </div>
                 
             </div>
-            <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="!showDetails">
-                <div class="card-body m-50">
-                  <div class="text-center">
-                    <div class="pb-30">
-                      <img src="../../../assets/img/patients.svg" alt>
+            <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius">
+                <circle-spin class="p-30" v-if="loading"></circle-spin>
+                <div v-else>
+                    <div class="text-center card-body m-50" v-if="!showDetails">
+                        <div class="pb-30">
+                        <img src="../../../assets/img/patients.svg" alt>
+                        </div>
+                        <p>This shows the activity list of the patient for each therapist. Click on a therapist to view.</p>
                     </div>
-                    <p>This shows the activity list of the patient for each therapist. Click on a therapist to view.</p>
-                  </div>
+                    <component :is="mode" v-else :therapist_name="therapist_name" 
+                        :has_activity_list="has_activity_list" :details="details">
+                    </component>
                 </div>
             </div>
-            <component :is="mode" v-else></component>
         </div>
     </div>
   </main>
 </template>
 
 <script>
+import axios from 'axios'
 import singleActivityList from "./SingleActivityList.vue"
 
 export default {
     data() {
         return {
+            firstLoad: true,
+            loading: false,
             showDetails: false,
+            therapist_name: '',
+            details: {},
             mode: "single-activity-list",
-            patientId: 0,
-            columns: ["id", "name"],
+            columns: ["id", "name", 'action'],
             data: [],
             options: {
               headings: {
@@ -67,11 +71,60 @@ export default {
         }
     },
     methods: {
-        viewPatientActivityList(value) {
-            this.patientId = value
+        viewChildActivityList(payload) {
+           this.loading = true
+           this.mode = "single-activity-list"
+           this.therapist_name = payload.therapist.name
+            axios.get(`/view_patient/${payload.id}`)
+            .then(res => {
+                // console.log(res.data)
+                this.loading = false
+                if(res.data.data.morning_activities.length > 0 || res.data.data.afternoon_activities.length > 0 || res.data.data.evening_activities.length > 0){
+                    this.has_activity_list = true
+                }
+                else { this.has_activity_list = false}
+                this.details = res.data.data
+                // console.log(this.details)
+            })
+            .catch(err => {
+                // console.log(err)
+                    this.loading = false
+                    this.$notify({
+                        group: 'response',
+                        type: 'error',
+                        title: 'An Error Occured',
+                        duration: 2500,
+                        ignoreDuplicates: true
+                    });
+            })
             this.showDetails = true
             // Fetch patient details using ID
-        }
+        },
+    },
+    mounted() {
+        this.firstLoad = true
+        axios.get('/parent')
+        .then(res => {
+            let email = res.data.data.email
+            axios.get(`/parent/view_patients/${email}`) 
+            .then(res => {
+                this.firstLoad = false
+                console.log(res)
+                return this.data = res.data.data
+            })
+            .catch(err => {
+                    console.log(err)
+                    this.firstLoad = false
+                    this.$notify({
+                            group: 'response',
+                            type: 'error',
+                            title: 'An Error occured',
+                            // text: `${res.data.message}`,
+                            duration: 2500,
+                            ignoreDuplicates: true
+                    });
+            })   
+        })
     },
     components: {
         singleActivityList

@@ -9,7 +9,7 @@
                 <div class="header-bar flexbox pl-20">
                     <h4>My Profile Information</h4>
                     <button
-                    class="btn btn-sm btn-bold btn-primary text-center"
+                    class="btn btn-xs btn-bold btn-primary text-center"
                     type="button"
                     @click="edit=true"
                     >Edit</button>
@@ -55,7 +55,7 @@
                 </div>
                 </div>
             </div>
-            <component :is="editComponent" v-else @saved="showUpdatedProfile"></component>
+            <component :is="editComponent" v-else></component>
         </div>
       </div>
     </div>
@@ -76,16 +76,12 @@ export default {
       editComponent: 'app-edit-profile'
     };
   },
-  methods: {
-      showUpdatedProfile() {
-          this.edit = false
-      }
-  },
   mounted() {
     this.loading = true
     axios.get('/therapist')
     .then(res => {
       this.loading = false
+      store.commit('SAVE_USER_ID',res.data.data.id)
       console.log(res.data.data)
       this.details = res.data.data.therapist
       store.commit('SAVE_THERAPIST_DETAILS', res.data.data.therapist)

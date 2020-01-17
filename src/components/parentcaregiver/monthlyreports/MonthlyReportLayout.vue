@@ -1,37 +1,50 @@
-<template>
-    <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius px-0">
+<template> 
+    <div>
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">All Monthly Reports by Therapist name</h4>
+                        <h4 class="text-uppercase">All Monthly Reports by {{therapist_name}}</h4>
                     </div>
                 </header>
-                <div class="card-body">
+                <no-view v-if="!has_monthly_report" :doc_type="doc_type"></no-view>
+                <div v-else class="scroll h-400px card-body">
                   <div class="row no-margin">
-                      <div class="col-xs-6 col-lg-4 col-xl-3 mb-20">
-                        <div class="text-center">
-                            <div class="fs-40 fw-400 color-2"><i class="fa fa-user"></i></div>
-                            <p class="mb-0 lead">September</p>
-                            <a @click="show" class="modal-trigger btn btn-sm" href="#">
-                            <span class="text-uppercase">View</span>
+                    <div class="col-md-6 col-xl-3 mb-20" v-for="(report, i) in all_reports" :key="i">
+                            <div class="fs-40 fw-400 color-2"><i class="ion-ios-list-outline"></i></div>
+                            <p class="mb-0 lead">{{report.month}}</p>
+                            <a @click="show(report)" class="modal-trigger btn btn-xs" href="#">
+                              <span class="text-uppercase">View</span>
                             </a>
-                            <month-single-report></month-single-report>
-                        </div>
                       </div>
                   </div>
                 </div>
+                <modal name="single-monthly-report" class="report modal-container" height="auto" :clickToClose="false">
+                  <single-monthly-report :report="report" :therapist_name="therapist_name"></single-monthly-report>
+                </modal>
             </div>
 </template>
 
 <script>
-import MonthSingleReport from "./MonthlySingleReport.vue";
+import axios from 'axios'
+import NoView from '../../noReport.vue'
+import SingleMonthlyReport from "./MonthlySingleReport.vue";
+
 export default {
+  props:['therapist_name', 'all_reports', 'has_monthly_report'],
+  data() {
+    return {
+      doc_type: 'Observation Report',
+      report: {},
+    }
+  },
   methods: {
-    show() {
-      this.$modal.show("month-single-report");
+    show(payload) {
+      this.$modal.show("single-monthly-report");
+      this.report = payload
     }
   },
   components: {
-    MonthSingleReport
+    SingleMonthlyReport,
+    NoView
   }
 };
 </script>

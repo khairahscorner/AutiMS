@@ -34,19 +34,16 @@
 import SingleObservationReport from './SingleObservationReport.vue'
 
 export default {
-  props: ['all_reports', 'patient_name', 'patient_id', 'has_observation_report'],
+  props: ['all_reports', 'patient_name', 'has_observation_report'],
   data() {
     return {
       report: {}
     }
-  },
+  }, 
   methods: {
     show(payload) {
       this.report = payload
       this.$modal.show("observation-single-report");
-    },
-    hideModal(a) {
-      a.hide('observation-single-report')
     },
     datey(en) {
       return en.toLocaleDateString('en-GB')

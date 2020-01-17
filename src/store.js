@@ -1,20 +1,27 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from 'axios';
-import {router} from './router'
 
 Vue.use(Vuex);
 
 export const store =  new Vuex.Store({
   state: {
+    user_id: null,
     patient_details: {},
+    parent_details: {},
     therapist_details: {},
     monthly_report: {},
     session_report: {},
   }, 
   mutations: {
+    SAVE_USER_ID: (state, payload) => {
+      state.user_id = payload
+    },
     SAVE_PATIENT_DETAILS: (state, payload) => {
       state.patient_details = payload
+    },
+    SAVE_PARENT_DETAILS: (state, payload) => {
+      state.parent_details = payload
     },
     SAVE_THERAPIST_DETAILS: (state, payload) => {
       state.therapist_details = payload
@@ -27,7 +34,7 @@ export const store =  new Vuex.Store({
     },
   },
   actions: {
-    fetchAllTherapistPatients: ({state, getters}) => {
+    fetchAllTherapistPatients: () => {
       return axios.get('/therapist/view_patients/')    
     },
     // fetchStock: ({state, getters, commit}, payload) => {

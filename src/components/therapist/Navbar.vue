@@ -1,7 +1,7 @@
 <template>
     <aside class="sidebar sidebar-icons-right sidebar-icons-boxed sidebar-expand-lg">
         <circle-spin class="mt-150" v-if="loading"></circle-spin>
-        <nav class="sidebar-navigation" v-else>
+        <nav class="scroll sidebar-navigation" v-else>
 
             <div class="sidebar-profile">
                 <img v-if="user_details.img_url == null" class="avatar avatar-xl" src="../../assets/img/avatar.jpg" alt="...">
@@ -134,7 +134,7 @@ export default {
             this.$notify({
                 group: 'response',
                 type: 'error',
-                title: `${res.data.message}`,
+                title: 'An error occured',
                 duration: 5000
                 })
         })
