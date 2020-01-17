@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import NoView from '../../noView.vue'
 
 export default {

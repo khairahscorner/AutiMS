@@ -10,12 +10,17 @@ export const store =  new Vuex.Store({
     patient_details: {},
     parent_details: {},
     therapist_details: {},
+    therapist_name: '',
     monthly_report: {},
     session_report: {},
+    observation_report: {}
   }, 
   mutations: {
     SAVE_USER_ID: (state, payload) => {
       state.user_id = payload
+    },
+    SAVE_THERAPIST_NAME: (state, payload) => {
+      state.therapist_name = payload
     },
     SAVE_PATIENT_DETAILS: (state, payload) => {
       state.patient_details = payload
@@ -32,6 +37,9 @@ export const store =  new Vuex.Store({
     SAVE_SESSION_REPORT: (state, payload) => {
       state.session_report = payload
     },
+    SAVE_OBSERVATION_REPORT: (state, payload) => {
+      state.observation_report = payload
+    }
   },
   actions: {
     fetchAllTherapistPatients: () => {
