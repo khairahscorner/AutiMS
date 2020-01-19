@@ -181,7 +181,8 @@ export default {
                 this.$notify({
                     group: 'response',
                     type: 'error',
-                    title: `${err.response}`,
+                    title: 'An Error Occured',
+                    text: `${err.response}`,
                     duration: 5000,
                     ignoreDuplicates: true
                 });

@@ -8,7 +8,7 @@
                         <button v-if="loading" class="btn btn-sm btn-bold btn-primary text-center" disabled>
                             <circle-spin class="m-0" ></circle-spin>
                         </button>
-                        <button v-else class="btn btn-sm btn-bold btn-primary text-center"  @click="addNewPatient">
+                        <button v-else :disabled="$v.$invalid" class="btn btn-sm btn-bold btn-primary text-center"  @click="addNewPatient">
                             SAVE
                         </button>
                     </div>
@@ -160,14 +160,27 @@ export default {
             .catch(err => {
                 this.loading = false
                 console.log(err.response)
-                this.$notify({
+                if(err.response.status == 404) {
+                    this.$notify({
+                        group: 'response',
+                        type: 'error',
+                        title: 'An Error Occured',
+                        text: 'Parent does not have an existing account on the platform.',
+                        duration: 2500,
+                        ignoreDuplicates: true
+                    });
+                }
+                else{
+                   this.$notify({
                     group: 'response',
                     type: 'error',
-                    title: `${err.response.message}`,
+                    title: 'An Error occured. Try again',
                     // text: `${res.data.message}`,
                     duration: 2500,
                     ignoreDuplicates: true
-                });
+                }); 
+                }
+                
             })
         }
     }

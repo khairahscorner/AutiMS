@@ -113,12 +113,11 @@ export default {
       })
       .catch(err => {
         this.loading = false
-                console.log(err)
                 this.$notify({
                     group: 'response',
                     type: 'error',
                     title: 'An Error Occured.',
-                    text: `${err.response}`,
+                    text: `${err.response.data.message}`,
                     duration: 5000,
                     ignoreDuplicates: true
                 });

@@ -1,12 +1,13 @@
 <template>
     <aside class="sidebar sidebar-icons-right sidebar-icons-boxed sidebar-expand-lg">
-      
-      <nav class="scroll sidebar-navigation">
+    <circle-spin class="mt-50" v-if="loading"></circle-spin>  
+      <nav v-else class="scroll sidebar-navigation">
 
         <div class="sidebar-profile">
-            <img class="avatar avatar-xl" src="../../assets/img/avatar.jpg" alt="...">
+            <img v-if="user_details.img_url == null" class="avatar avatar-xl" src="../../assets/img/avatar.jpg" alt="...">
+            <img v-else class="avatar avatar-xl" :src="user_details.img_url" alt="...">
             <div class="profile-info">
-                <h5>Welcome, Maryam Amiri</h5>
+                <h5>Welcome, {{user_details.name}}</h5>
             </div>
         </div>
 
@@ -71,7 +72,7 @@
                 </ul>
             </li>
             <li class="menu-item">
-                <a class="menu-link" href="#">
+                <a class="menu-link" href="#" @click="logOut">
                 <span class="icon fa fa-sign-out"></span>
                 <span class="title">Log Out</span>
                 </a>
@@ -83,3 +84,47 @@
     </aside>
     <!-- END Sidebar -->
 </template>
+
+<script>
+import axios from 'axios'
+
+export default {
+    data() {
+        return {
+            loading: true,
+            user_details: {}
+        }
+    },
+    methods: {
+        logOut() {
+            localStorage.clear()
+            this.$notify({
+                group: 'response',
+                type: 'success',
+                title: 'Logged Out',
+                duration: 2500
+                })
+                setTimeout(() => {
+                    this.$router.push('/')
+                }, 3000)
+        }
+    },
+    mounted() {
+        this.loading = true
+        axios.get('/caregiver')
+        .then(res => {
+            this.loading = false
+            this.user_details = res.data.data.caregiver
+        })
+        .catch(err => {
+            this.loading = false
+            this.$notify({
+                group: 'response',
+                type: 'error',
+                title: 'An error occurred. Try again',
+                duration: 5000
+                })
+        })
+    }
+}
+</script>

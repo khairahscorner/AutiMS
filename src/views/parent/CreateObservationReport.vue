@@ -59,7 +59,7 @@
 <script>
 import axios from 'axios'
 import {required} from "vuelidate/lib/validators";
-import allMixins from '../../../mixins.js'
+import allMixins from '../../mixins.js'
 
 export default {
     mixins: [allMixins],
@@ -103,17 +103,9 @@ export default {
                     title: `${res.data.message}`,
                     duration: 2500,
                 })
-                let details = this.$jwt.decode(this.retrieveToken(window.btoa('userToken')))
-                if(details.data.user_type == 'parent') {
-                  setTimeout(() => {
+                setTimeout(() => {
                     this.$router.push('/parent/observation-reports')
                   }, 3000)
-                }
-                else {
-                    setTimeout(() => {
-                        this.$router.push('/observation-reports')
-                    }, 3000)
-                }
             })
             .catch(err => {
                 this.loading = false

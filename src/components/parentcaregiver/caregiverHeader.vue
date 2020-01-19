@@ -11,7 +11,8 @@
         <ul class="topbar-btns">
           <li class="dropdown">
             <span class="topbar-btn" data-toggle="dropdown">
-                <img class="avatar" src="../../assets/img/avatar.jpg" alt="...">
+                <img v-if="img_url == null" class="avatar" src="../../assets/img/avatar.jpg" alt="...">
+                <img v-else class="avatar" :src="img_url" alt="...">
             </span>
             <div class="dropdown-menu dropdown-menu-right">
               <router-link tag="a" to="/profile" class="dropdown-item topbar-item">
@@ -25,3 +26,32 @@
     </header>
     <!-- END Topbar -->
 </template>
+
+<script>
+import axios from 'axios'
+import {store} from '../../store'
+
+export default {
+  data() {
+        return {
+            img_url: null
+        }
+  },
+  mounted() {
+    axios.get('/caregiver')
+        .then(res => {
+            this.loading = false
+            this.img_url = res.data.data.caregiver.img_url
+        })
+        .catch(err => {
+            this.loading = false
+            this.$notify({
+                group: 'response',
+                type: 'error',
+                title: 'An error occurred. Try again',
+                duration: 5000
+                })
+        })
+  }
+}
+</script>

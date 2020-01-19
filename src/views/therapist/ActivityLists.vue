@@ -1,7 +1,20 @@
 <template>
     <main class="pd-main">
-        <div class="main-content">
-            <div class="row no-margin">
+        <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
+        <div v-else class="main-content">
+            <div class="card no-radius text-center card-body p-50" v-if="no_therapist">
+                <div class="pb-10">
+                    <img src="../../assets/img/patients.svg" alt>
+                </div>
+                <p>You haven't added any patient yet.</p>
+                <div>
+                   <router-link tag="a" to="/therapist/patients/new" class="btn-bold mr-10 btn btn-xs bg-1" href="#">
+                        <span class="text-uppercase">Add New</span>
+                    </router-link> 
+                </div>
+                 
+            </div>
+            <div v-else class="row no-margin">
                 <div class="card col-xl-4 col-md-5 br-1 mb-0 no-radius px-0 br-primary">
                     <header class="no-border">
                         <div class="header-bar flexbox pl-20">
@@ -55,6 +68,7 @@ export default {
             firstLoad: true,
             loading: false,
             showDetails: false,
+            no_therapist: false,
             patient_id: null,
             details: {},
             mode: "single-activity-list",
@@ -110,7 +124,10 @@ export default {
         this.fetchAllTherapistPatients()
         .then(res => {
             this.firstLoad = false
-            return this.data = res.data.data
+            if(res.data.data.length > 0) {
+                    return this.data = res.data.data
+                }
+                else this.no_therapist = true
         })
         .catch(err => {
                 console.log(err)

@@ -98,7 +98,7 @@ const router = new Router({
         { path: "/parent/monthly-reports", component: () => import("./views/parent/MonthlyReports.vue"), meta: {title: 'Monthly Reports', reqToken: true} },
         
         { path: "/parent/observation-reports", component: () => import("./views/parent/ObservationReports.vue"), meta: {title: 'Observation Reports', reqToken: true} },
-        { path: "/parent/observation-reports/:patient_id/new", component: () => import("./components/parentcaregiver/observationreports/CreateObservationReport.vue"), meta: {title: 'New Observation Report', reqToken: true} },
+        { path: "/parent/observation-reports/:patient_id/new", component: () => import("./views/parent/CreateObservationReport.vue"), meta: {title: 'New Observation Report', reqToken: true} },
         { path: "/parent/observation-reports/:payload", component: () => import("./views/parent/SingleObservationReport.vue"), meta: {title: 'Observation Report', reqToken: true} },
 
         { path: "/caregivers", component: () => import("./views/parent/Caregivers.vue"), meta: {title: 'All Caregivers', reqToken: true} },
@@ -134,7 +134,7 @@ const router = new Router({
         { path: "/monthly-reports", component: () => import("./views/caregiver/MonthlyReports.vue"), meta: {title: 'Monthly Reports', reqToken: true} },
         
         { path: "/observation-reports", component: () => import("./views/caregiver/ObservationReports.vue"), meta: {title: 'Observation Reports', reqToken: true} },
-        { path: "/observation-reports/:patient_id/new", component: () => import("./components/parentcaregiver/observationreports/CreateObservationReport.vue"), meta: {title: 'New Observation Report', reqToken: true} },
+        { path: "/observation-reports/:patient_id/new", component: () => import("./views/caregiver/CreateObservationReport.vue"), meta: {title: 'New Observation Report', reqToken: true} },
         { path: "/observation-reports/:payload", component: () => import("./views/caregiver/ObservationSingleReport.vue"), meta: {title: 'Observation Report', reqToken: true} },
       ],
       beforeEnter(to, from, next) {

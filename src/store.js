@@ -9,6 +9,7 @@ export const store =  new Vuex.Store({
     user_id: null,
     patient_details: {},
     parent_details: {},
+    caregiver_details: {},
     therapist_details: {},
     therapist_name: '',
     monthly_report: {},
@@ -27,6 +28,9 @@ export const store =  new Vuex.Store({
     },
     SAVE_PARENT_DETAILS: (state, payload) => {
       state.parent_details = payload
+    },
+    SAVE_CAREGIVER_DETAILS: (state, payload) => {
+      state.caregiver_details = payload
     },
     SAVE_THERAPIST_DETAILS: (state, payload) => {
       state.therapist_details = payload

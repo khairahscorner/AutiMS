@@ -1,9 +1,14 @@
 <template>
   <main class="pd-main">
-    <div class="main-content">
-        <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
-       <div v-else class="row no-margin">
-            <div class="card br-1 mb-0 no-radius px-0 br-primary">
+    <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
+    <div v-else class="main-content">
+            <div class="card no-radius text-center card-body p-50" v-if="no_caregiver">
+                <div class="pb-10">
+                    <img src="../../assets/img/patients.svg" alt>
+                </div>
+                <p>You haven't added any caregivers yet.</p>   
+            </div>
+        <div v-else class="card br-1 mb-0 no-radius px-0 br-primary">
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
                         <h4 class="text-uppercase">Caregivers</h4>
@@ -23,8 +28,9 @@
                             </div>                      -->
                     </v-client-table> 
                 </div>   
-            </div>
-            <div class="no-border card col-xl-4 col-md-5 px-0 mb-0 no-radius" v-if="!add_new">
+          </div>
+        <div class="row no-margin mt-20">
+            <div class="no-border card col-md-6 px-0 mb-0 no-radius" v-if="!add_new">
                 <h4 class="card-title"><strong>NEW CAREGIVER</strong></h4>
                 <div class="card-body m-50">
                   <div class="text-center">
@@ -35,33 +41,45 @@
                   </div>
                 </div>
             </div>
-            <div class="no-border card col-xl-4 col-md-5 px-0 mb-0 no-radius" v-else>
+            <div class="no-border card col-md-6 px-0 mb-0 no-radius" v-else>
                 <h4 class="card-title"><strong>NEW CAREGIVER</strong></h4>
                 <div class="card-body">
                     <form>
                             <div class="form-group pt-10">
                                 <label for="name">Name</label>
                                 <input v-model="name" @blur="$v.name.$touch()" type="text" class="form-control" id="name">
+                                <div v-if="$v.name.$dirty">
+                                  <div class="error" v-if="!$v.name.required">*Required.</div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input v-model="email" @blur="$v.email.$touch()" type="text" class="form-control" id="email">
+                              <div v-if="$v.email.$dirty">
+                                  <div class="error" v-if="!$v.email.required">*Required.</div>
+                                </div>
                             </div> 
                                     <div class="form-group">
                                         <label for="phone_no">Phone Number</label>
                                         <input v-model="phone_no" @blur="$v.phone_no.$touch()" type="text" class="form-control" id="phone_no">
+                                      <div v-if="$v.phone_no.$dirty">
+                                        <div class="error" v-if="!$v.phone_no.required">*Required.</div>
+                                      </div>
                                     </div> 
                             <div class="form-group">
                                         <label for="relationship">Relationship</label>
                                         <input v-model="relationship" @blur="$v.relationship.$touch()" type="text" class="form-control" id="relationship">
+                              <div v-if="$v.relationship.$dirty">
+                                  <div class="error" v-if="!$v.relationship.required">*Required.</div>
+                                </div>
                             </div> 
                             <button class="mb-10 btn btn-xs btn-bold btn-primary" v-if="load_add" disabled>
                               <circle-spin class="m-0" ></circle-spin>
                             </button>
-                            <button v-else class="mb-10 btn btn-xs btn-bold btn-primary" @click="addNewCaregiver" type="button">Add Caregiver</button>
+                            <button v-else class="mb-10 btn btn-xs btn-bold btn-primary" :disabled="$v.$invalid" @click="addNewCaregiver" type="button">Add Caregiver</button>
                     </form>
                 </div>
-          </div>
+            </div>
         </div>
     </div>
   </main>
@@ -69,14 +87,14 @@
 
 <script>
 import axios from 'axios'
-import {required} from "vuelidate/lib/validators";
+import {required, email} from "vuelidate/lib/validators"
 
 export default {
     data() {
         return {
           firstLoad: true,
           load_add: false,
-            patientId: 0,
+          no_caregiver: false,
             add_new: false,
             columns: ["id", "name", "email", "phone_no", "relationship"],
             data: [],
@@ -98,8 +116,10 @@ export default {
         }
     },
     validations: {
-        title: { required },
-        summary: { required }
+      name: { required },
+      phone_no: { required },
+      relationship: { required },
+      email: { required, email },
     },
     methods: {
         // suspendCaregiverAccount(value) {
@@ -144,25 +164,28 @@ export default {
             })
         }
     },
-    // mounted() {
-    //   this.patient_id = this.$route.params.patient_id
-    //     axios.get(`/view_patient/${this.patient_id}`)
-    //     .then(res => {
-    //         this.firstLoad = false
-    //         this.patient_name = res.data.data.parent.child_name
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //         this.firstLoad = false
-    //             this.$notify({
-    //                 group: 'response',
-    //                 type: 'error',
-    //                 title: 'Error fetching patient. Try again',
-    //                 // text: `${res.data.message}`,
-    //                 duration: 2500,
-    //                 ignoreDuplicates: true
-    //             })
-    //     })
-    // }
+    mounted() {
+      axios.get('/parent/caregivers')
+        .then(res => {
+          console.log(res)
+          this.firstLoad = false
+          if(res.data.data.caregivers.length > 0){
+            return this.data = res.data.data.caregivers
+          }
+          else this.no_caregiver = true
+          })
+          .catch(err => {
+            console.log(err)
+            this.firstLoad = false
+                this.$notify({
+                    group: 'response',
+                    type: 'error',
+                    title: 'Error fetching patient. Try again',
+                    // text: `${res.data.message}`,
+                    duration: 2500,
+                    ignoreDuplicates: true
+                })
+          })
+    }
 }
 </script>

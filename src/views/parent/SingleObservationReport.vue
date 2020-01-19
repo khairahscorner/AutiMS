@@ -5,7 +5,7 @@
             <div v-if="!edit">
                     <header class="no-border">
                         <div class="header-bar flexbox pl-20">
-                            <h4 class="text-uppercase">{{datey(new Date(report.date))}} Report by {{therapist_name}}</h4>
+                            <h4 class="text-uppercase">{{datey(new Date(report.date))}} Report for {{therapist_name}}</h4>
                             <div>
                                 <a @click="editReport" class="text-white btn btn-xs btn-bold mr-10 bg-1 text-center">
                                     Edit<i class=" fa fa-edit"></i>

@@ -20,19 +20,19 @@
                         <img v-else class="avatar avatar-xxl" :src="details.img_url" />
                         <hr class="mb-10 mt-10" />
                         <div class="mb16 flexbox align-items-center justify-content-start">
-                        <h6 class="mb-0">Full Name:</h6>
+                        <div class="mb-0"><strong>Name:</strong></div>
                         <div class>{{details.name}}</div>
                         </div>
                         <div class="mb16 flexbox align-items-center justify-content-start">
-                        <h6 class="mb-0">Email:</h6>
+                    <div class="mb-0"><strong>Email:</strong></div>
                         <div class>{{details.email}}</div>
                         </div>
                         <div class="mb16 flexbox align-items-center justify-content-start">
-                        <h6 class="mb-0">Gender:</h6>
+                        <div class="mb-0"><strong>Gender:</strong></div>
                         <div class>{{details.gender}}</div>
                         </div>
                         <div class="mb16 flexbox align-items-center justify-content-start">
-                            <h6 class="mb-0">Phone Number:</h6>
+                          <div class="mb-0"><strong>Phone Number:</strong></div>
                             <div class>{{details.phone_no}}</div>
                         </div>
                     </div>
@@ -43,15 +43,15 @@
             <div class="callout callout-bg1" role="alert">
                 <h4 class="fw-600 text-uppercase">Child Information</h4>
                   <div class="mb16 flexbox align-items-center justify-content-start">
-                      <h6 class="mb-0">Name:</h6>
+                    <div class="mb-0"><strong>Name:</strong></div>
                       <div class>{{details.child_name}}</div>
                   </div>
                   <div class="mb16 flexbox align-items-center justify-content-start">
-                      <h6 class="mb-0">Age:</h6>
+                    <div class="mb-0"><strong>Age:</strong></div>
                       <div class>{{details.child_age}}</div>
                   </div>
                   <div class="mb16 flexbox align-items-center justify-content-start">
-                      <h6 class="mb-0">Gender:</h6>
+                    <div class="mb-0"><strong>Gender:</strong></div>
                       <div class>{{details.child_gender}}</div>
                   </div>
             </div>

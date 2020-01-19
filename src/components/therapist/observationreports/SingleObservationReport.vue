@@ -22,9 +22,9 @@
             </div>
           </div>
           <div class="row no-margin lead">
-            <div class="col-md-4 text-uppercase">Summary</div>
+            <div class="col-md-4 text-uppercase">Suggestions</div>
             <div class="col-md-8">
-              {{report.summary}}
+              {{report.suggestions}}
             </div>
           </div>
         </div>

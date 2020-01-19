@@ -2,7 +2,7 @@
     <div>
                     <header class="no-border">
                         <div class="header-bar flexbox pl-20">
-                            <h4 class="text-uppercase">Edit {{datey(new Date(date))}} Report by {{therapist_name}}</h4>
+                            <h4 class="text-uppercase">Edit {{datey(new Date(date))}} Report for {{therapist_name}}</h4>
                             <button v-if="loading" class="btn btn-sm btn-bold btn-primary text-center" disabled>
                                 <circle-spin class="m-0" ></circle-spin>
                             </button>

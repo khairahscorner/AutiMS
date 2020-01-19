@@ -1,7 +1,8 @@
 <template>
     <aside class="sidebar sidebar-icons-right sidebar-icons-boxed sidebar-expand-lg">
-      
-      <nav class="scroll sidebar-navigation">
+    <circle-spin class="mt-50" v-if="loading"></circle-spin>
+     
+      <nav v-else class="scroll sidebar-navigation">
 
         <div class="sidebar-profile">
             <img v-if="user_details.img_url == null" class="avatar avatar-xl" src="../../assets/img/avatar.jpg" alt="...">
@@ -80,7 +81,7 @@
                 </a>
             </router-link>
             <li class="menu-item">
-                <a class="menu-link" href="#">
+                <a class="menu-link" href="#" @click="logOut">
                 <span class="icon fa fa-sign-out"></span>
                 <span class="title">Log Out</span>
                 </a>
@@ -101,6 +102,20 @@ export default {
         return {
             loading: true,
             user_details: {}
+        }
+    },
+    methods: {
+        logOut() {
+            localStorage.clear()
+            this.$notify({
+                group: 'response',
+                type: 'success',
+                title: 'Logged Out',
+                duration: 2500
+                })
+                setTimeout(() => {
+                    this.$router.push('/')
+                }, 3000)
         }
     },
     mounted() {

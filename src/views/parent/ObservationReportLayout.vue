@@ -2,7 +2,7 @@
     <div>
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
-                        <h4 class="text-uppercase">All Observation Reports by {{therapist_name}}</h4>
+                        <h4 class="text-uppercase">All Observation Reports For {{therapist_name}}</h4>
                         <router-link :to="'/parent/observation-reports/'+ patient_id + '/new'" tag="button"
                         class="btn btn-xs btn-bold btn-primary text-center"
                         >New<i class="fa fa-plus-square"></i>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import NoView from '../../noView.vue'
+import NoView from '../../components/noView'
 
 export default {
   props:['patient_id','therapist_name', 'all_reports', 'has_observation_report'],

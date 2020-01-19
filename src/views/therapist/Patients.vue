@@ -1,14 +1,20 @@
 <template>
   <main class="pd-main">
-    <div class="main-content">
-        <div class="card md-hidden no-border mb-10 no-radius">
-                <div class="card-body">
-                    <div class="text-center">
-                        <p class="mb-0">This shows each patient's profile information. Click on a patient to view their information.</p>
-                    </div>
+    <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
+    <div v-else class="main-content">
+        <div class="card no-radius text-center card-body p-50" v-if="no_therapist">
+                <div class="pb-10">
+                    <img src="../../assets/img/patients.svg" alt>
                 </div>
+                <p>You haven't added any patient yet.</p>
+                <div>
+                   <router-link tag="a" to="/therapist/patients/new" class="btn-bold mr-10 btn btn-xs bg-1" href="#">
+                        <span class="text-uppercase">Add New</span>
+                    </router-link> 
+                </div>
+                 
         </div>
-        <div class="row no-margin">
+        <div v-else class="row no-margin">
             <div class="card col-xl-4 col-md-5 br-1 mb-0 no-radius px-0 br-primary">
                 <header class="no-border">
                     <div class="header-bar flexbox pl-20">
@@ -102,6 +108,7 @@ export default {
             firstLoad: true, 
             load_delete: false,
             showPatient: false,
+            no_therapist: false,
             mode: "patient-profile",
             patient_id: 0,
             all_patients: [],
@@ -180,8 +187,10 @@ export default {
         // axios.get('/therapist/view_patients/')
         .then(res => {
             this.firstLoad = false
-                console.log(res.data.data)
-                return this.data = res.data.data
+            if(res.data.data.length > 0) {
+                    return this.data = res.data.data
+                }
+                else this.no_therapist = true
         })
         .catch(err => {
                 console.log(err)

@@ -5,7 +5,7 @@
             <div v-if="!edit">
                     <header class="no-border">
                         <div class="header-bar flexbox pl-20">
-                            <h4 class="text-uppercase">{{datey(new Date(report.date))}} Report  by {{therapist_name}}</h4>
+                            <h4 class="text-uppercase">{{datey(new Date(report.date))}} Report  for {{therapist_name}}</h4>
                             <div>
                                 <a @click="editReport" class="text-white btn btn-xs btn-bold mr-10 bg-1 text-center">
                                     Edit<i class=" fa fa-edit"></i>
@@ -75,10 +75,12 @@ export default {
            this.fetchReport()
        },
        fetchReport() {
-           axios.get(`/observation_report/single_report/${this.report_id}`)
+            store.commit('SAVE_THERAPIST_NAME', this.therapist_name)
+            axios.get(`/observation_report/single_report/${this.report_id}`)
             .then(res => {
                 this.firstLoad = false
                 this.edit = false
+                console.log(res.data)
                 store.commit('SAVE_OBSERVATION_REPORT', res.data.data)
                 this.report = res.data.data
             })
@@ -97,9 +99,10 @@ export default {
        }  
     },
     mounted() {
-        this.report_id = this.$route.params.report_id
-        this.fetchReport()
-        
+        let payload = this.$route.params.payload.split('&')
+        this.report_id = payload[0]
+        this.therapist_name = payload[1]
+        this.fetchReport()    
     },
     components: {
         EditReport
