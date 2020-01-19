@@ -8,19 +8,10 @@
       </div>
 
       <div class="topbar-right">
-        <ul class="topbar-btns">
-          <li class="dropdown">
-            <span class="topbar-btn" data-toggle="dropdown">
+            <span>
                 <img v-if="img_url == null" class="avatar" src="../../assets/img/avatar.jpg" alt="...">
                 <img v-else class="avatar" :src="img_url" alt="...">
             </span>
-            <div class="dropdown-menu dropdown-menu-right">
-              <router-link tag="a" to="/therapist/profile" class="dropdown-item topbar-item">
-                <i class="fa fa-user"></i> View Profile
-              </router-link>
-            </div>
-          </li>
-        </ul>
       </div>
     </header>
     <!-- END Topbar -->

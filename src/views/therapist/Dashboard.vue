@@ -8,7 +8,7 @@
             </header>
             <circle-spin class="m-0" v-if="loading"></circle-spin>
             <div class="row" v-else>
-                <div class="col-lg-3 col-md-4">
+                <div class="col-md-4">
                     <a href="#">
                     <div class="card card-body">
                     <h5 class="text-uppercase">Patients</h5>
@@ -20,7 +20,7 @@
                     </a>
                     
                 </div>
-                <div class="col-lg-3 col-md-4">
+                <div class="col-md-4">
                     <div class="card card-body">
                     <h5 class="text-uppercase">Total Session Reports</h5>
                     <div class="flexbox mt-2">
@@ -29,7 +29,7 @@
                     </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4">
+                <div class=" col-md-4">
                     <div class="card card-body">
                     <h5 class="text-uppercase">Total Monthly Reports</h5>
                     <div class="flexbox mt-2">

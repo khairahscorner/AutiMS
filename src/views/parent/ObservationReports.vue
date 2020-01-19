@@ -2,7 +2,7 @@
   <main class="pd-main">
     <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
     <div v-else class="main-content">
-        <div class="text-center card-body m-50" v-if="no_therapist">
+        <div class="card no-radius text-center card-body" v-if="no_therapist">
                 <div class="pb-30">
                     <img src="../../assets/img/patients.svg" alt>
                 </div>

@@ -314,7 +314,9 @@ footer {
 .nav-tabs .nav-link {
   padding: 0;
 }
-
+.sidebar {
+  white-space: normal !important;
+}
 /************* Change 3rd Party CSS settings *******************/
 .btn-danger {
   color: #fff;

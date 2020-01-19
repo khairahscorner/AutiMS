@@ -2,8 +2,8 @@
   <div class="min-h-fullscreen bg-img p-20 center-vh" data-overlay="7">
             <div class="card p-30 w-500px mb-0 no-radius">
                 <img class="img-tb align-self-center" src="../../assets/logo.png" alt="...">
-                <h4 class="text-uppercase fw-600 mt16 text-center">Account Verified</h4>
-                <span>You can now set your password and log in.</span>
+                <h4 class="text-uppercase fw-600 mt16 text-center">Activate Careigver Account</h4>
+                <span>Set your password to activate your account and be able to log in.</span>
                 <form>
                   <div class="form-group">
                     <label for="password">Password</label>
@@ -20,7 +20,10 @@
                       <div class="error" v-if="!$v.confirm_password.sameAsPassword">*Passwords do not match.</div>
                     </div>
                   </div>
-                  <button class="btn btn-bold btn-primary">Save</button>
+                  <button class="btn btn-bold btn-primary" disabled v-if="loading">
+                    <circle-spin class="m-0"></circle-spin>
+                  </button>
+                  <button class="btn btn-bold btn-primary" v-else :disabled="$v.$invalid" @click="createPassword" type="button">Create Password</button>
                 </form>
             </div>
     </div>
@@ -37,6 +40,7 @@ import {
 export default {
     data() {
         return {
+          loading: false,
           password: "",
           confirm_password: ""
         }
@@ -49,6 +53,42 @@ export default {
     confirm_password: {
       sameAsPassword: sameAs("password")
     }
-  },  
+  },
+  methods: {
+    createPassword() {
+      this.loading = true
+      let userData = {
+        password: this.password
+      }
+      axios.post(`/register/activate/${this.token}`, userData)
+      .then(res => {
+        this.$notify({
+                    group: 'response',
+                    type: 'success',
+                    title: `${res.data.message}`,
+                    // text: `${err.response}`,
+                    duration: 2500,
+                    ignoreDuplicates: true
+            });
+            setTimeout(() => {
+              this.$router.push('/')
+            }, 3000)
+      })
+      .catch(err => {
+        this.$notify({
+                    group: 'response',
+                    type: 'error',
+                    title: 'An Error Occured. Try again',
+                    // text: `${err.response}`,
+                    duration: 5000,
+                    ignoreDuplicates: true
+            });
+      })
+    }
+  },
+  mounted() {
+    localStorage.clear()
+    this.token = this.$route.params.confirmation_token
+  } 
 }
 </script>
