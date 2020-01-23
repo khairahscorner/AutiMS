@@ -26,52 +26,69 @@
                     </div>
                 </header>
                 <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
-                <div v-else class="sm-hidden card-body media-list media-list-hover media-list-divided">
-                    <!-- <button @click="viewPatientProfile">view</button> -->
-                    <v-client-table :columns="columns" :data="data" :options="options"> 
-                            <div slot="id" slot-scope="props">{{props.index}}</div>
-                            <div slot="action" slot-scope="props">
-                                <nav class="flexbox fs-16">
-                                    <a href="#" class="btn btn-xs bg-1" @click="viewPatientProfile(props.row.id)">
-                                        <span>
-                                            <i class="fa fa-eye"></i>
-                                        </span>     
-                                    </a>
-                                    <a href="#" class="btn btn-xs btn-danger"  @click="deletePatient(props.row.id)">
-                                        <span>
-                                            <i class="fa fa-trash-o"></i>
-                                        </span>     
-                                    </a> 
-                                </nav>
-                                  
-                            </div>
-                                        
-                    </v-client-table> 
-                </div>
-                <!-- <div :class="patient_list?'sm-visible':'sm-hidden'" class="md-hidden card-body media-list media-list-hover media-list-divided">
-                    <v-client-table :columns="columns" :data="data" :options="options"> 
-                        <div slot="id" slot-scope="props">{{props.index}}</div>
-                        <a href="#" slot="action" slot-scope="props" class="btn btn-sm btn-danger">
-                                <span  @click="viewPatientProfileMobile(props.row.id)">
-                                     <i class="fa fa-eye"></i>
-                                </span>     
-                        </a>                         
-                    </v-client-table> 
-                </div> -->
+                <div v-else>
+                    <div class="sm-hidden card-body media-list media-list-hover media-list-divided">
+                        <!-- <button @click="viewPatientProfile">view</button> -->
+                        <v-client-table :columns="columns" :data="data" :options="options"> 
+                                <div slot="id" slot-scope="props">{{props.index}}</div>
+                                <div slot="action" slot-scope="props">
+                                    <nav class="flexbox fs-16">
+                                        <a href="#" class="btn btn-xs bg-1" @click="viewPatientProfile(props.row.id)">
+                                            <span>
+                                                <i class="fa fa-eye"></i>
+                                            </span>     
+                                        </a>
+                                        <a href="#" class="btn btn-xs btn-danger"  @click="deletePatient(props.row.id)">
+                                            <span>
+                                                <i class="fa fa-trash-o"></i>
+                                            </span>     
+                                        </a> 
+                                    </nav>
+                                    
+                                </div>
+                                            
+                        </v-client-table> 
+                    </div>
+                    <!-- For mobile screens -->
+                    <!-- <div :class="patient_list?'sm-visible':'sm-hidden'" class="md-hidden card-body media-list media-list-hover media-list-divided">
+                        <v-client-table :columns="columns" :data="data" :options="options"> 
+                                <div slot="id" slot-scope="props">{{props.index}}</div>
+                                <div slot="action" slot-scope="props">
+                                    <nav class="flexbox fs-16">
+                                        <a href="#" class="btn btn-xs bg-1" @click="viewPatientProfileMobile(props.row.id)">
+                                            <span>
+                                                <i class="fa fa-eye"></i>
+                                            </span>     
+                                        </a>
+                                        <a href="#" class="btn btn-xs btn-danger"  @click="deletePatient(props.row.id)">
+                                            <span>
+                                                <i class="fa fa-trash-o"></i>
+                                            </span>     
+                                        </a> 
+                                    </nav>
+                                    
+                                </div>
+                                            
+                        </v-client-table> 
+                    </div> -->
+                </div>  
                 
             </div>
-            <div class="sm-hidden no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="!showPatient">
-                <div class="py-50 card-body">
-                  <div class="text-center">
-                    <div class="pb-30">
-                      <img src="../../assets/img/patients.svg" alt>
+            <circle-spin class="p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
+            <div class="sm-hidden no-border card col-xl-8 col-md-7 mb-0 no-radius" v-else>
+                <div v-if="!showPatient">
+                    <div class="py-50 card-body">
+                    <div class="text-center">
+                        <div class="pb-30">
+                        <img src="../../assets/img/patients.svg" alt>
+                        </div>
+                        <p>This shows each patient's profile information. Click on a patient to view their information.</p>
                     </div>
-                    <p>This shows each patient's profile information. Click on a patient to view their information.</p>
-                  </div>
+                    </div>
                 </div>
+                <component :is="mode" v-else :details="details" :patient_list="patient_list" :patient_id="patient_id"
+                @editProfile="editProfile" @saveProfile="saveProfile"></component>
             </div>
-            
-            <component :is="mode" v-else :patient_list="patient_list" :patient_id="patient_id" @editProfile="editProfile" @saveProfile="saveProfile"></component>
         </div>
 
         <!-- Modal for delete patient -->
@@ -100,12 +117,14 @@ import allMixins from '../../mixins.js'
 import patientProfile from "../../components/therapist/patients/patientProfile.vue"
 import editPatientProfile from "../../components/therapist/patients/EditPatientProfile.vue"
 import {mapActions, mapMutations} from 'vuex'
-// import {store} from '../../store.js'
+import {store} from '../../store.js'
+
 export default {
     mixins: [allMixins],
     data() {
         return {
             firstLoad: true, 
+            loading: false,
             load_delete: false,
             showPatient: false,
             no_therapist: false,
@@ -123,7 +142,8 @@ export default {
               },
               sortable: ["name"],
               filterable: ["name"]
-            }
+            },
+            details: {}
         }
     },
     methods: {
@@ -131,7 +151,26 @@ export default {
             'fetchAllTherapistPatients'
         ]),
         viewPatientProfile(value) {
+            this.loading = true
             this.patient_id = value
+            axios.get(`/view_patient/${this.patient_id}`)
+            .then(res => {
+                this.loading = false
+                // console.log(res.data)
+                store.commit('SAVE_PATIENT_DETAILS', res.data.data)
+                this.details = res.data.data
+            })
+            .catch(err => {
+                console.log(err)
+                this.loading = false
+                    this.$notify({
+                        group: 'response',
+                        type: 'error',
+                        title: 'An Error occured.',
+                        duration: 2500,
+                        ignoreDuplicates: true
+                    });
+            })
             this.showPatient = true
         },
         // viewPatientProfileMobile(value){

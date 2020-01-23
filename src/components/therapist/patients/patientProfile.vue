@@ -1,6 +1,7 @@
 <template>
-    <div class="no-border p-0 card col-xl-8 col-md-7 mb-0 no-radius">
-                <header class="no-border">
+    <div >
+                <!-- For mobile screens -->
+                <header class=" no-border">
                     <!-- <a v-if="!patient_list" href="#" @click="goToPatientList" class="md-hidden">
                         <i class="fa fa-arrow-left"></i>
                     </a> -->
@@ -14,8 +15,7 @@
                         </button>
                     </div>
                 </header>
-                <circle-spin class="m-0" v-if="loading"></circle-spin>
-                <div v-else class="m-20 b-1 row no-margin">
+                <div class="m-20 b-1 row no-margin">
                   <div class="col-md-6 br-1">
                     <form>
                             <div class="form-group pt-10">
@@ -73,41 +73,15 @@ import axios from 'axios'
 import {store} from '../../../store.js'
 export default {
     props: [
-        'patient_id', 'patient_list'
+        'patient_id', 'patient_list', 'details'
     ],
-    data() {
-        return {
-            loading: true,
-            details: {}
-        }
-    },
     methods: {
+        goToPatientList() {
+            this.patient_list = true
+        },
         editPatientProfile(id) {
             this.$emit('editProfile')
         }
     },
-    mounted () {
-        this.loading = true
-        console.log(this.patient_id)
-        axios.get(`/view_patient/${this.patient_id}`)
-        .then(res => {
-            this.loading = false
-            // console.log(res.data)
-            store.commit('SAVE_PATIENT_DETAILS', res.data.data)
-            this.details = res.data.data
-        })
-        .catch(err => {
-            console.log(err)
-            this.loading = false
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: `${err.response.message}`,
-                    // text: `${res.data.message}`,
-                    duration: 2500,
-                    ignoreDuplicates: true
-                });
-        })
-    }
 }
 </script>

@@ -17,7 +17,7 @@
                     <div class="col-md-7 br-1 br-primary">
                         <form>
                             <div class="form-group pt-10">
-                                <label for="name">Patient Name</label>
+                                <label for="patient_name">Patient Name</label>
                                 <input type="text" v-model="patient_name" class="form-control" id="name" @blur="$v.patient_name.$touch()">
                                 <div v-if="$v.patient_name.$dirty">
                                     <div class="error" v-if="!$v.patient_name.required">*Patient name is required.</div>
@@ -25,7 +25,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-6 form-group">
-                                    <label for="age">Age</label>
+                                    <label for="patient_age">Age</label>
                                     <input v-model="patient_age" type="text" class="form-control" id="age" @blur="$v.patient_age.$touch()"> 
                                     <div v-if="$v.patient_age.$dirty">
                                         <div class="error" v-if="!$v.patient_age.required">*Patient age is required.</div>

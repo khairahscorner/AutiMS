@@ -6,7 +6,7 @@
                 <div class="pb-30">
                     <img src="../../assets/img/patients.svg" alt>
                 </div>
-                <p>No Therapist has added you to a patient yet.</p>
+                <p>No Therapist has added you to a patient yet or you haven't verfied your relationship.</p>
         </div>
         <div v-else class="row no-margin">
             <div class="card col-xl-4 col-md-5 br-1 mb-0 no-radius px-0 br-primary">
@@ -111,7 +111,11 @@ export default {
                     this.firstLoad = false
                     console.log(res)
                     if(res.data.data.length > 0) {
-                        return this.data = res.data.data
+                        this.data =  res.data.data.filter(patient => patient.parent_verified == 1)
+                        if(this.data.length > 0) {
+                            return this.data
+                        }
+                        else this.no_therapist = true
                     }
                     else this.no_therapist = true
                 })

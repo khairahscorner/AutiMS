@@ -37,7 +37,8 @@ const router = new Router({
       }
     },
     { path: "/signup", component: () => import("./views/auth/Signup.vue"), meta: {title: 'Sign Up'} },
-    { path: "/activate/:confirmation_token", component: () => import("./views/auth/Verification.vue"), meta: {title: 'Activate Caregiver Account'} },
+    { path: "/activate/:confirmation_token", component: () => import("./views/auth/Activation.vue"), meta: {title: 'Activate Caregiver Account'} },
+    { path: "/verify/:parent_email", component: () => import("./views/auth/ParentVerification.vue"), meta: {title: 'Verify Relationship'} },
     { path: "/login", redirect: "/" },
     { path: "*", redirect: "/" },
     
