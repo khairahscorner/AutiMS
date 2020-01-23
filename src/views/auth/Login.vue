@@ -163,7 +163,6 @@ export default {
               group: "response",
               type: "error",
               title: `${err.response.data.message}`,
-              text: `${err.response.data.details}`,
               duration: 5000,
               ignoreDuplicates: true
             });
