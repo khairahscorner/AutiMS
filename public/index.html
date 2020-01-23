@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head> 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0,user-scalable=0">
     <title>AutiMS</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>icons/favicon-16.png">
     <!-- Add to home screen for Android and modern mobile browsers -->
     <link rel="manifest" href="<%= BASE_URL %>manifest.json">
-    <meta name="theme-color" content="#d83d75">
+    <meta name="theme-color" content="#406C74">
 
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="apple-mobile-web-app-title" content="AutiMS">
-    <link rel="apple-touch-icon" href="<%= BASE_URL %>icon.png">
-    <!-- <link rel="mask-icon" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/safari-pinned-tab.svg" color="#d83d75"> -->
+    <link rel="apple-touch-icon" href="<%= BASE_URL %>icons/apple-60.png">
+
+    <!-- splash screen for iOS -->
+    <link rel="apple-touch-startup-image" href="icons/apple-76.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-76.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-120.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-120.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-152.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-180.png" media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="icons/apple-180.png" media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+
     <!-- Add to home screen for Windows -->
-    <meta name="msapplication-TileImage" content="<%= BASE_URL %>icon.png">
+    <meta name="msapplication-TileImage" content="<%= BASE_URL %>icons/ms-144.png">
     <meta name="msapplication-TileColor" content="#ffffff">
     <style>
       @media screen and (max-width: 425px) {

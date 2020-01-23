@@ -11,7 +11,7 @@ import Multiselect from 'vue-multiselect'
 import VModal from 'vue-js-modal'
 import { CircleSpinner, BounceSpinner } from 'vue-spinners'
 import {ClientTable} from 'vue-tables-2';
-import Datepicker from 'vuejs-datepicker'; 
+import Datepicker from 'vuejs-datepicker';
 
 
 // Static files
@@ -42,8 +42,8 @@ function retrieveToken(name) {
 }
 
 // For API calls
-// axios.defaults.baseURL = 'https://autimskhairah.herokuapp.com/api/v1';
-axios.defaults.baseURL = 'http://localhost:3333/api';
+axios.defaults.baseURL = 'https://autims-api.herokuapp.com/api';
+// axios.defaults.baseURL = 'http://localhost:3333/api'
 axios.interceptors.request.use(function(config) {
   const token = retrieveToken(window.btoa('userToken'))
   config.headers.Authorization = token ? `Bearer ${token}` : "";

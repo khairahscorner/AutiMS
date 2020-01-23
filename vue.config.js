@@ -1,29 +1,18 @@
 const webpack = require("webpack");
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   lintOnSave: false,
-  // chainWebpack: config => {
-  //   config
-  //   .plugin('provide')
-  //   .use(require('webpack').ProvidePlugin, [{
-  //     $: 'jquery',
-  //     jquery: 'jquery',
-  //     jQuery: 'jquery',
-  //     'window.jQuery': 'jquery',
-  //     Popper: 'popper.js'
-  //   }])
-  // }
-  // configureWebpack: {
-  //   plugins: [
-  //     new webpack.ProvidePlugin({
-  //       $: 'jquery',
-  //       jquery: 'jquery',
-  //       'window.jQuery': 'jquery',
-  //       jQuery: 'jquery',
-  //       // Popper: ['popper.js', 'default']
-
-  //     })
-  //   ]
-  // }
+  // pwa: {
+  //   // workboxPluginMode: 'InjectManifest',
+  //   // workboxOptions: {
+  //   //     swSrc: 'src/service-worker.js'
+  //   // }
+  // },
+  // plugins: [
+  //   new WorkboxPlugin.InjectManifest({
+  //     swSrc: 'src/sw.js',
+  //   })
+  // ]
 
 };

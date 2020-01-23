@@ -176,16 +176,26 @@ export default {
                 }, 3000)
             })
             .catch(err => {
-                this.loading = false
-                //console.log(err)
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'An Error Occured',
-                    text: `${err.response}`,
+                if (!err.response) {
+                    this.$notify({
+                    group: "response",
+                    type: "error",
+                    title: "No Internet connection. Try again later",
                     duration: 5000,
                     ignoreDuplicates: true
-                });
+                    });
+                } 
+                else {
+                    this.$notify({
+                    group: "response",
+                    type: "error",
+                    title: `${err.response.data.message}`,
+                    text: `${err.response.data.details}`,
+                    duration: 5000,
+                    ignoreDuplicates: true
+                    });
+                }
+                this.loading = false
             })
         }
     }

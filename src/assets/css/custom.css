@@ -365,6 +365,32 @@ footer {
 .scroll{
   overflow-y: auto !important;
 }
+
+@media (max-width:425px) {
+  .v--modal-box {
+    left: 5vw !important;
+    width: 90vw !important;
+  }
+}
+@media (min-width: 426px) and (max-width:767px) {
+  .v--modal-box {
+    left: 15vw !important;
+    width: 70vw !important;
+  }
+}
+@media (min-width: 768px) and (max-width:1023px) {
+  .v--modal-box {
+    left: 25vw !important;
+    width: 50vw !important;
+  }
+}
+@media (min-width:1024px) {
+  .v--modal-box {
+    left: 30vw !important;
+    width: 40vw !important;
+  }
+}
+
 .report .v--modal {
   width: 60vw !important;
   left: 20vw !important
