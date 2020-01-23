@@ -13,7 +13,7 @@
                     <p>No Observation Reports yet.</p>
                   </div>
                 </div>
-                <div v-else class="card-body  scroll h-400px">
+                <div v-else class="card-body  scroll h-general">
                   <div class="row no-margin">
                     <div class="col-md-6 col-xl-3 mb-20" v-for="(report, i) in all_reports" :key="i">
                             <div class="fs-40 fw-400 color-2"><i class="ion-ios-list-outline"></i></div>

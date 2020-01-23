@@ -11,7 +11,7 @@
                                     Edit<i class=" fa fa-edit"></i>
                                 </a>
                                 <router-link to="/therapist/session-reports" tag="button"
-                                    class="btn btn-xs btn-bold btn-primary text-center">
+                                    class="btn mt-sm-10 btn-xs btn-bold btn-primary text-center">
                                     Back<i class="fa fa-arrow-circle-o-left"></i>
                                 </router-link>
                             </div> 

@@ -163,7 +163,7 @@ export default {
             axios.post('/therapist/register', userData)
             .then(res => {
                 this.loading = false
-                console.log(res)
+                //console.log(res)
                 this.$notify({
                     group: 'response',
                     type: 'success',
@@ -177,7 +177,7 @@ export default {
             })
             .catch(err => {
                 this.loading = false
-                console.log(err)
+                //console.log(err)
                 this.$notify({
                     group: 'response',
                     type: 'error',

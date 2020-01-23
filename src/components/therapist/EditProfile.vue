@@ -90,10 +90,10 @@ export default {
       },
       imageSelected(event) {
         this.selected_img = event.target.files[0];
-        console.log(this.selected_img)
+        //console.log(this.selected_img)
       },
       saveDetails() {
-        console.log(this.id)
+        //console.log(this.id)
           let userData = {
             name: this.name,
             gender: this.gender,
@@ -146,7 +146,7 @@ export default {
           })
           .catch(err => {
               this.loading_save = false
-              console.log(err)
+              //console.log(err)
               this.$notify({
                         group: 'response',
                         type: 'error',

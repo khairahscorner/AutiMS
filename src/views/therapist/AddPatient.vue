@@ -24,14 +24,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-6 form-group">
+                                <div class="col-md-6 form-group">
                                     <label for="patient_age">Age</label>
                                     <input v-model="patient_age" type="text" class="form-control" id="age" @blur="$v.patient_age.$touch()"> 
                                     <div v-if="$v.patient_age.$dirty">
                                         <div class="error" v-if="!$v.patient_age.required">*Patient age is required.</div>
                                     </div>
                                 </div> 
-                                <div class="col-6 form-group">
+                                <div class="col-md-6 form-group">
                                     <label for="gender">Gender</label>
                                     <multiselect v-model="gender" :options="['Male', 'Female']" @blur="$v.gender.$touch()"
                                         :close-on-select="true" class="form-control" :show-labels="false" placeholder="Select Gender:">
@@ -145,7 +145,7 @@ export default {
             axios.post('/therapist/add_patient', userData)
             .then(res => {
                 this.loading = false
-                console.log(res)
+                //console.log(res)
                 this.$notify({
                     group: 'response',
                     type: 'success',
@@ -159,7 +159,7 @@ export default {
             })
             .catch(err => {
                 this.loading = false
-                console.log(err.response)
+                //console.log(err.response)
                 if(err.response.status == 404) {
                     this.$notify({
                         group: 'response',

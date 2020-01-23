@@ -104,7 +104,7 @@ export default {
             }
             axios.put(`/therapist/edit_patient/${this.patient_id}`, userData)
             .then(res => {
-                console.log(res)
+                //console.log(res)
                 this.loading_save = false
                 this.$notify({
                     group: 'response',
@@ -119,7 +119,7 @@ export default {
             })
             .catch(err => {
                 this.loading_save = false
-                console.log(err)
+                //console.log(err)
                 this.$notify({
                     group: 'response',
                     type: 'error',

@@ -108,7 +108,7 @@ export default {
     },  
   },
   mounted() {
-    console.log(this.report)
+    //console.log(this.report)
   }
 };
 </script>

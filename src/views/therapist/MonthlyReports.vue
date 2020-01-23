@@ -21,7 +21,7 @@
                         <h4 class="text-uppercase">patients list</h4> 
                     </div>
                 </header>
-                <div class="scroll h-400px card-body media-list media-list-hover media-list-divided">
+                <div class="scroll h-general card-body media-list media-list-hover media-list-divided">
                     <v-client-table :columns="columns" :data="data" :options="options"> 
                             <div slot="id" slot-scope="props">{{props.index}}</div>
                             <div slot="action" slot-scope="props">
@@ -37,8 +37,8 @@
                 </div>
                 
             </div>
-            <circle-spin class="p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
-            <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius" v-else>
+            <circle-spin class="mt-sm-10 p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
+            <div class="mt-sm-10 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-else>
                     <div class="text-center card-body m-50" v-if="!showDetails">
                             <div class="pb-30">
                             <img src="../../assets/img/patients.svg" alt>
@@ -88,12 +88,12 @@ export default {
         ]),
         viewPatientMonthlyReports(payload) {
             this.loading = true
-            // console.log(payload)
+            //console.log(payload)
             this.patient_id = payload.id
             this.patient_name = payload.name
             axios.get(`/monthly_report/${payload.id}`)
             .then(res => {
-                // console.log(res)
+                //console.log(res)
                 if(res.data.data.length>0){
                     this.has_monthly_report = true
                 }
@@ -102,7 +102,7 @@ export default {
                 }
                 this.all_reports = res.data.data
                 this.loading = false
-                    // console.log(this.all_reports)
+                    //console.log(this.all_reports)
                 this.showDetails = true
                 
             })
@@ -121,7 +121,7 @@ export default {
                 else this.no_therapist = true
         })
         .catch(err => {
-                // console.log(err)
+                //console.log(err)
                 this.firstLoad = false
                 this.$notify({
                         group: 'response',

@@ -15,7 +15,7 @@
                             <h4 class="text-uppercase">therapist list</h4>
                         </div>
                     </header>
-                <div class="scroll h-400px card-body media-list media-list-hover media-list-divided">
+                <div class="scroll h-general card-body media-list media-list-hover media-list-divided">
                         <v-client-table :columns="columns" :data="data" :options="options">
                             <div slot="id" slot-scope="props">{{props.index}}</div>
                             <div slot="name" slot-scope="props">{{props.row.therapist.name}}</div>
@@ -32,7 +32,7 @@
                     </div>
                     
                 </div>
-                <div class="no-border card col-xl-8 col-md-7 mb-0 no-radius">
+                <div class="mt-sm-10 no-border card col-xl-8 col-md-7 mb-0 no-radius">
                     <circle-spin class="p-30" v-if="loading"></circle-spin>
                     <div v-else>
                         <div class="text-center card-body m-50" v-if="!showDetails">
@@ -86,17 +86,17 @@ export default {
            this.therapist_name = payload.therapist.name
             axios.get(`/view_patient/${payload.id}`)
             .then(res => {
-                // console.log(res.data)
+                //console.log(res.data)
                 this.loading = false
                 if(res.data.data.morning_activities.length > 0 || res.data.data.afternoon_activities.length > 0 || res.data.data.evening_activities.length > 0){
                     this.has_activity_list = true
                 }
                 else { this.has_activity_list = false}
                 this.details = res.data.data
-                // console.log(this.details)
+                //console.log(this.details)
             })
             .catch(err => {
-                // console.log(err)
+                //console.log(err)
                     this.loading = false
                     this.$notify({
                         group: 'response',
@@ -113,7 +113,7 @@ export default {
     mounted() {
         this.firstLoad = true
         let details = this.$jwt.decode(this.retrieveToken(window.btoa('userToken')))
-            console.log(details)
+            //console.log(details)
         if(details.data.user_type == 'parent') {
             axios.get('/parent')
             .then(res => {
@@ -121,7 +121,7 @@ export default {
                 axios.get(`/parent/view_patients/${email}`) 
                 .then(res => {
                     this.firstLoad = false
-                    console.log(res)
+                    //console.log(res)
                     if(res.data.data.length > 0) {
                         this.data =  res.data.data.filter(patient => patient.parent_verified == 1)
                         if(this.data.length > 0) {
@@ -132,7 +132,7 @@ export default {
                     else this.no_therapist = true
                 })
                 .catch(err => {
-                        console.log(err)
+                        //console.log(err)
                         this.firstLoad = false
                         this.$notify({
                                 group: 'response',
@@ -153,7 +153,7 @@ export default {
                 axios.get(`/parent/view_patients/${email}`) 
                 .then(res => {
                     this.firstLoad = false
-                    console.log(res)
+                    //console.log(res)
                     if(res.data.data.length > 0) {
                         this.data =  res.data.data.filter(patient => patient.parent_verified == 1)
                         if(this.data.length > 0) {
@@ -164,7 +164,7 @@ export default {
                     else this.no_therapist = true
                 })
                 .catch(err => {
-                        console.log(err)
+                        //console.log(err)
                         this.firstLoad = false
                         this.$notify({
                                 group: 'response',

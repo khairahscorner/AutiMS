@@ -27,7 +27,7 @@
                 </header>
                 <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
                 <div v-else>
-                    <div class="sm-hidden card-body media-list media-list-hover media-list-divided">
+                    <div class="h-general scroll card-body media-list media-list-hover media-list-divided">
                         <!-- <button @click="viewPatientProfile">view</button> -->
                         <v-client-table :columns="columns" :data="data" :options="options"> 
                                 <div slot="id" slot-scope="props">{{props.index}}</div>
@@ -49,33 +49,11 @@
                                             
                         </v-client-table> 
                     </div>
-                    <!-- For mobile screens -->
-                    <!-- <div :class="patient_list?'sm-visible':'sm-hidden'" class="md-hidden card-body media-list media-list-hover media-list-divided">
-                        <v-client-table :columns="columns" :data="data" :options="options"> 
-                                <div slot="id" slot-scope="props">{{props.index}}</div>
-                                <div slot="action" slot-scope="props">
-                                    <nav class="flexbox fs-16">
-                                        <a href="#" class="btn btn-xs bg-1" @click="viewPatientProfileMobile(props.row.id)">
-                                            <span>
-                                                <i class="fa fa-eye"></i>
-                                            </span>     
-                                        </a>
-                                        <a href="#" class="btn btn-xs btn-danger"  @click="deletePatient(props.row.id)">
-                                            <span>
-                                                <i class="fa fa-trash-o"></i>
-                                            </span>     
-                                        </a> 
-                                    </nav>
-                                    
-                                </div>
-                                            
-                        </v-client-table> 
-                    </div> -->
                 </div>  
                 
             </div>
-            <circle-spin class="p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
-            <div class="sm-hidden no-border card col-xl-8 col-md-7 mb-0 no-radius" v-else>
+            <circle-spin class="mt-sm-10 p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
+            <div class="mt-sm-10 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-else>
                 <div v-if="!showPatient">
                     <div class="py-50 card-body">
                     <div class="text-center">
@@ -156,12 +134,12 @@ export default {
             axios.get(`/view_patient/${this.patient_id}`)
             .then(res => {
                 this.loading = false
-                // console.log(res.data)
+                //console.log(res.data)
                 store.commit('SAVE_PATIENT_DETAILS', res.data.data)
                 this.details = res.data.data
             })
             .catch(err => {
-                console.log(err)
+                //console.log(err)
                 this.loading = false
                     this.$notify({
                         group: 'response',
@@ -173,11 +151,6 @@ export default {
             })
             this.showPatient = true
         },
-        // viewPatientProfileMobile(value){
-        //     this.patient_id = value
-        //     this.showPatient = true
-        //     this.patient_list = false
-        // },
         editProfile() {
             this.mode = "edit-patient-profile"
         },
@@ -232,7 +205,7 @@ export default {
                 else this.no_therapist = true
         })
         .catch(err => {
-                console.log(err)
+                //console.log(err)
                 this.firstLoad = false
                 this.$notify({
                         group: 'response',

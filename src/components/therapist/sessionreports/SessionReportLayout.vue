@@ -10,7 +10,7 @@
                     </div>
                 </header>
                 <no-view v-if="!has_session_report" :doc_type="doc_type"></no-view>
-                <div class="card-body scroll h-400px" v-else>
+                <div class="card-body h-general scroll" v-else>
                   <div class="row no-margin">
                       <div class="col-md-6 col-xl-3 mb-20" v-for="(report, i) in all_reports" :key="i">
                             <div class="fs-40 fw-400 color-2"><i class="ion-ios-list-outline"></i></div>

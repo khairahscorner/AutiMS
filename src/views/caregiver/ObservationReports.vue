@@ -15,7 +15,7 @@
                         <h4 class="text-uppercase">therapist list</h4>
                     </div>
                 </header>
-                <div class="scroll h-400px card-body media-list media-list-hover media-list-divided">
+                <div class="scroll h-general card-body media-list media-list-hover media-list-divided">
                     <v-client-table :columns="columns" :data="data" :options="options"> 
                         <div slot="id" slot-scope="props">{{props.index}}</div>
                             <div slot="name" slot-scope="props">{{props.row.therapist.name}}</div>
@@ -32,8 +32,8 @@
                 </div>
                 
             </div>
-            <circle-spin class="p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
-            <div v-else class="no-border card col-xl-8 col-md-7 mb-0 no-radius">
+            <circle-spin class="mt-sm-10 p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
+            <div v-else class="mt-sm-10 no-border card col-xl-8 col-md-7 mb-0 no-radius">
                     <div class="text-center card-body m-50" v-if="!showDetails">
                         <div class="pb-30">
                             <img src="../../assets/img/patients.svg" alt>
@@ -93,7 +93,7 @@ export default {
                     else this.has_observation_report = false
 
                 this.loading = false
-                    // console.log(this.all_reports)
+                    //console.log(this.all_reports)
                 this.showDetails = true  
             })
         }
@@ -109,7 +109,7 @@ export default {
                 axios.get(`/parent/view_patients/${email}`) 
                 .then(res => {
                     this.firstLoad = false
-                    console.log(res)
+                    //console.log(res)
                     if(res.data.data.length > 0) {
                         this.data =  res.data.data.filter(patient => patient.parent_verified == 1)
                         if(this.data.length > 0) {
@@ -120,7 +120,7 @@ export default {
                     else this.no_therapist = true
                 })
                 .catch(err => {
-                        console.log(err)
+                        //console.log(err)
                         this.firstLoad = false
                         this.$notify({
                                 group: 'response',

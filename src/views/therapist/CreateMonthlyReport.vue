@@ -217,7 +217,7 @@ export default {
             axios.post(`/monthly_report/${this.patient_id}`, userData)
             .then(res => {
                 this.loading = false
-                console.log(res)
+                //console.log(res)
                 this.$notify({
                     group: 'response',
                     type: 'success',
@@ -230,7 +230,7 @@ export default {
             })
             .catch(err => {
                 this.loading = false
-                console.log(err.response)
+                //console.log(err.response)
                 this.$notify({
                     group: 'response',
                     type: 'error',
@@ -251,7 +251,7 @@ export default {
             this.patient_name = res.data.data.name
         })
         .catch(err => {
-            console.log(err)
+            //console.log(err)
             this.firstLoad = false
                 this.$notify({
                     group: 'response',

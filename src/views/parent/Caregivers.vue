@@ -139,7 +139,7 @@ export default {
             axios.post('/parent/add_caregiver', userData)
             .then(res => {
               this.load_add = false
-                console.log(res)
+                //console.log(res)
                 this.$notify({
                     group: 'response',
                     type: 'success',
@@ -152,7 +152,7 @@ export default {
             })
             .catch(err => {
               this.load_add = false
-                console.log(err)
+                //console.log(err)
                 this.$notify({
                     group: 'response',
                     type: 'error',
@@ -167,7 +167,7 @@ export default {
     mounted() {
       axios.get('/parent/caregivers')
         .then(res => {
-          console.log(res)
+          //console.log(res)
           this.firstLoad = false
           if(res.data.data.caregivers.length > 0){
             return this.data = res.data.data.caregivers
@@ -175,7 +175,7 @@ export default {
           else this.no_caregiver = true
           })
           .catch(err => {
-            console.log(err)
+            //console.log(err)
             this.firstLoad = false
                 this.$notify({
                     group: 'response',

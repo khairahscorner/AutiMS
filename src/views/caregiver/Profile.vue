@@ -83,7 +83,7 @@ export default {
     .then(res => {
       this.loading = false
       store.commit('SAVE_USER_ID',res.data.data.id)
-      console.log(res.data.data)
+      //console.log(res.data.data)
       this.details = res.data.data.caregiver
       store.commit('SAVE_CAREGIVER_DETAILS', res.data.data.caregiver)
     })

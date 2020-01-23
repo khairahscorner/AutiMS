@@ -49,7 +49,7 @@ export default {
                 let email = res.data.data.caregiver.parent_email
                 axios.get(`/parent/view_patients/${email}`) 
                 .then(res => {
-                    console.log(res)
+                    //console.log(res)
                     this.therapists = res.data.data.length
                     axios.get('/caregiver/dashboard')
                     .then(res => {
@@ -57,7 +57,7 @@ export default {
                         this.reports = res.data.data.observation_reports.filter(report => report.creator_type == 'caregiver').length
                     })
                     .catch(err => {
-                        console.log(err)
+                        //console.log(err)
                         this.loading = false
                         this.$notify({
                                 group: 'response',
@@ -70,7 +70,7 @@ export default {
                     })
                 })
                 .catch(err => {
-                        console.log(err)
+                        //console.log(err)
                         this.loading = false
                         this.$notify({
                                 group: 'response',

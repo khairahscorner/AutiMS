@@ -80,7 +80,7 @@ export default {
             .then(res => {
                 this.firstLoad = false
                 this.edit = false
-                console.log(res.data)
+                //console.log(res.data)
                 store.commit('SAVE_OBSERVATION_REPORT', res.data.data)
                 this.report = res.data.data
             })

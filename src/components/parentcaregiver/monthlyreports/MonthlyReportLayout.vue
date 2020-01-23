@@ -6,7 +6,7 @@
                     </div>
                 </header>
                 <no-view v-if="!has_monthly_report" :doc_type="doc_type"></no-view>
-                <div v-else class="scroll h-400px card-body">
+                <div v-else class="scroll h-general card-body">
                   <div class="row no-margin">
                     <div class="col-md-6 col-xl-3 mb-20" v-for="(report, i) in all_reports" :key="i">
                             <div class="fs-40 fw-400 color-2"><i class="ion-ios-list-outline"></i></div>

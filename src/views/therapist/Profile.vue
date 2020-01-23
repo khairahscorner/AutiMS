@@ -82,13 +82,13 @@ export default {
     .then(res => {
       this.loading = false
       store.commit('SAVE_USER_ID',res.data.data.id)
-      console.log(res.data.data)
+      //console.log(res.data.data)
       this.details = res.data.data.therapist
       store.commit('SAVE_THERAPIST_DETAILS', res.data.data.therapist)
     })
     .catch(err => {
       this.loading = false
-      console.log(err.response)
+      //console.log(err.response)
       this.$notify({
           group: 'response',
           type: 'error',

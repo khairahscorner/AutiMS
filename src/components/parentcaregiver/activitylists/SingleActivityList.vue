@@ -7,7 +7,7 @@
                 </header>
                 <div>
                     <no-view v-if="!has_activity_list" :doc_type="doc_type"></no-view>
-                    <div v-else class="card-body scroll h-400px">
+                    <div v-else class="card-body scroll h-general">
                                 <div class="pb-20">
                                     <h5 class="b-1 border-secondary bg-secondary p-10 mb-0 text-uppercase">Morning</h5>
                                     <div class="b-1 pt-10">

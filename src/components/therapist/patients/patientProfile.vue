@@ -1,10 +1,6 @@
 <template>
     <div >
-                <!-- For mobile screens -->
                 <header class=" no-border">
-                    <!-- <a v-if="!patient_list" href="#" @click="goToPatientList" class="md-hidden">
-                        <i class="fa fa-arrow-left"></i>
-                    </a> -->
                     <div class="header-bar flexbox pl-20">
                         <h4 class="text-uppercase">Details of {{details.name}}</h4>
                         <button

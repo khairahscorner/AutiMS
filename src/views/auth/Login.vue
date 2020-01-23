@@ -84,7 +84,7 @@ export default {
       axios.post('/login', userData)
       .then(res => {
                 this.loading = false
-                console.log(res)
+                //console.log(res)
                 localStorage.setItem(window.btoa('userToken'), res.data.token.token)
                 this.$notify({
                     group: 'response',
@@ -94,7 +94,7 @@ export default {
                 })
                 
                 let details = this.$jwt.decode(this.retrieveToken(window.btoa('userToken')))
-                console.log(details)
+                //console.log(details)
                 if(details.data.user_type == 'therapist') {
                   setTimeout(() => {
                     this.$router.push('/therapist/dashboard')
@@ -116,8 +116,8 @@ export default {
                 this.$notify({
                     group: 'response',
                     type: 'error',
-                    title: 'An Error Occured.',
-                    text: `${err.response.data.message}`,
+                    title: `${err.response.data.message}`,
+                    text: `${err.response.data.details}`,
                     duration: 5000,
                     ignoreDuplicates: true
                 });
