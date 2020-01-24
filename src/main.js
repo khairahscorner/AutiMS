@@ -42,7 +42,7 @@ function retrieveToken(name) {
 }
 
 // For API calls
-axios.defaults.baseURL = 'https://autims-api.herokuapp.com/api'
+axios.defaults.baseURL = 'https://autims-khairah.herokuapp.com/api'
 // axios.defaults.baseURL = 'http://localhost:3333/api' 
 axios.interceptors.request.use(function(config) {
   const token = retrieveToken(window.btoa('userToken'))
