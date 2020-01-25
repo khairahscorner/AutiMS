@@ -70,17 +70,16 @@ export default {
             this.details = res.data.data
         })
         .catch(err => {
-            this.loading = false
-            //console.log(err.response)
+        //   this.loading = false;
+            // this.$router.push('/')
             this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'An Error Occured.',
-                    // text: `${err.response}`,
-                    duration: 5000,
-                    ignoreDuplicates: true
+                group: "response",
+                type: "error",
+                title: `${err.response.data.message}`,
+                duration: 5000,
+                ignoreDuplicates: true
             });
-      })
+        });
     }
 }
 </script>

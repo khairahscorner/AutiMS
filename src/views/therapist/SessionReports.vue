@@ -117,7 +117,7 @@ export default {
                 else this.no_therapist = true
         })
         .catch(err => {
-                this.firstLoad = false
+                // this.firstLoad = false
                 this.$notify({
                         group: 'response',
                         type: 'error',

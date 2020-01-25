@@ -119,7 +119,7 @@ export default {
                 })
                 .catch(err => {
                         //console.log(err)
-                        this.firstLoad = false
+                        // this.firstLoad = false
                         this.$notify({
                                 group: 'response',
                                 type: 'error',
@@ -151,7 +151,7 @@ export default {
                 })
                 .catch(err => {
                         //console.log(err)
-                        this.firstLoad = false
+                        // this.firstLoad = false
                         this.$notify({
                                 group: 'response',
                                 type: 'error',

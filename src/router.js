@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Login from "./views/auth/Login.vue";
 import allMixins from './mixins.js';
-
+import axios from 'axios'
 Vue.use(Router);
 
 const router = new Router({
@@ -159,6 +159,7 @@ const router = new Router({
 });
 
 const DEFAULT_TITLE = 'AutiMS';
+
 router.afterEach((to, from) => {
     document.title = `${to.meta.title} - ${DEFAULT_TITLE}`;
 });

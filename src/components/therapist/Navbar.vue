@@ -144,7 +144,7 @@ export default {
             this.user_details = res.data.data.therapist
         })
         .catch(err => {
-            this.loading = false
+            // this.loading = false
             this.$notify({
                 group: 'response',
                 type: 'error',

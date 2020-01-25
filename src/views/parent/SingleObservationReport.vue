@@ -85,7 +85,7 @@ export default {
                 this.report = res.data.data
             })
             .catch(err => {
-                this.firstLoad = false
+                // this.firstLoad = false
                 this.edit = false
                 this.$notify({
                     group: 'response',

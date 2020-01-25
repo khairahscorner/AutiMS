@@ -34,7 +34,7 @@ export default {
             this.img_url = res.data.data.therapist.img_url
         })
         .catch(err => {
-            this.loading = false
+            // this.loading = false
             this.$notify({
                 group: 'response',
                 type: 'error',

@@ -1,11 +1,6 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
 
-if (workbox) {
-  console.log(`Yay! Workbox is loaded 🎉`);
-} else {
-  console.log(`Boo! Workbox didn't load 😬`);
-}
 workbox.setConfig({
     debug: false,
   });
@@ -44,6 +39,17 @@ workbox.setConfig({
       plugins: [
         new workbox.expiration.Plugin({
           maxEntries: 30,
+        }),
+      ],
+    }),
+  );
+  workbox.routing.registerRoute(
+    new RegExp('https://autims-khairah.herokuapp.com/api/(.*)'),
+    workbox.strategies.networkFirst({
+      cacheName: 'Server-Requests',
+      plugins: [
+        new workbox.expiration.Plugin({
+          maxEntries: 50,
         }),
       ],
     }),

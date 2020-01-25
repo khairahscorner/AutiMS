@@ -88,7 +88,7 @@ export default {
       store.commit('SAVE_CAREGIVER_DETAILS', res.data.data.caregiver)
     })
     .catch(err => {
-      this.loading = false
+      // this.loading = false
       this.$notify({
           group: 'response',
           type: 'error',

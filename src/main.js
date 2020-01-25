@@ -47,8 +47,11 @@ axios.defaults.baseURL = 'https://autims-khairah.herokuapp.com/api'
 axios.interceptors.request.use(function(config) {
   const token = retrieveToken(window.btoa('userToken'))
   config.headers.Authorization = token ? `Bearer ${token}` : "";
+  config.origin = true;
   return config;
 });
+
+
 // For Cloudinary img uploads
 const instance = axios.create({
   baseURL: 'https://api.cloudinary.com/v1_1/khairahscorner/image/upload',

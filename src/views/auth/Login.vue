@@ -153,7 +153,7 @@ export default {
             this.$notify({
               group: "response",
               type: "error",
-              title: "No Internet connection. Try again later",
+              title: "No Internet connection, try again. Click to close",
               duration: 5000,
               ignoreDuplicates: true
             });

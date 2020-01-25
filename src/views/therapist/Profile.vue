@@ -87,7 +87,7 @@ export default {
       store.commit('SAVE_THERAPIST_DETAILS', res.data.data.therapist)
     })
     .catch(err => {
-      this.loading = false
+      // this.loading = false
       //console.log(err.response)
       this.$notify({
           group: 'response',

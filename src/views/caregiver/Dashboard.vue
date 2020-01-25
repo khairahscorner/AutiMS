@@ -58,7 +58,7 @@ export default {
                     })
                     .catch(err => {
                         //console.log(err)
-                        this.loading = false
+                        // this.loading = false
                         this.$notify({
                                 group: 'response',
                                 type: 'error',
@@ -71,7 +71,7 @@ export default {
                 })
                 .catch(err => {
                         //console.log(err)
-                        this.loading = false
+                        // this.loading = false
                         this.$notify({
                                 group: 'response',
                                 type: 'error',
