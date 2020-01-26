@@ -28,13 +28,20 @@ export default {
         Vue.notify({
           group: "response",
           type: "error",
-          title: "No Internet connection, try again.",
-          duration: 5000,
+          title: `${err}`,
+          duration: -2,
           ignoreDuplicates: true
         })
         return Promise.reject(err);
       } 
       else {
+        Vue.notify({
+          group: "response",
+          type: "error",
+          title: `${err.response.data.message}`,
+          duration: 5000,
+          ignoreDuplicates: true
+        })
         return Promise.reject(err);
       }
     });

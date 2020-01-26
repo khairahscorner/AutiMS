@@ -180,8 +180,8 @@ export default {
                     this.$notify({
                     group: "response",
                     type: "error",
-                    title: "No Internet connection, try again. Click to close",
-                    duration: 5000,
+                    title: `${err}`,
+                    duration: -2,
                     ignoreDuplicates: true
                     });
                 } 

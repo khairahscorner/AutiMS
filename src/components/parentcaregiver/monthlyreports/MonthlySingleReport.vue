@@ -7,7 +7,7 @@
               {{report.month}} Report by {{therapist_name}}
             </h4>
             <div>
-              <span class="close" @click="hideModal($modal)" aria-label="Close" data-dismiss="close"><i class="fa fa-close"></i></span>
+              <span class="close" @click="hideModal($modal)" aria-label="Close" data-dismiss="close"><i class="ion-ios-close"></i></span>
             </div>
           </div>
         </header>

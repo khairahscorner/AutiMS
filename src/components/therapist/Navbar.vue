@@ -14,7 +14,7 @@
             <ul class="menu menu-lg menu-bordery">
                 <router-link tag="li" to="/therapist/dashboard" class="menu-item">
                     <a class="menu-link" href="#">
-                        <span class="icon fa fa-bar-chart"></span>
+                        <span class="icon ion-clipboard"></span>
                         <span class="title">
                             Dashboard
                         </span>
@@ -22,7 +22,7 @@
                 </router-link>
                 <router-link tag="li" to="/therapist/profile" class="menu-item">
                     <a class="menu-link" href="#">
-                        <span class="icon fa fa-user"></span>
+                        <span class="icon ion-ios-contact-outline"></span>
                         <span class="title">
                             Profile
                         </span>
@@ -30,7 +30,7 @@
                 </router-link>
                 <li class="menu-item">
                     <a class="menu-link" href="#">
-                        <span class="icon fa fa-users"></span>
+                        <span class="icon ion-ios-people"></span>
                         <span class="title">
                             Patients
                         </span>
@@ -57,7 +57,7 @@
                 </li>
                 <router-link tag="li" to="/therapist/activity-lists" class="menu-item">
                     <a class="menu-link" href="#">
-                        <span class="icon fa fa-calendar"></span>
+                        <span class="icon ion-ios-list"></span>
                         <span class="title">
                             Activity Lists
                         </span>
@@ -65,7 +65,7 @@
                 </router-link>
                 <li class="menu-item">
                     <a class="menu-link" href="#">
-                        <span class="icon fa fa-folder-open-o"></span>
+                        <span class="icon ion-ios-albums-outline"></span>
                         <span class="title">
                             Reports
                         </span>
@@ -100,7 +100,7 @@
                 </li>
                 <li class="menu-item">
                     <a class="menu-link" href="#" @click="logOut">
-                    <span class="icon fa fa-sign-out"></span>
+                    <span class="icon ion-log-out"></span>
                     <span class="title">Log Out</span>
                     </a>
                 </li>

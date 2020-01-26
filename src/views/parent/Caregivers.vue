@@ -3,9 +3,7 @@
     <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
     <div v-else class="main-content">
             <div class="card no-radius text-center card-body p-50" v-if="no_caregiver">
-                <div class="pb-10">
-                    <img src="../../assets/img/patients.svg" alt>
-                </div>
+                                    <i class="fs-svg ion-ios-people"></i>
                 <p>You haven't added any caregivers yet.</p>   
             </div>
         <div v-else class="card br-1 mb-0 no-radius px-0 br-primary">
@@ -21,7 +19,7 @@
                                 <nav class="flexbox fs-16">
                                     <a href="#" class="btn btn-xs bg-1" @click="suspendCaregiverAccount(props.row.id)">
                                         <span>
-                                            <i class="fa fa-eye"></i>
+                                            <i class="ion-ios-eye"></i>
                                         </span>     
                                     </a>
                                 </nav>
@@ -34,9 +32,7 @@
                 <h4 class="card-title"><strong>NEW CAREGIVER</strong></h4>
                 <div class="card-body m-50">
                   <div class="text-center">
-                    <div class="pb-30">
-                      <img src="../../assets/img/patients.svg" alt>
-                    </div>
+                                    <i class="fs-svg ion-ios-people"></i>
                     <a class="btn btn-sm btn-round btn-primary" href="#" @click="openForm">Add New</a>
                   </div>
                 </div>
@@ -177,14 +173,6 @@ export default {
           .catch(err => {
             //console.log(err)
             // this.firstLoad = false
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'Error fetching patient. Try again',
-                    // text: `${res.data.message}`,
-                    duration: 2500,
-                    ignoreDuplicates: true
-                })
           })
     }
 }

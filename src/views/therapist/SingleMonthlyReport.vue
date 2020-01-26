@@ -8,11 +8,11 @@
                             <h4 class="text-uppercase">{{report.month}} Report of {{report.patient.name}}</h4>
                             <div>
                                 <a @click="editReport" class="text-white btn btn-xs btn-bold mr-10 bg-1 text-center">
-                                    Edit<i class=" fa fa-edit"></i>
+                                    Edit<i class=" ion-edit"></i>
                                 </a>
                                 <router-link to="/therapist/monthly-reports" tag="button"
                                     class="mt-sm-10 btn btn-xs btn-bold btn-primary text-center">
-                                    Back<i class="fa fa-arrow-circle-o-left"></i>
+                                    Back<i class="ion-arrow-left-c"></i>
                                 </router-link>
                             </div>
                         </div>

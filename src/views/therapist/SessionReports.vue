@@ -3,9 +3,7 @@
     <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
     <div v-else class="main-content">
         <div class="card no-radius text-center card-body p-50" v-if="no_therapist">
-                <div class="pb-10">
-                    <img src="../../assets/img/patients.svg" alt>
-                </div>
+                    <i class="fs-svg ion-ios-people"></i>
                 <p>You haven't added any patient yet.</p>
                 <div>
                    <router-link tag="a" to="/therapist/patients/new" class="btn-bold mr-10 btn btn-xs bg-1" href="#">
@@ -28,7 +26,7 @@
                                 <nav class="flexbox fs-16">
                                     <a href="#" class="btn btn-xs bg-1" @click="viewPatientSessionReports(props.row)">
                                         <span>
-                                            <i class="fa fa-eye"></i>
+                                            <i class="ion-ios-eye"></i>
                                         </span>     
                                     </a>
                                 </nav>
@@ -40,9 +38,7 @@
             <circle-spin class="mt-sm-10 p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
             <div v-else class="mt-sm-10 no-border card col-xl-8 col-md-7 mb-0 no-radius">
                 <div class="text-center card-body m-50" v-if="!showDetails">
-                    <div class="pb-30">
-                      <img src="../../assets/img/patients.svg" alt>
-                    </div>
+                                    <i class="fs-svg ion-ios-list"></i>
                     <p>This shows an overview of all session reports for each patient. Click on a patient to view.</p>
                 </div>
                 <session-report-layout v-else :has_session_report="has_session_report" :all_reports="all_reports" :patient_name="patient_name" :patient_id="patient_id"></session-report-layout>
@@ -118,13 +114,6 @@ export default {
         })
         .catch(err => {
                 // this.firstLoad = false
-                this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'Failed to load Patients. Try again',
-                        duration: 2500,
-                        ignoreDuplicates: true
-                });
         })
     }, 
     components: {

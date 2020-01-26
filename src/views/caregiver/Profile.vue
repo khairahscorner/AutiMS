@@ -10,7 +10,7 @@
                     <div class="header-bar flexbox pl-20 py-10">
                         <h4 class="fw-600 text-uppercase">My Profile</h4>
                         <button class="btn btn-xs btn-bold btn-primary text-center" type="button" @click="edit=true">
-                          EDIT<i class="fa fa-edit"></i>
+                          EDIT<i class="ion-edit"></i>
                         </button>
                     </div>
                   </header>
@@ -89,13 +89,6 @@ export default {
     })
     .catch(err => {
       // this.loading = false
-      this.$notify({
-          group: 'response',
-          type: 'error',
-          title: `An Error Occured`,
-          duration: 2500,
-          ignoreDuplicates: true
-        });
     })
   },
   components: {

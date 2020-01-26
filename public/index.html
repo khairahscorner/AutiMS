@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0,user-scalable=0">
     <title>AutiMS</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>icons/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>icons/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16.png">
     <!-- Add to home screen for Android and modern mobile browsers -->
     <link rel="manifest" href="<%= BASE_URL %>manifest.json">
     <meta name="theme-color" content="#406C74">
@@ -15,19 +15,23 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="apple-mobile-web-app-title" content="AutiMS">
-    <link rel="apple-touch-icon" href="<%= BASE_URL %>icons/apple-60.png">
+    <link rel="apple-touch-icon" href="./icons/apple-60.png">
 
     <!-- splash screen for iOS -->
-    <link rel="apple-touch-startup-image" href="icons/apple-76.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="icons/apple-76.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="icons/apple-120.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="icons/apple-120.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="icons/apple-152.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="icons/apple-180.png" media="(min-device-width: 834px) and (max-device-width: 834px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
-    <link rel="apple-touch-startup-image" href="icons/apple-180.png" media="(min-device-width: 1024px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait)">
+    <!-- iPhone X (1125px x 2436px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px)" href="./icons/apple-180.png">
+
+<!-- iPhone 8, 7, 6s, 6 (750px x 1334px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px)" href="./icons/apple-120.png">
+
+<!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus (1242px x 2208px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px)" href="./icons/apple-152.png">
+
+<!-- iPhone 5 (640px x 1136px) -->
+<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px)" href="./icons/apple-76.png">
 
     <!-- Add to home screen for Windows -->
-    <meta name="msapplication-TileImage" content="<%= BASE_URL %>icons/ms-144.png">
+    <meta name="msapplication-TileImage" content="./icons/ms-144.png">
     <meta name="msapplication-TileColor" content="#ffffff">
     <style>
       @media screen and (max-width: 425px) {
@@ -57,8 +61,7 @@
     <script src="<%= BASE_URL %>js/core.min.js"></script> 
     <script src="<%= BASE_URL %>js/app.min.js"></script> 
     <script src="<%= BASE_URL %>js/script.min.js"></script> 
-    <!-- <script src="../src/assets/js/app.min.js"></script>
-    <script src="../src/assets/js/script.min.js"></script> -->
+    <!-- <script src="<%= BASE_URL %>js/script.min.js"></script>  -->
   </body>
 </html> 
  

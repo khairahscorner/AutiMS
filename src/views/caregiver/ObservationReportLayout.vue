@@ -5,7 +5,7 @@
                         <h4 class="text-uppercase">All Observation Reports For {{therapist_name}}</h4>
                         <router-link :to="'/observation-reports/'+ patient_id + '/new'" tag="button"
                         class="btn btn-xs btn-bold btn-primary text-center"
-                        >New<i class="fa fa-plus-square"></i>
+                        >New<i class="ion-android-add-circle"></i>
                         </router-link>
                     </div>
                 </header>

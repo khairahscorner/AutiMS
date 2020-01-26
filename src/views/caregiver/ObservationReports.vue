@@ -3,9 +3,7 @@
     <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
     <div v-else class="main-content">
         <div class="card no-radius text-center card-body" v-if="no_therapist">
-                <div class="pb-30">
-                    <img src="../../assets/img/patients.svg" alt>
-                </div>
+                                    <i class="fs-svg ion-ios-list-outline"></i>
                 <p>No Therapist has added you to a patient yet or you haven't verfied your relationship.</p>
         </div>
         <div v-else class="row no-margin">
@@ -23,7 +21,7 @@
                                 <nav class="flexbox fs-16">
                                     <a href="#" class="btn btn-xs bg-1" @click="viewChildObservationReports(props.row)">
                                         <span>
-                                            <i class="fa fa-eye"></i>
+                                            <i class="ion-ios-eye"></i>
                                         </span>     
                                     </a>
                                 </nav>
@@ -35,9 +33,7 @@
             <circle-spin class="mt-sm-10 p-30 no-border card col-xl-8 col-md-7 mb-0 no-radius" v-if="loading"></circle-spin>
             <div v-else class="mt-sm-10 no-border card col-xl-8 col-md-7 mb-0 no-radius">
                     <div class="text-center card-body m-50" v-if="!showDetails">
-                        <div class="pb-30">
-                            <img src="../../assets/img/patients.svg" alt>
-                        </div>
+                                    <i class="fs-svg ion-ios-list-outline"></i>
                         <p>This shows an overview of all observation reports by each therapist. Click on a therapist to view.</p>
                     </div>
                     <observation-report-layout v-else :has_observation_report="has_observation_report" :all_reports="all_reports" 
@@ -122,14 +118,14 @@ export default {
                 .catch(err => {
                         //console.log(err)
                         // this.firstLoad = false
-                        this.$notify({
-                                group: 'response',
-                                type: 'error',
-                                title: 'An Error occured',
-                                // text: `${res.data.message}`,
-                                duration: 2500,
-                                ignoreDuplicates: true
-                        });
+                        // this.$notify({
+                        //         group: 'response',
+                        //         type: 'error',
+                        //         title: 'An Error occured',
+                        //         // text: `${res.data.message}`,
+                        //         duration: 2500,
+                        //         ignoreDuplicates: true
+                        // });
                 })   
             })
     },

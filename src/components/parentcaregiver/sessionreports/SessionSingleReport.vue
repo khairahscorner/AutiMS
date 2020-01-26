@@ -6,7 +6,7 @@
             <h4>
               {{datey(new Date(report.date))}} Report by {{therapist_name}}
             </h4>
-            <span class="close" @click="hideModal($modal)" aria-label="Close" data-dismiss="close"><i class="fa fa-close"></i></span>
+            <span class="close" @click="hideModal($modal)" aria-label="Close" data-dismiss="close"><i class="ion-ios-close"></i></span>
           </div>
         </header>
        

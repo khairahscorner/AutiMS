@@ -8,11 +8,11 @@
                             <h4 class="text-uppercase">{{datey(new Date(report.date))}} Report of {{report.patient.name}}</h4>
                             <div>
                                 <a @click="editReport" class="text-white btn btn-xs btn-bold mr-10 bg-1 text-center">
-                                    Edit<i class=" fa fa-edit"></i>
+                                    Edit<i class=" ion-edit"></i>
                                 </a>
                                 <router-link to="/therapist/session-reports" tag="button"
                                     class="btn mt-sm-10 btn-xs btn-bold btn-primary text-center">
-                                    Back<i class="fa fa-arrow-circle-o-left"></i>
+                                    Back<i class="ion-arrow-left-c"></i>
                                 </router-link>
                             </div> 
                         </div>

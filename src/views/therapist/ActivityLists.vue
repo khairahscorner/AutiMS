@@ -3,9 +3,7 @@
         <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
         <div v-else class="main-content">
             <div class="card no-radius text-center card-body p-50" v-if="no_therapist">
-                <div class="pb-10">
-                    <img src="../../assets/img/patients.svg" alt>
-                </div>
+                                    <i class="fs-svg ion-ios-people"></i>
                 <p>You haven't added any patient yet.</p>
                 <div>
                    <router-link tag="a" to="/therapist/patients/new" class="btn-bold mr-10 btn btn-xs bg-1" href="#">
@@ -29,7 +27,7 @@
                                 <nav class="flexbox fs-16">
                                     <a href="#" class="btn btn-xs bg-1"  @click="viewPatientActivityList(props.row.id)">
                                         <span>
-                                            <i class="fa fa-eye"></i>
+                                            <i class="ion-ios-eye"></i>
                                         </span>     
                                     </a>
                                 </nav>
@@ -43,9 +41,7 @@
                     <circle-spin class="p-30" v-if="loading"></circle-spin>
                     <div v-else >
                         <div class="text-center card-body m-50" v-if="!showDetails">
-                                <div class="pb-30">
-                                <img src="../../assets/img/patients.svg" alt>
-                                </div>
+                                    <i class="fs-svg ion-ios-list-outline"></i>
                                 <p>This shows each patient's activity list. Click on a patient to view.</p>
                         </div>
                         <component :is="mode" v-else :patient_id="patient_id" 
@@ -132,14 +128,14 @@ export default {
         .catch(err => {
                 //console.log(err)
                 // this.firstLoad = false
-                this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'An Error occured',
-                        // text: `${res.data.message}`,
-                        duration: 2500,
-                        ignoreDuplicates: true
-                });
+                // this.$notify({
+                //         group: 'response',
+                //         type: 'error',
+                //         title: 'An Error occured',
+                //         // text: `${res.data.message}`,
+                //         duration: 2500,
+                //         ignoreDuplicates: true
+                // });
         })
     },
     components: {

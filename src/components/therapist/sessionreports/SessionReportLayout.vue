@@ -5,7 +5,7 @@
                         <h4 class="text-uppercase">All Session Reports of {{patient_name}}</h4>
                         <router-link :to="'/therapist/session-reports/'+ patient_id + '/new'" tag="button"
                         class="btn btn-xs btn-bold btn-primary text-center"
-                        >New<i class="fa fa-plus-square"></i>
+                        >New<i class="ion-android-add-circle"></i>
                         </router-link>
                     </div>
                 </header>

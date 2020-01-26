@@ -7,9 +7,7 @@
                 </header>
                 <div class="card-body m-50" v-if="!has_observation_report">
                   <div class="text-center">
-                    <div class="pb-10">
-                      <img src="../../../assets/img/patients.svg" alt>
-                    </div>
+                                    <i class="fs-svg ion-ios-list-outline"></i>
                     <p>No Observation Reports yet.</p>
                   </div>
                 </div>

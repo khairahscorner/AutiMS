@@ -35,7 +35,7 @@
                                                 <li class="flexbox px-10 bg-1 mb-10 align-items-baseline" v-for="(activity,i) in details.morning_activities" :key="i"
                                                     :class="i%2==0?'bg-1':'bg-2'">
                                                     {{activity.activity_title}}
-                                                    <a href="#" @click="deleteMorn(activity.id)"><i class="text-white fa fa-times-circle-o"></i></a>
+                                                    <a href="#" @click="deleteMorn(activity.id)"><i class="text-white ion-close-circled"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -65,7 +65,7 @@
                                                 <li class="flexbox px-10 mb-10 align-items-baseline" v-for="(activity,i) in details.afternoon_activities" :key="i"
                                                     :class="i%2==0?'bg-1':'bg-2'">
                                                     {{activity.activity_title}}
-                                                    <a href="#" @click="deleteAfter(activity.id)"><i class="text-white fa fa-times-circle-o"></i></a>
+                                                    <a href="#" @click="deleteAfter(activity.id)"><i class="text-white ion-close-circled"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -95,7 +95,7 @@
                                                 <li class="flexbox px-10 mb-10 align-items-baseline" v-for="(activity,i) in details.evening_activities" :key="i"
                                                     :class="i%2==0?'bg-1':'bg-2'">
                                                     {{activity.activity_title}}
-                                                    <a href="#" @click="deleteEven(activity.id)"><i class="text-white fa fa-times-circle-o"></i></a>
+                                                    <a href="#" @click="deleteEven(activity.id)"><i class="text-white ion-close-circled"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -312,14 +312,6 @@ export default {
         .catch(err => {
                 //console.log(err)
                 // this.firstLoad = false
-                this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'An Error occured',
-                        // text: `${res.data.message}`,
-                        duration: 2500,
-                        ignoreDuplicates: true
-                });
         })
     }
 }

@@ -72,13 +72,6 @@ export default {
         .catch(err => {
         //   this.loading = false;
             // this.$router.push('/')
-            this.$notify({
-                group: "response",
-                type: "error",
-                title: `${err.response.data.message}`,
-                duration: 5000,
-                ignoreDuplicates: true
-            });
         });
     }
 }

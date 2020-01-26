@@ -5,13 +5,13 @@
                         <h4 class="text-uppercase">Activity List of {{details.name}}</h4>
                         <router-link v-if="!has_activity_list" :to="'/therapist/activity-lists/'+patient_id+'/new'" tag="button"
                         class="btn btn-xs btn-bold btn-primary text-center">
-                        Add New<i class="fa fa-plus-square"></i>
+                        Add New<i class="ion-android-add-circle"></i>
                         </router-link>
                         <router-link v-else tag="button"
                         class="btn btn-xs btn-bold btn-primary text-center"
                         :to="'/therapist/activity-lists/'+ patient_id +'/edit'"
                         >
-                        Edit<i class="fa fa-edit"></i>
+                        Edit<i class="ion-edit"></i>
                         </router-link>
                     </div>
                 </header>

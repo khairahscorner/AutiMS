@@ -73,27 +73,19 @@ export default {
                     .catch(err => {
                         //console.log(err)
                         // this.loading = false
-                        this.$notify({
-                                group: 'response',
-                                type: 'error',
-                                title: 'An Error occured',
-                                // text: `${res.data.message}`,
-                                duration: 2500,
-                                ignoreDuplicates: true
-                        });
+                        // this.$notify({
+                        //         group: 'response',
+                        //         type: 'error',
+                        //         title: 'An Error occured',
+                        //         // text: `${res.data.message}`,
+                        //         duration: 2500,
+                        //         ignoreDuplicates: true
+                        // });
                     })
                 })
                 .catch(err => {
                         //console.log(err)
                         // this.loading = false
-                        this.$notify({
-                                group: 'response',
-                                type: 'error',
-                                title: 'An Error occured',
-                                // text: `${res.data.message}`,
-                                duration: 2500,
-                                ignoreDuplicates: true
-                        });
                 })   
             })
     }

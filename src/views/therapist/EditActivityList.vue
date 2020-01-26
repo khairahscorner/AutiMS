@@ -7,7 +7,7 @@
                             <h4 class="text-uppercase">Edit Activity List of {{details.name}}</h4>
                             <router-link to="/therapist/activity-lists" tag="button"
                                 class="btn btn-xs btn-bold btn-primary text-center">
-                                Back<i class="fa fa-arrow-circle-o-left"></i>
+                                Back<i class="ion-arrow-left-c"></i>
                             </router-link>
                         </div>
                     </header>
@@ -36,7 +36,7 @@
                                                 <li class="flexbox px-10 bg-1 mb-10 align-items-baseline" v-for="(activity,i) in details.morning_activities" :key="i"
                                                     :class="i%2==0?'bg-1':'bg-2'">
                                                     {{activity.activity_title}}
-                                                    <a href="#" @click="deleteMorn(activity.id)"><i class="text-white fa fa-times-circle-o"></i></a>
+                                                    <a href="#" @click="deleteMorn(activity.id)"><i class="text-white ion-close-circled"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -66,7 +66,7 @@
                                                 <li class="flexbox px-10 mb-10 align-items-baseline" v-for="(activity,i) in details.afternoon_activities" :key="i"
                                                     :class="i%2==0?'bg-2':'bg-1'">
                                                     {{activity.activity_title}}
-                                                    <a href="#" @click="deleteAfter(activity.id)"><i class="text-white fa fa-times-circle-o"></i></a>
+                                                    <a href="#" @click="deleteAfter(activity.id)"><i class="text-white ion-close-circled"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -96,7 +96,7 @@
                                                 <li class="flexbox px-10 mb-10 align-items-baseline" v-for="(activity,i) in details.evening_activities" :key="i"
                                                     :class="i%2==0?'bg-1':'bg-2'">
                                                     {{activity.activity_title}}
-                                                    <a href="#" @click="deleteEven(activity.id)"><i class="text-white fa fa-times-circle-o"></i></a>
+                                                    <a href="#" @click="deleteEven(activity.id)"><i class="text-white ion-close-circled"></i></a>
                                                 </li>
                                             </ul>
                                         </div>

@@ -3,9 +3,7 @@
     <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
     <div v-else class="main-content">
         <div class="card no-radius text-center card-body p-50" v-if="no_therapist">
-                <div class="pb-10">
-                    <img src="../../assets/img/patients.svg" alt>
-                </div>
+                                    <i class="fs-svg ion-ios-people"></i>
                 <p>You haven't added any patient yet.</p>
                 <div>
                    <router-link tag="a" to="/therapist/patients/new" class="btn-bold mr-10 btn btn-xs bg-1" href="#">
@@ -21,7 +19,7 @@
                         <h4 class="text-uppercase">patients list</h4>
                         <router-link to="/therapist/patients/new" tag="button"
                         class="btn btn-sm btn-bold btn-primary text-center"
-                        >NEW <i class="fa fa-plus-square"></i>
+                        >NEW <i class="ion-android-add-circle"></i>
                         </router-link>
                     </div>
                 </header>
@@ -35,12 +33,12 @@
                                     <nav class="flexbox fs-16">
                                         <a href="#" class="btn btn-xs bg-1" @click="viewPatientProfile(props.row.id)">
                                             <span>
-                                                <i class="fa fa-eye"></i>
+                                                <i class="ion-ios-eye"></i>
                                             </span>     
                                         </a>
                                         <a href="#" class="btn btn-xs btn-danger"  @click="deletePatient(props.row.id)">
                                             <span>
-                                                <i class="fa fa-trash-o"></i>
+                                                <i class="ion-android-delete"></i>
                                             </span>     
                                         </a> 
                                     </nav>
@@ -57,9 +55,7 @@
                 <div v-if="!showPatient">
                     <div class="py-50 card-body">
                     <div class="text-center">
-                        <div class="pb-30">
-                        <img src="../../assets/img/patients.svg" alt>
-                        </div>
+                                    <i class="fs-svg ion-ios-people"></i>
                         <p>This shows each patient's profile information. Click on a patient to view their information.</p>
                     </div>
                     </div>
@@ -207,14 +203,6 @@ export default {
         .catch(err => {
                 //console.log(err)
                 // this.firstLoad = false
-                this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: `${err}`,
-                        // text: `${res.data.message}`,
-                        duration: 2500,
-                        ignoreDuplicates: true
-                });
         })
     },
     components: {

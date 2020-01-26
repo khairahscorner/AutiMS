@@ -3,9 +3,7 @@
         <circle-spin class="mt-50" v-if="firstLoad"></circle-spin>
         <div v-else class="main-content">
             <div class="card no-radius text-center card-body" v-if="no_therapist">
-                <div class="pb-30">
-                    <img src="../../../assets/img/patients.svg" alt>
-                </div>
+                                    <i class="fs-svg ion-ios-list"></i>
                 <p>No Therapist has added you to a patient yet or you haven't verfied your relationship.</p>
             </div>
             <div v-else class="row no-margin">
@@ -23,7 +21,7 @@
                                     <nav class="flexbox fs-16">
                                         <a href="#" class="btn btn-xs bg-1"  @click="viewChildActivityList(props.row)">
                                             <span>
-                                                <i class="fa fa-eye"></i>
+                                                <i class="ion-ios-eye"></i>
                                             </span>     
                                         </a>
                                     </nav>
@@ -36,9 +34,7 @@
                     <circle-spin class="p-30" v-if="loading"></circle-spin>
                     <div v-else>
                         <div class="text-center card-body m-50" v-if="!showDetails">
-                            <div class="pb-30">
-                            <img src="../../../assets/img/patients.svg" alt>
-                            </div>
+                                    <i class="fs-svg ion-ios-list"></i>
                             <p>This shows the activity list of the patient for each therapist. Click on a therapist to view.</p>
                         </div>
                         <component :is="mode" v-else :therapist_name="therapist_name" 
@@ -134,14 +130,14 @@ export default {
                 .catch(err => {
                         //console.log(err)
                         // this.firstLoad = false
-                        this.$notify({
-                                group: 'response',
-                                type: 'error',
-                                title: 'An Error occured',
-                                // text: `${res.data.message}`,
-                                duration: 2500,
-                                ignoreDuplicates: true
-                        });
+                        // this.$notify({
+                        //         group: 'response',
+                        //         type: 'error',
+                        //         title: 'An Error occured',
+                        //         // text: `${res.data.message}`,
+                        //         duration: 2500,
+                        //         ignoreDuplicates: true
+                        // });
                 })   
             })
         }
@@ -166,14 +162,14 @@ export default {
                 .catch(err => {
                         //console.log(err)
                         // this.firstLoad = false
-                        this.$notify({
-                                group: 'response',
-                                type: 'error',
-                                title: 'An Error occured',
-                                // text: `${res.data.message}`,
-                                duration: 2500,
-                                ignoreDuplicates: true
-                        });
+                        // this.$notify({
+                        //         group: 'response',
+                        //         type: 'error',
+                        //         title: 'An Error occured',
+                        //         // text: `${res.data.message}`,
+                        //         duration: 2500,
+                        //         ignoreDuplicates: true
+                        // });
                 })   
             })
         }
