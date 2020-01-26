@@ -103,7 +103,6 @@ const router = new Router({
         { path: "/parent/observation-reports/:payload", component: () => import("./views/parent/SingleObservationReport.vue"), meta: {title: 'Observation Report', reqToken: true} },
 
         { path: "/caregivers", component: () => import("./views/parent/Caregivers.vue"), meta: {title: 'All Caregivers', reqToken: true} },
-        { path: "/caregivers/new", component: () => import("./views/parent/AddCaregiver.vue"), meta: {title: 'Add New Caregiver', reqToken: true} },
       ],
       beforeEnter(to, from, next) {
         let userToken = allMixins.methods.retrieveToken(window.btoa('userToken'))
