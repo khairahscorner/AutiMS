@@ -2,7 +2,7 @@
                 <div class="card-body m-50">
                   <div class="text-center">
                     <div class="pb-10">
-                      <img src="../assets/img/patients.svg" alt>
+                      <i class="fs-svg ion-ios-list"></i>
                     </div>
                     <p>No {{doc_type}} yet.</p>
                   </div>

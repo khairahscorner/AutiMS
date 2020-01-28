@@ -4,7 +4,7 @@
                     <div class="header-bar flexbox pl-20">
                       <h4 class="text-uppercase">All Observation Reports of {{patient_name}}</h4>
                     </div>
-                </header>
+                </header> 
                 <div class="card-body m-50" v-if="!has_observation_report">
                   <div class="text-center">
                                     <i class="fs-svg ion-ios-list-outline"></i>

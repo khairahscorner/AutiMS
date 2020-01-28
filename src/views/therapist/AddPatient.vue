@@ -43,11 +43,17 @@
                             </div>
                                  <div class="form-group">
                                         <label for="diagnosis">Diagnosis</label>
-                                        <input v-model="diagnosis" type="text" class="form-control" id="diagnosis">
+                                        <input v-model="diagnosis" type="text" class="form-control" id="diagnosis" @blur="$v.diagnosis.$touch()">
+                                        <div v-if="$v.diagnosis.$dirty">
+                                            <div class="error" v-if="!$v.diagnosis.required">*Patient diagnosis is required.</div>
+                                        </div>
                                     </div>       
                                 <div class="form-group">
                                         <label for="summary">Brief Summary</label>
-                                        <input v-model="summary" type="text" class="form-control" id="summary">
+                                        <input v-model="summary" type="text" class="form-control" id="summary" @blur="$v.summary.$touch()">
+                                        <div v-if="$v.summary.$dirty">
+                                            <div class="error" v-if="!$v.summary.required">*Patient summary is required.</div>
+                                        </div>
                                     </div> 
                     </form>
                     </div>
@@ -126,7 +132,9 @@ export default {
         },
         parent_phone: { required},
         relationship: { required
-        }
+        },
+        diagnosis: {required},
+        summary: {required}
     }, 
     methods: {
         addNewPatient() {

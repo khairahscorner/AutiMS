@@ -47,9 +47,6 @@ export default {
                     ignoreDuplicates: true
             });
         })
-        setTimeout(() => {
-              this.$router.push('/')
-            }, 3000)
     } 
 }
 </script>

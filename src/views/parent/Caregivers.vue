@@ -32,7 +32,6 @@
                 <h4 class="card-title"><strong>NEW CAREGIVER</strong></h4>
                 <div class="card-body m-50">
                   <div class="text-center">
-                    <i class="fs-svg ion-ios-people"></i>
                     <p> Caregivers are like mini-parents. Add one to give access to your child's reports.</p>
                     <a class="btn btn-sm btn-round btn-primary" href="#" @click="openForm">Add New</a>
                   </div>

@@ -6,7 +6,14 @@
                     </div>
                 </header>
                 <div>
-                    <no-view v-if="!has_activity_list" :doc_type="doc_type"></no-view>
+                    <div v-if="!has_activity_list" class="card-body m-50">
+                        <div class="text-center">
+                            <div class="pb-10">
+                            <i class="fs-svg ion-ios-list-outline"></i>
+                            </div>
+                            <p>No {{doc_type}} yet. </p>
+                        </div>
+                    </div>
                     <div v-else class="card-body scroll h-general">
                                 <div class="pb-20">
                                     <h5 class="b-1 border-secondary bg-secondary p-10 mb-0 text-uppercase">Morning</h5>
@@ -46,7 +53,7 @@
 
 <script>
 import axios from "axios";
-import NoView from '../../noReport.vue'
+// import NoView from '../../noReport.vue'
 import { store} from '../../../store'
 
 export default {
@@ -56,8 +63,8 @@ export default {
             doc_type: 'Activity List'
         }
     },
-    components: {
-        NoView
-    }
+    // components: {
+    //     NoView
+    // }
 }
 </script>
