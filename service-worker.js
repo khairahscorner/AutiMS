@@ -5,7 +5,8 @@ workbox.setConfig({
     debug: false,
   });
   
-  workbox.precaching.precacheAndRoute([]);
+  // workbox.precaching.precacheAndRoute(self.__precacheManifest, {});   workbox.precaching.precacheAndRoute([]);
+
   workbox.googleAnalytics.initialize();
   
   workbox.routing.registerRoute(
@@ -32,24 +33,13 @@ workbox.setConfig({
         ],
       }),
   ); 
-  workbox.routing.registerRoute(
-    new RegExp('https://res.cloudinary.com/khairahscorner/(.*)'),
-    workbox.strategies.networkFirst({
-      cacheName: 'Online-Images',
-      plugins: [
-        new workbox.expiration.Plugin({
-          maxEntries: 30,
-        }),
-      ],
-    }),
-  );
   // workbox.routing.registerRoute(
-  //   new RegExp('https://autims-khairah.herokuapp.com/api/(.*)'),
+  //   new RegExp('https://res.cloudinary.com/khairahscorner/(.*)'),
   //   workbox.strategies.networkFirst({
-  //     cacheName: 'Server-Requests',
+  //     cacheName: 'Online-Images',
   //     plugins: [
   //       new workbox.expiration.Plugin({
-  //         maxEntries: 50,
+  //         maxEntries: 30,
   //       }),
   //     ],
   //   }),
