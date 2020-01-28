@@ -25,6 +25,7 @@ import  './assets/css/vue-multiselect.min.css';
 
 import  './assets/vendor/datepicker.js';
 
+
 Vue.use(VueJWT)
 Vue.use(ClientTable);
 Vue.use(Notifications)
