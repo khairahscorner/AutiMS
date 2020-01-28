@@ -13,7 +13,7 @@ import { CircleSpinner, BounceSpinner } from 'vue-spinners'
 import {ClientTable} from 'vue-tables-2';
 import Datepicker from 'vuejs-datepicker';
 
-import "../registerServiceWorker.js";
+import "../public/registerServiceWorker.js";
 
 // Static files
 import  './assets/css/ionicons.min.css';
