@@ -10,7 +10,7 @@
 <script>
 import Vue from 'vue'
 import axios from 'axios'
-import router from '../../router'
+import router from '../../router.js'
 // @ is an alias to /src
 import Header from '../../components/parentcaregiver/caregiverHeader.vue'
 import Navbar from '../../components/parentcaregiver/caregiverNavbar.vue'
@@ -28,8 +28,8 @@ export default {
         Vue.notify({
           group: "response",
           type: "error",
-          title: `${err}`,
-          duration: -2,
+          title: `${err}. Log out and retry.`,
+          duration: 10000,
           ignoreDuplicates: true
         })
         return Promise.reject(err);

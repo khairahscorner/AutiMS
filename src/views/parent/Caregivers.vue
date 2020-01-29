@@ -149,14 +149,6 @@ export default {
             .catch(err => {
               this.load_add = false
                 //console.log(err)
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'An error occured. Try again',
-                    // text: `${res.data.message}`,
-                    duration: 2500,
-                    ignoreDuplicates: true
-                });
             })
         }
     },

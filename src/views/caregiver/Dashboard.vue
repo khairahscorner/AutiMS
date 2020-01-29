@@ -6,7 +6,8 @@
                 <h4 class="text-uppercase">Dashboard</h4>
                 </div>
             </header>
-            <div class="row">
+            <circle-spin class="mt-50" v-if="loading"></circle-spin>
+            <div v-else class="row">
                 <div class="col-md-4">
                     <a href="#">
                     <div class="card card-body">
@@ -57,19 +58,9 @@ export default {
                         this.reports = res.data.data.observation_reports.filter(report => report.creator_type == 'caregiver').length
                     })
                     .catch(err => {
-                        // this.$notify({
-                        //         group: 'response',
-                        //         type: 'error',
-                        //         title: 'An Error occured',
-                        //         // text: `${res.data.message}`,
-                        //         duration: 2500,
-                        //         ignoreDuplicates: true
-                        // });
                     })
                 })
                 .catch(err => {
-                        //console.log(err)
-                        // this.loading = false
                 })   
             })
     }

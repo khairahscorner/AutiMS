@@ -88,14 +88,6 @@ export default {
       store.commit('SAVE_PARENT_DETAILS', res.data.data.parent)
     })
     .catch(err => {
-      // this.loading = false
-      this.$notify({
-          group: 'response',
-          type: 'error',
-          title: `An Error Occured`,
-          duration: 2500,
-          ignoreDuplicates: true
-        });
     })
   },
   components: {

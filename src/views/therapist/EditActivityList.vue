@@ -179,14 +179,6 @@ export default {
             })
             .catch(err => {
                 this.loadMorn = false
-                this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'An error occured.',
-                            // text: `${res.data.message}`,
-                        duration: 2500,
-                        ignoreDuplicates: true
-                })
             })
         },
         deleteMorn(id) {
@@ -198,14 +190,6 @@ export default {
             })
             .catch(err => {
                 this.delMorn = false
-                this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'Failed to delete. Try again',
-                            // text: `${res.data.message}`,
-                        duration: 2500,
-                        ignoreDuplicates: true
-                })
             })
         },
         addAfter() {
@@ -221,14 +205,6 @@ export default {
             })
             .catch(err => {
                 this.loadAfter = false
-                this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'An error occured.',
-                            // text: `${res.data.message}`,
-                        duration: 2500,
-                        ignoreDuplicates: true
-                })
             })
         },
         deleteAfter(id) {
@@ -240,14 +216,6 @@ export default {
             })
             .catch(err => {
                 this.delAfter = false
-                this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'Failed to delete. Try again',
-                            // text: `${res.data.message}`,
-                        duration: 2500,
-                        ignoreDuplicates: true
-                })
             })
         },
         addEven() {
@@ -263,14 +231,6 @@ export default {
             })
             .catch(err => {
                 this.loadEven = false
-                this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'An error occured.',
-                            // text: `${res.data.message}`,
-                        duration: 2500,
-                        ignoreDuplicates: true
-                })
             })
         },
         deleteEven(id) {
@@ -282,14 +242,6 @@ export default {
             })
             .catch(err => {
                 this.delEven = false
-                this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'Failed to delete. Try again',
-                            // text: `${res.data.message}`,
-                        duration: 2500,
-                        ignoreDuplicates: true
-                })
             })
         },
     },
@@ -313,14 +265,6 @@ export default {
         .catch(err => {
                 //console.log(err)
                 // this.firstLoad = false
-                this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'An Error occured',
-                        // text: `${res.data.message}`,
-                        duration: 2500,
-                        ignoreDuplicates: true
-                });
         })
     }
 }

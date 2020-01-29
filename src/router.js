@@ -10,7 +10,7 @@ const router = new Router({
   base: process.env.BASE_URL,
   linkExactActiveClass: "nav-active",
   routes: [
-    { path: "/", component: Login, meta: { title: 'Login'},
+    { name:'login', path: "/", component: Login, meta: { title: 'Login'},
       beforeEnter(to, from, next) {
         let userToken = allMixins.methods.retrieveToken(window.btoa('userToken'))
         if(userToken == null){

@@ -83,15 +83,7 @@ export default {
             })
             .catch(err => {
                 // this.firstLoad = false
-                this.edit = false
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'Failed to fetch report. Try again',
-                    // text: `${res.data.message}`,
-                    duration: 2500,
-                    ignoreDuplicates: true
-                });
+                // this.edit = false
             })
        }  
     },

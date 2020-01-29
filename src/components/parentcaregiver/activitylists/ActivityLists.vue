@@ -90,19 +90,8 @@ export default {
                 else { this.has_activity_list = false}
                 this.details = res.data.data
                 //console.log(this.details)
+                this.showDetails = true
             })
-            .catch(err => {
-                //console.log(err)
-                    this.loading = false
-                    this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'An Error Occured',
-                        duration: 2500,
-                        ignoreDuplicates: true
-                    });
-            })
-            this.showDetails = true
             // Fetch patient details using ID
         },
     },
@@ -128,16 +117,6 @@ export default {
                     else this.no_therapist = true
                 })
                 .catch(err => {
-                        //console.log(err)
-                        // this.firstLoad = false
-                        // this.$notify({
-                        //         group: 'response',
-                        //         type: 'error',
-                        //         title: 'An Error occured',
-                        //         // text: `${res.data.message}`,
-                        //         duration: 2500,
-                        //         ignoreDuplicates: true
-                        // });
                 })   
             })
         }
@@ -160,16 +139,6 @@ export default {
                     else this.no_therapist = true
                 })
                 .catch(err => {
-                        //console.log(err)
-                        // this.firstLoad = false
-                        // this.$notify({
-                        //         group: 'response',
-                        //         type: 'error',
-                        //         title: 'An Error occured',
-                        //         // text: `${res.data.message}`,
-                        //         duration: 2500,
-                        //         ignoreDuplicates: true
-                        // });
                 })   
             })
         }

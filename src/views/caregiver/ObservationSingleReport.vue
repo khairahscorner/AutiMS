@@ -6,12 +6,12 @@
                     <header class="no-border">
                         <div class="header-bar flexbox pl-20">
                             <h4 class="text-uppercase">{{datey(new Date(report.date))}} Report  for {{therapist_name}}</h4>
-                            <div>
+                            <div> 
                                 <a @click="editReport" class="text-white btn btn-xs btn-bold mr-10 bg-1 text-center">
                                     Edit<i class=" ion-edit"></i>
                                 </a>
                                 <router-link to="/observation-reports" tag="button"
-                                    class="btn btn-xs btn-bold btn-primary text-center">
+                                    class="mt-sm-10 btn btn-xs btn-bold btn-primary text-center">
                                     Back<i class="ion-arrow-left-c"></i>
                                 </router-link>
                             </div> 
@@ -85,16 +85,8 @@ export default {
                 this.report = res.data.data
             })
             .catch(err => {
-                this.firstLoad = false
-                this.edit = false
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'Failed to fetch report. Try again',
-                    // text: `${res.data.message}`,
-                    duration: 2500,
-                    ignoreDuplicates: true
-                });
+                // this.firstLoad = false
+                // this.edit = false
             })
        }  
     },

@@ -153,8 +153,8 @@ export default {
             this.$notify({
               group: "response",
               type: "error",
-              title: `${err}`,
-              duration: -2,
+              title: `${err}. Log out and retry.`,
+              duration: 10000,
               ignoreDuplicates: true
             });
           } 

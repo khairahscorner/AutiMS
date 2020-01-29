@@ -136,14 +136,6 @@ export default {
             })
             .catch(err => {
                 //console.log(err)
-                this.loading = false
-                    this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'An Error occured.',
-                        duration: 2500,
-                        ignoreDuplicates: true
-                    });
             })
             this.showPatient = true
         },
@@ -175,14 +167,6 @@ export default {
             })
             .catch(err => {
                 this.load_delete = false
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: `${err.response.message}`,
-                    // text: `${res.data.message}`,
-                    duration: 5000,
-                    ignoreDuplicates: true
-                });
             })
         },
         hideDeleteModal(a) {

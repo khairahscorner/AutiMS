@@ -114,16 +114,6 @@ export default {
                     else this.no_therapist = true
                 })
                 .catch(err => {
-                        //console.log(err)
-                        // this.firstLoad = false
-                        // this.$notify({
-                        //         group: 'response',
-                        //         type: 'error',
-                        //         title: 'An Error occured',
-                        //         // text: `${res.data.message}`,
-                        //         duration: 2500,
-                        //         ignoreDuplicates: true
-                        // });
                 })   
             })
         }
@@ -146,16 +136,6 @@ export default {
                     else this.no_therapist = true
                 })
                 .catch(err => {
-                        //console.log(err)
-                        // this.firstLoad = false
-                        // this.$notify({
-                        //         group: 'response',
-                        //         type: 'error',
-                        //         title: 'An Error occured',
-                        //         // text: `${res.data.message}`,
-                        //         duration: 2500,
-                        //         ignoreDuplicates: true
-                        // });
                 })   
             })
         }

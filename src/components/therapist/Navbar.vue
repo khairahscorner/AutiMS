@@ -145,12 +145,6 @@ export default {
         })
         .catch(err => {
             // this.loading = false
-            this.$notify({
-                group: 'response',
-                type: 'error',
-                title: 'An error occured',
-                duration: 5000
-                })
         })
     }
 }

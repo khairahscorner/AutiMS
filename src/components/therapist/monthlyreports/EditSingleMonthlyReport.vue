@@ -211,14 +211,6 @@ export default {
             .catch(err => {
                 this.loading = false
                 //console.log(err.response)
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'Failed to save report. Try again',
-                    // text: `${res.data.message}`,
-                    duration: 2500,
-                    ignoreDuplicates: true
-                });
             })
         }
         

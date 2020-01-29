@@ -120,14 +120,6 @@ export default {
             .catch(err => {
                 this.loading_save = false
                 //console.log(err)
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: `${err.response.message}`,
-                    // text: `${res.data.message}`,
-                    duration: 2500,
-                    ignoreDuplicates: true
-                });
             })
             
         }

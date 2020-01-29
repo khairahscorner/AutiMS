@@ -75,14 +75,14 @@ export default {
             }, 3000)
       })
       .catch(err => {
-        this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'An Error Occured. Try again',
-                    // text: `${err.response}`,
-                    duration: 5000,
-                    ignoreDuplicates: true
-            });
+        // this.$notify({
+        //             group: 'response',
+        //             type: 'error',
+        //             title: 'An Error Occured. Try again',
+        //             // text: `${err.response}`,
+        //             duration: 5000,
+        //             ignoreDuplicates: true
+        //     });
       })
     }
   },

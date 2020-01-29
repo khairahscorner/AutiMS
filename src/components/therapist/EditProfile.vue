@@ -118,13 +118,6 @@ export default {
           })
           .catch(err => {
             this.loading_save = false
-            this.$notify({
-                      group: 'response',
-                      type: 'error',
-                      title: `An Error Occured`,
-                      duration: 2500,
-                      ignoreDuplicates: true
-                  });
           })
       },
       saveProfile() {

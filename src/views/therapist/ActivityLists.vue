@@ -102,14 +102,7 @@ export default {
             })
             .catch(err => {
                 //console.log(err)
-                this.loading = false
-                    this.$notify({
-                        group: 'response',
-                        type: 'error',
-                        title: 'An Error Occured',
-                        duration: 2500,
-                        ignoreDuplicates: true
-                    });
+                // this.loading = false
             })
             this.showDetails = true
             // Fetch patient details using ID

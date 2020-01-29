@@ -34,13 +34,13 @@ export default {
             this.img_url = res.data.data.caregiver.img_url
         })
         .catch(err => {
-            this.loading = false
-            this.$notify({
-                group: 'response',
-                type: 'error',
-                title: 'An error occurred. Try again',
-                duration: 5000
-                })
+            // this.loading = false
+            // this.$notify({
+            //     group: 'response',
+            //     type: 'error',
+            //     title: 'An error occurred. Try again',
+            //     duration: 5000
+            //     })
         })
   }
 }

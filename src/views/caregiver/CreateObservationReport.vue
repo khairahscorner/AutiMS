@@ -109,15 +109,6 @@ export default {
             })
             .catch(err => {
                 this.loading = false
-                //console.log(err)
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'An error occured. Try again',
-                    // text: `${res.data.message}`,
-                    duration: 2500,
-                    ignoreDuplicates: true
-                });
             })
         }
     },
@@ -129,19 +120,6 @@ export default {
             this.patient_name = res.data.data.parent.child_name
         })
         .catch(err => {
-            //console.log(err)
-            // this.firstLoad = false
-                this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'Error fetching patient. Try again',
-                    // text: `${res.data.message}`,
-                    duration: 2500,
-                    ignoreDuplicates: true
-                })
-                setTimeout(() => {
-                    this.$router.push('/observation-reports')
-                }, 3000)
         })
     } 
 }

@@ -178,17 +178,6 @@ export default {
                         ignoreDuplicates: true
                     });
                 }
-                else{
-                   this.$notify({
-                    group: 'response',
-                    type: 'error',
-                    title: 'An Error occured. Try again',
-                    // text: `${res.data.message}`,
-                    duration: 2500,
-                    ignoreDuplicates: true
-                }); 
-                }
-                
             })
         }
     }
