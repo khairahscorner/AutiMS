@@ -32,7 +32,7 @@
                 </div>
                 <div class=" col-md-4">
                     <div class="card card-body">
-                    <h5 class="text-uppercase">Observation Reports</h5>
+                    <h5 class="text-uppercase">Total Observation Reports</h5>
                     <div class="flexbox mt-2">
                         <span class="ion-ios-albums-outline text-primary font-s"></span>
                         <h6 class="mb-0 font-s">{{reports}}</h6>
