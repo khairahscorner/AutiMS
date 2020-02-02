@@ -29,8 +29,12 @@ const router = new Router({
             else if (details.data.user_type == 'parent') {
               next('/parent/dashboard')
             }
-            else {
+            else if (details.data.user_type == 'caregiver'){
               next('/dashboard')
+            }
+            else {
+              localStorage.clear()
+              next('/')
             } 
           }
         }
