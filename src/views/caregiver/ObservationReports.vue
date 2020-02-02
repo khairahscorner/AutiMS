@@ -101,7 +101,6 @@ export default {
             .then(res => {
                 let email = res.data.data.caregiver.parent_email
                 this.creator_type = res.data.data.user_type
-                console.log(this.creator_type)
                 axios.get(`/parent/view_patients/${email}`) 
                 .then(res => {
                     this.firstLoad = false
