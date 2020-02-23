@@ -1,5 +1,5 @@
 
-![AutiMS logo](7C3BA3F4-CC73-44DC-B5F1-26E1B14FB710.jpeg)
+![AutiMS logo](487CA33D-5AF5-4AF0-A3C5-25155E0849A5.jpeg)
 # AutiMS
 
 ## Intro
