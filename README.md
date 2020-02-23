@@ -1,6 +1,5 @@
 
-![AutiMS logo](193CC886-A1BD-4BEA-9638-12F5797C53E4.png)
-
+![AutiMS logo](7C3BA3F4-CC73-44DC-B5F1-26E1B14FB710.jpeg)
 # AutiMS
 
 ## Intro
