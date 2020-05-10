@@ -6,7 +6,7 @@
 
 AutiMS is a management app for documenting reports of patients undergoing therapy as well as giving full access to these reports to parents and other authorized family members.
 
-It's a closed application that connects therapists of patients living with Autism directly with the other parent guardian and other family members and gives room for communication. Visit https://autims.netlify.com to get started.
+It's a closed application that connects therapists of patients living with Autism directly with the other parent guardian and other family members and gives room for communication.
 
 
 It's a Progressive Web App (PWA), which simply means you can add it to your phone's home screen like a native app, without having to download from the Play store / App Store (amingst other things).
