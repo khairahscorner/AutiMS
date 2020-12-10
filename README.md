@@ -12,23 +12,6 @@ It's a closed application that connects therapists of patients living with Autis
 It's a Progressive Web App (PWA), which simply means you can add it to your phone's home screen like a native app, without having to download from the Play store / App Store (amingst other things).
 
 
-### How To Use (For Therapists & Parents)
-
-1. Visit the website
-2. Sign up for a therapist/parent account
-3. Start documenting!
-
-started.
- 
-
-
-### How To Use (For other Family Members)
-
-1. Receive an account invite via email from a Parent on the app
-2. Set new password
-3. Start documenting!
-
-
 ### Features
 
 1. Therapists can register patients, with a guardian's details. The guardian must have a parent account on the application.
@@ -37,6 +20,24 @@ started.
 4. Therapists can also add an Activity List to include the daily tasks amd to-dos for each patient, this can be regularly updated.
 5. Several therapists can register a patient with the same guardian details, all reports by the individual therapists will also be available and accessible.
 6. Parents and Caregivers can create several Observation reports to be sent to the specified therapist.
+
+
+### How To Use (For Therapists & Parents)
+
+1. Visit the website
+2. Sign up for a therapist/parent account
+3. Start documenting! 
+
+
+### How To Use (For other Family Members)
+
+1. Receive an account invite via email from a Parent on the app
+2. Set new password
+3. Start documenting!
+
+### Test Account Details
+Therapist: airahyusuff@gmail.com autims2020
+Parent:  khairahscorner@gmail.com autims2020
 
 ### Improvements
 
